@@ -13,7 +13,6 @@ gem 'slim-rails'
 gem 'sqlite3', '~> 1.4'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'html2slim'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
