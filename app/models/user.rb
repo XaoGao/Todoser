@@ -19,6 +19,9 @@ class User < ApplicationRecord
 
   has_many :projects, foreign_key: 'author_id'
 
+  validates :first_name, presence: true, length: { in: 2..100 }
+  validates :last_name, presence: true, length: { in: 2..100 }
+
   def full_name
     "#{first_name} #{last_name}"
   end

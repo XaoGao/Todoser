@@ -10,4 +10,6 @@
 #
 class Project < ApplicationRecord
   belongs_to :author, class_name: "User", foreign_key: "author_id"
+
+  validates :title, presence: true, length: { in: 2..100 }
 end
