@@ -1,0 +1,7 @@
+.mb-5.text-center
+  - flash.each do |key, value|
+    .[class="#{flash_class(key)}"]
+      button.btn-close data-bs-dismiss="alert" type="button"
+      = value
+
+      
