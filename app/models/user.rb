@@ -17,13 +17,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :projects, foreign_key: 'author_id'
+  has_many :projects, foreign_key: "author_id"
   has_many :tasks
 
   validates :first_name, presence: true, length: { in: 2..100 }
   validates :last_name, presence: true, length: { in: 2..100 }
 
   def full_name
-    "#{first_name} #{last_name}"
+    [first_name, last_name].compact.join(" ")
   end
 end
