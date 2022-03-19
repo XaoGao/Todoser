@@ -1,4 +1,11 @@
 = form_with model: project do |f|
   = f.label :title
   = f.text_field :title
+
+  = f.label :short_title
+  = f.text_field :short_title
+
+  = f.label :description
+  = f.text_area :description
+
   = f.submit "Create"
