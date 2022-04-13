@@ -14,6 +14,9 @@
 FactoryBot.define do
   factory :project do
     title { Faker::Company.name }
-    association :user
+    description { Faker::Lorem.sentence(word_count: 5) }
+    short_title { title }
+    delete_at { nil }
+    association :author, factory: :user
   end
 end

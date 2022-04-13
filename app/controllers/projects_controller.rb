@@ -30,10 +30,17 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.new params[:id]
+    @project = Project.find(params[:id])
   end
 
-  def destroy; end
+  def destroy
+    @project = Project.find(params[:id])
+    if @project.update(delete_at: DateTime.now)
+      flash[:success] = "ok"
+    else
+      flash[:alert] = "bad"
+    end
+  end
 
   private
 
