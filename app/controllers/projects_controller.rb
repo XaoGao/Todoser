@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-    if @project.update(delete_at: DateTime.now)
+    if @project.disabled
       flash[:success] = "ok"
     else
       flash[:alert] = "bad"
