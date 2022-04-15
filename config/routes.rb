@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :projects do
-    resources :tasks
+    resources :tasks, except: [:new, :edit, :show]
   end
 end

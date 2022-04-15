@@ -17,7 +17,7 @@ FactoryBot.define do
     title { Faker::App.name }
     describle { Faker::Lorem.paragraph }
     status { 0 }
-    association :user
+    association :author, factory: :user
     association :project
   end
 end
