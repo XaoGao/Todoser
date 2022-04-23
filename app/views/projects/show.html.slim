@@ -1,4 +1,7 @@
-.card
+.card.mb-4
   .card-body
     h5.card-title 
       = @project.title
+
+- @project.tasks.each do |task|
+  =render "projects/task_item", task: task

@@ -1,4 +1,4 @@
-.card id="project-#{project.id}"
+=link_to project_path(project), class: "card mb-4", id: "project-#{project.id}" do
   .card-body
     h5.card-title 
       = project.title
