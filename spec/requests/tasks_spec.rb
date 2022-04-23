@@ -25,6 +25,27 @@ RSpec.describe "Tasks", type: :request do
     end
   end
 
+  describe "GET /projects/{project_id}/tasks/new" do
+    context "user is sign in" do
+      before(:each) do
+        sign_in user
+      end
+
+      it "returns http success" do
+        get new_project_task_path(project)
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context "user is not sign in" do
+      it "returns redirect to sign in page" do
+        get new_project_task_path(project)
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
   describe "POST project/{project_id}/tasks" do
     let(:task) { build(:task, author: nil, project: nil) }
 
@@ -47,6 +68,29 @@ RSpec.describe "Tasks", type: :request do
     context "user is not sign in" do
       it "returns redirect to sign in page" do
         post project_tasks_path(project)
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
+  describe "GET /projects/{project_id}/tasks/edit" do
+    let(:task) { create(:task, author: user, project: project) }
+
+    context "user is sign in" do
+      before(:each) do
+        sign_in user
+      end
+
+      it "returns http success" do
+        get edit_project_task_path(project, task)
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context "user is not sign in" do
+      it "returns redirect to sign in page" do
+        get edit_project_task_path(project, task)
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to new_user_session_path
       end
@@ -76,6 +120,27 @@ RSpec.describe "Tasks", type: :request do
     context "user is not sign in" do
       it "returns redirect to sign in page" do
         put project_task_path(project, task)
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
+  describe "GET /projects/{project_id}/tasks/{id}" do
+    context "user is sign in" do
+      before(:each) do
+        sign_in user
+      end
+
+      it "returns http success" do
+        get new_project_task_path(project)
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context "user is not sign in" do
+      it "returns redirect to sign in page" do
+        get new_project_task_path(project)
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to new_user_session_path
       end
