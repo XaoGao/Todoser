@@ -133,14 +133,14 @@ RSpec.describe "Tasks", type: :request do
       end
 
       it "returns http success" do
-        get new_project_task_path(project)
+        get project_task_path(project)
         expect(response).to have_http_status(:success)
       end
     end
 
     context "user is not sign in" do
       it "returns redirect to sign in page" do
-        get new_project_task_path(project)
+        get project_task_path(project)
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to new_user_session_path
       end
