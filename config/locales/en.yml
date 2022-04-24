@@ -3,5 +3,6 @@ en:
   projects:
     index:
       title: "Projects"
+      head_messge: "Awailable Projects List"
     show:
       title: "%{project_title}"
