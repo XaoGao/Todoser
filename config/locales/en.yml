@@ -12,3 +12,7 @@ en:
     sign_up: "Sign Up"
     edit: "Edit"
     logout: "Logout"
+
+  errors:
+    not_found: "Record is not found"
+
