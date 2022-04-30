@@ -6,3 +6,9 @@ en:
       head_messge: "Awailable Projects List"
     show:
       title: "%{project_title}"
+
+  button:
+    sign_in: "Sign In"
+    sign_up: "Sign Up"
+    edit: "Edit"
+    logout: "Logout"

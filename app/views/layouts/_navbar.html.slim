@@ -7,23 +7,6 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.mr-auto
         li.nav-item.active
-          a.nav-link[href="#"]
-            | Home 
-        li.nav-item
-          a.nav-link[href="#"]
-            | Link
-        li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
-            |  Dropdown 
-          .dropdown-menu[aria-labelledby="navbarDropdown"]
-            a.dropdown-item[href="#"]
-              | Action
-            a.dropdown-item[href="#"]
-              | Another action
-            .dropdown-divider
-            a.dropdown-item[href="#"]
-              | Something else here
+          = link_to "Home", root_path, class: "nav-link"
   
-      form.form-inline.my-2.my-lg-0
-        button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
-          | Search
+      = render "layouts/user_link_item"

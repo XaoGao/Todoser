@@ -1,0 +1,11 @@
+- if user_signed_in?
+  .dropdown
+    button.btn.btn-primary.dropdown-toggle[href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+      =current_user.full_name
+    .dropdown-menu[aria-labelledby="navbarDropdown"]
+      = link_to t("button.edit"), edit_user_registration_path, class: "dropdown-item"
+      = link_to t("button.logout"), destroy_user_session_path, class: "dropdown-item", method: :delete
+- else
+  .form-inline.my-2.my-lg-0
+    = link_to t("button.sign_in"), new_user_session_path, class: "btn btn-outline-success my-2 my-sm-0 mr-2"
+    = link_to t("button.sign_up"), new_user_registration_path, class: "btn btn-outline-primary my-2 my-sm-0"
