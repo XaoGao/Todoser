@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_01_101907) do
+ActiveRecord::Schema.define(version: 2022_05_01_134249) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title", null: false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2022_04_01_101907) do
     t.datetime "delete_at"
     t.text "description", default: ""
     t.string "short_title", default: ""
+    t.integer "status"
     t.index ["author_id"], name: "index_projects_on_author_id"
   end
 

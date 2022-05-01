@@ -17,5 +17,7 @@ class Project < ApplicationRecord
   belongs_to :author, class_name: "User", foreign_key: "author_id"
   has_many :tasks
 
+  enum status: [:active, :archive, :removed]
+
   validates :title, presence: true, length: { in: 2..100 }
 end
