@@ -1,7 +1,7 @@
 .row
   - Task.statuses_for_list.each do |key, value|
     .col-3
-      .list-group
+      .list-group id=key
         button.list-group-item.list-group-item-action.active[type="button"]
           h3.text-center = key.capitalize
         
