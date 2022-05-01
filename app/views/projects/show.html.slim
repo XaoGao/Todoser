@@ -7,9 +7,11 @@
     hr
     p.card-text.mt-3
       = project_description_placeholder(@project)
+      hr
+      = t(".status", status: @project.status)
     hr
     = link_to t("button.edit"), edit_project_path(@project), class: "btn btn-primary"
-    = link_to t("button.archive"), archive_project_path(@project), class: "btn btn-danger ml-3"
+    = button_to_archive(@project)
 
 - @project.tasks.each do |task|
   =render "projects/task_item", project: @project, task: task

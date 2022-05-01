@@ -33,9 +33,13 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  # TODO: release
   def archive
-    # @project = Project.find(params[:id])
+    @project = Project.find(params[:id])
+    unless @project.archive?
+      @project.update(status: :archive)
+    end
+
+    render :show
   end
 
   def destroy

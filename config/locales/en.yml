@@ -5,6 +5,7 @@ en:
       title: "Projects"
       head_messge: "Awailable Projects List"
     show:
+      status: "Current statis is %{status}"
       description_placeholder: "Description is Empty"
       title: "%{project_title}"
   tasks:
