@@ -127,20 +127,22 @@ RSpec.describe "Tasks", type: :request do
   end
 
   describe "GET /projects/{project_id}/tasks/{id}" do
+    let(:task) { create(:task, title: "title before", author: user, project: project) }
+
     context "user is sign in" do
       before(:each) do
         sign_in user
       end
 
       it "returns http success" do
-        get project_task_path(project)
+        get project_task_path(project, task)
         expect(response).to have_http_status(:success)
       end
     end
 
     context "user is not sign in" do
       it "returns redirect to sign in page" do
-        get project_task_path(project)
+        get project_task_path(project, task)
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to new_user_session_path
       end
