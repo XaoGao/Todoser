@@ -1,6 +1,12 @@
 en:
   hello: "Hello world"
   projects:
+    update:
+      successful: "Project %{project_name} was successful updated"
+      error: "Errors when try to update Project %{project_name}"
+    create:
+      successful: "Project %{project_name} was successful created"
+      error: "Errors when try to create Project %{project_name}"
     index:
       title: "Projects"
       head_messge: "Awailable Projects List"

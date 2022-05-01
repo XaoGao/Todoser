@@ -12,9 +12,10 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build project_params
     if @project.save
-      render :show, notice: "ok"
+      render :show, notice: t("projects.create.successful", project_name: @project.title)
     else
-      redirect_to projects_path, alert: "bad"
+      flash[alert] = t("projects.create.error", project_name: @project.title)
+      render :new
     end
   end
 
@@ -25,12 +26,15 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update project_params
-      redirect_to projects_path
+      redirect_to project_path(@project), notice: t("projects.update.successful", project_name: @project.title)
+    else
+      flash[alert] = t("projects.update.error", project_name: @project.title)
+      render :edit
     end
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.includes(:tasks).find(params[:id])
   end
 
   def archive
@@ -54,6 +58,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title)
+    params.require(:project).permit(:title, :short_title, :description)
   end
 end
