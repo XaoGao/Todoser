@@ -17,4 +17,13 @@ class Task < ApplicationRecord
 
   belongs_to :author, class_name: "User", foreign_key: "author_id"
   belongs_to :project
+
+  enum status: [:selected, :doing, :done, :release, :archive]
+
+  # TODO: replace to view component
+  class << self
+    def statuses_for_list
+      statuses.except(:archive)
+    end
+  end
 end

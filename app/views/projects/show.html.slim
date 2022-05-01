@@ -1,17 +1,5 @@
 = title t(".title", project_title: @project.title)
 
-.card.mb-4
-  .card-body
-    h4.card-title.text-center
-      = @project.title
-    hr
-    p.card-text.mt-3
-      = project_description_placeholder(@project)
-      hr
-      = t(".status", status: @project.status)
-    hr
-    = link_to t("button.edit"), edit_project_path(@project), class: "btn btn-primary"
-    = button_to_archive(@project)
-
-- @project.tasks.each do |task|
-  =render "projects/task_item", project: @project, task: task
+= render "projects/project_card", project: @project
+hr
+= render "tasks/task_list", project: @project
