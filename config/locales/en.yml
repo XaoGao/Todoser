@@ -5,13 +5,21 @@ en:
       title: "Projects"
       head_messge: "Awailable Projects List"
     show:
+      description_placeholder: "Description is Empty"
       title: "%{project_title}"
+  tasks:
+    index:
+      title: "Tasks"
+      head_messge: "Tasks for project %{project_name}"
 
   button:
     sign_in: "Sign In"
     sign_up: "Sign Up"
     edit: "Edit"
     logout: "Logout"
+    remove: "Remove"
+    delete: "Delete"
+    archive: "Archive"
 
   errors:
     not_found: "Record is not found"

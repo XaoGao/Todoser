@@ -33,6 +33,11 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  # TODO: release
+  def archive
+    # @project = Project.find(params[:id])
+  end
+
   def destroy
     @project = Project.find(params[:id])
     if @project.disabled
