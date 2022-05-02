@@ -19,6 +19,7 @@ class Task < ApplicationRecord
   belongs_to :project
 
   enum status: [:selected, :doing, :done, :release, :archive]
+  enum priority: [:lowest, :low, :medium, :high, :highest]
 
   # TODO: replace to view component
   class << self
