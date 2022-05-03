@@ -1,2 +1,6 @@
-h1 Tasks#edit
-p Find me in app/views/tasks/edit.html.slim
+= title t(".title", task_title: @task.title)
+
+h2.text-center = t(".title", task_title: @task.title)
+hr
+
+= render "form", project: @project, task: @task

@@ -28,6 +28,9 @@ en:
       head_messge: "Tasks for project %{project_name}"
     new:
       title: "New Task"
+    edit:
+      title: "Edit a task %{task_title}"
+
 
   button:
     sign_in: "Sign In"
@@ -39,6 +42,7 @@ en:
     archive: "Archive"
     create: "Create"
     back: "Back"
+    save: "Save"
 
   errors:
     not_found: "Record is not found"
