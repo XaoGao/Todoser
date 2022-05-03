@@ -6,4 +6,4 @@
           h3.text-center = key.capitalize
         
         - project.tasks.public_send(key).each do |task|
-          = render "tasks/task_item", task: task
+          = render "tasks/task_item", project: project, task: task

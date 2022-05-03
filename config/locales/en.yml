@@ -1,5 +1,13 @@
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      project: "Project"
+      task: "Task"
+    attributes:
+      task:
+        title: "Title"
+        status: "Status"
+        priority: "Priority"
   projects:
     update:
       successful: "Project %{project_name} was successful updated"
@@ -18,6 +26,8 @@ en:
     index:
       title: "Tasks"
       head_messge: "Tasks for project %{project_name}"
+    new:
+      title: "New Task"
 
   button:
     sign_in: "Sign In"
@@ -27,6 +37,8 @@ en:
     remove: "Remove"
     delete: "Delete"
     archive: "Archive"
+    create: "Create"
+    back: "Back"
 
   errors:
     not_found: "Record is not found"

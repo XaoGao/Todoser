@@ -1,2 +1,5 @@
-button.list-group-item.list-group-item-action[type="button" id="task-#{task.id}"]
-  = task.title
+= link_to project_task_path(project, task), class: "list-group-item list-group-item-action d-flex justify-content-between", id: "task-#{task.id}" do 
+  . title = t("activerecord.attributes.task.title")
+    = task.title
+  . title = t("activerecord.attributes.task.priority")
+    = task.priority

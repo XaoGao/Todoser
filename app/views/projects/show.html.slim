@@ -1,5 +1,5 @@
 = title t(".title", project_title: @project.title)
 
-= render "projects/project_card", project: @project
+= render "projects/project_card", project: @project, task: @task
 hr
 = render "tasks/task_list", project: @project

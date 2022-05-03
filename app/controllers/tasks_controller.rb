@@ -8,7 +8,7 @@ class TasksController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
-    @tasks = Task.new
+    @task = Task.new
   end
 
   def create

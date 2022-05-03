@@ -6,7 +6,8 @@
     p.card-text.mt-3
       = project_description_placeholder(project)
       hr
-      = t(".status", status: project.status)
+      = t("projects.show.status", status: project.status)
     hr
     = link_to t("button.edit"), edit_project_path(project), class: "btn btn-primary"
     = button_to_archive(project)
+    = link_to "#{t("button.create")} Task", new_project_task_path(project, task), class: "btn btn-success ml-3"
