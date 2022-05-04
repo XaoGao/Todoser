@@ -19,9 +19,14 @@ class Project < ApplicationRecord
   has_many :tasks
 
   has_many :project_members
-  has_many :members, through: :project_members
+  has_many :members, through: :project_members, class_name: "User", foreign_key: "user_id", source: :user
 
   enum status: [:active, :archive, :removed]
 
   validates :title, presence: true, length: { in: 2..100 }
+
+  #  TODO: replace to view component
+  def member_to_select
+    members.collect { |u| [u.email, u.id] }
+  end
 end

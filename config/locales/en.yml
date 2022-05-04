@@ -30,6 +30,8 @@ en:
       title: "New Task"
     edit:
       title: "Edit a task %{task_title}"
+    form:
+      empty_executor: "Executor not selected"
 
 
   button:
