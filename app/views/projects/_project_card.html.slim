@@ -10,4 +10,4 @@
     hr
     = link_to t("button.edit"), edit_project_path(project), class: "btn btn-primary"
     = button_to_archive(project)
-    = link_to "#{t("button.create")} Task", new_project_task_path(project, task), class: "btn btn-success ml-3"
+    = link_to t("button.add"), new_project_task_path(project, task), class: "btn btn-success ml-3"

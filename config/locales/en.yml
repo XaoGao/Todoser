@@ -45,6 +45,7 @@ en:
     create: "Create"
     back: "Back"
     save: "Save"
+    add: "Add"
 
   errors:
     not_found: "Record is not found"
