@@ -12,3 +12,8 @@ p
   = "Created: #{@task.author.full_name}"
 p
   = "Exceuter: #{@task.author.full_name}"
+
+hr
+.text-right
+  = link_to t("button.back"), project_path(@task.project), class: "btn btn-primary"
+  = link_to t("button.edit"), edit_project_task_path(@task.project, @task), class: "btn btn-primary"
