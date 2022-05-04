@@ -30,8 +30,9 @@ class TasksController < ApplicationController
 
   def update
     @project = Project.find(params[:project_id])
+    executor = User.find_by(id: task_params[:executor])
     @task = Task.find(params[:id])
-    if @task.update task_params
+    if @task.update task_params.merge(executor: executor)
       redirect_to project_path @project
     else
       redirect_to projects_path, alert: "error"
