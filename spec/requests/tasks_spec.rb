@@ -59,7 +59,7 @@ RSpec.describe "Tasks", type: :request do
         expect(response).to have_http_status(:redirect)
       end
 
-      it "create a new project" do
+      it "create a new task" do
         post project_tasks_path(project), params: { task: task.attributes }
         expect(Task.first.title).to eq(task.title)
       end
@@ -111,7 +111,7 @@ RSpec.describe "Tasks", type: :request do
         expect(response).to have_http_status(:redirect)
       end
 
-      it "create a new project" do
+      it "update a task" do
         put project_task_path(project, task), params: { task: new_task.attributes }
         expect(Task.first.title).to eq(new_task.title)
       end
@@ -162,7 +162,7 @@ RSpec.describe "Tasks", type: :request do
         expect(response).to have_http_status(:redirect)
       end
 
-      it "create a new project" do
+      it "destroy a task" do
         delete project_task_path(project, task)
         expect(Task.first.delete_at).not_to be_nil
       end

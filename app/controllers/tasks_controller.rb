@@ -13,7 +13,7 @@ class TasksController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    executor = User.find(task_params[:executor])
+    executor = User.find_by(id: task_params[:executor])
     @task = @project.tasks.build(task_params.merge(author: current_user, executor: executor))
 
     if @task.save
