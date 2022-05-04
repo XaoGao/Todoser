@@ -20,6 +20,9 @@ class User < ApplicationRecord
   has_many :projects, foreign_key: "author_id"
   has_many :tasks
 
+  has_many :project_members
+  has_many :member_in_project, through: :project_members
+
   validates :first_name, presence: true, length: { in: 2..100 }
   validates :last_name, presence: true, length: { in: 2..100 }
 
