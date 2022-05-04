@@ -1,2 +1,14 @@
-h1 Tasks#show
-p Find me in app/views/tasks/show.html.slim
+= title @task.title
+
+h2.text-center = @task.title
+hr
+p
+  = "Project: #{@task.project.title}"
+p
+  = "Describle: #{@task.describle}"
+p
+  = "Status: #{@task.status}"
+p
+  = "Created: #{@task.author.full_name}"
+p
+  = "Exceuter: #{@task.author.full_name}"
