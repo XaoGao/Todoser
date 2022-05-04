@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_02_075304) do
+ActiveRecord::Schema.define(version: 2022_05_04_104120) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title", null: false
@@ -35,7 +35,9 @@ ActiveRecord::Schema.define(version: 2022_05_02_075304) do
     t.datetime "delete_at"
     t.integer "position", default: 0, null: false
     t.integer "priority", default: 0, null: false
+    t.integer "executor_id"
     t.index ["author_id"], name: "index_tasks_on_author_id"
+    t.index ["executor_id"], name: "index_tasks_on_executor_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
@@ -56,4 +58,5 @@ ActiveRecord::Schema.define(version: 2022_05_02_075304) do
   add_foreign_key "projects", "users", column: "author_id"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "users", column: "author_id"
+  add_foreign_key "tasks", "users", column: "executor_id"
 end

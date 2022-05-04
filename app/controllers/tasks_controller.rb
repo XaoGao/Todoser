@@ -13,7 +13,8 @@ class TasksController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    @task = @project.tasks.build(task_params.merge(author: current_user))
+    executor = User.find(task_params[:executor])
+    @task = @project.tasks.build(task_params.merge(author: current_user, executor: executor))
 
     if @task.save
       redirect_to project_path @project
@@ -56,6 +57,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :describle, :project_id)
+    params.require(:task).permit(:title, :describle, :project_id, :status, :executor)
   end
 end

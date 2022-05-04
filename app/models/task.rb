@@ -18,6 +18,8 @@ class Task < ApplicationRecord
   belongs_to :author, class_name: "User", foreign_key: "author_id"
   belongs_to :project
 
+  belongs_to :executor, class_name: "User", foreign_key: "executor_id"
+
   enum status: [:selected, :doing, :done, :release, :archive]
   enum priority: [:lowest, :low, :medium, :high, :highest]
 
