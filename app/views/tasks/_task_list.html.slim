@@ -1,9 +1,2 @@
 .row
-  - Task.statuses_for_list.each do |key, value|
-    .col-3
-      .list-group id=key
-        button.list-group-item.list-group-item-action.active[type="button"]
-          h3.text-center = key.capitalize
-        
-        - project.tasks.public_send(key).each do |task|
-          = render "tasks/task_item", project: project, task: task
+  = render Task::TaskListComponent.new(project)

@@ -18,7 +18,5 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-  describe "#statuses_for_list" do
-    it { expect(Task.statuses_for_list).to eq({ "selected" => 0, "doing" => 1, "done" => 2, "release" => 3 }) }
-  end
+  
 end

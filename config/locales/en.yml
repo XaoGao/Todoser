@@ -8,6 +8,12 @@ en:
         title: "Title"
         status: "Status"
         priority: "Priority"
+        statuses:
+          selected: "Selected"
+          doing: "Doing"
+          done: "Done"
+          release:  "Release"
+          archive: "Archive"
   projects:
     update:
       successful: "Project %{project_name} was successful updated"

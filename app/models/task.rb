@@ -25,11 +25,4 @@ class Task < ApplicationRecord
 
   enum status: [:selected, :doing, :done, :release, :archive]
   enum priority: [:lowest, :low, :medium, :high, :highest]
-
-  # TODO: replace to view component
-  class << self
-    def statuses_for_list
-      statuses.except(:archive)
-    end
-  end
 end
