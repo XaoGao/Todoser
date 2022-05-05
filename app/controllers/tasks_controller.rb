@@ -55,9 +55,18 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
+  def move
+    task = Task.find(params[:id])
+    task.update task_move_params
+  end
+
   private
 
   def task_params
     params.require(:task).permit(:title, :describle, :project_id, :status, :executor)
+  end
+
+  def task_move_params
+    params.permit(:status, :position)
   end
 end

@@ -7,4 +7,4 @@
 
           - project.tasks.public_send(key).each do |task|
             li.list
-              = render Task::TaskComponent.new(project, task)
+              = render Task::TaskComponent.new(project, key, task)

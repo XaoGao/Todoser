@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     member do
       put :archive
     end
-    resources :tasks
+    resources :tasks do
+      member do
+        put :move
+      end
+    end
   end
 end
