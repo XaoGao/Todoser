@@ -1,6 +1,8 @@
 = link_to project_task_path(project, task), class: "list-group-item list-group-item-action d-flex justify-content-between", id: dom_id do 
   . title = t("activerecord.attributes.task.title")
     = task.title
+    p.pt-3 title="executor"
+      sm = executor_full_name
   . title = t("activerecord.attributes.task.priority")
     i[class="#{icon} mr-2"]
     = task.priority

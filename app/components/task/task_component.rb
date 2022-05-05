@@ -25,4 +25,12 @@ class Task::TaskComponent < ViewComponent::Base
       highest: "fa-solid fa-angles-up highest"
     }
   end
+
+  def executor_full_name
+    if task.executor.blank?
+      "-"
+    else
+      task.executor.full_name
+    end
+  end
 end
