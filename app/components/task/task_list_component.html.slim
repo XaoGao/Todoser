@@ -1,8 +1,9 @@
-- statuses_for_list.each do |key, value|
-    .col-3
-      .list-group id=key
-        button.list-group-item.list-group-item-action.active[type="button"]
-          h3.text-center = t("activerecord.attributes.task.statuses.#{key}")
-        
-        - project.tasks.public_send(key).each do |task|
-          = render "tasks/task_item", project: project, task: task
+.row
+  - statuses_for_list.each do |key, value|
+      .col-3
+        .list-group id=key
+          button.list-group-item.list-group-item-action.active[type="button"]
+            h3.text-center = t("activerecord.attributes.task.statuses.#{key}")
+
+          - project.tasks.public_send(key).each do |task|
+            = render Task::TaskComponent.new(project, task)
