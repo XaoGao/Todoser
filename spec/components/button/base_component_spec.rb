@@ -1,13 +1,9 @@
 require "rails_helper"
 
 RSpec.describe Button::BaseComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:button) { described_class.new("Label text", "some url path", class: "btn btn-primary") }
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  describe ".default_classes" do
+    it { expect(button.default_classes).to eq("") }
+  end
 end

@@ -36,6 +36,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.includes(:tasks).find(params[:id])
     @task = @project.tasks.build
+    flash[:alert] = "test"
   end
 
   def archive
