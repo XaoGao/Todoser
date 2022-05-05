@@ -14,3 +14,4 @@ import "@fortawesome/fontawesome-free/css/all.css";
 document.addEventListener("turbolinks:load", () => {
   
 })
+import "controllers"
