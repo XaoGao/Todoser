@@ -1,8 +1,8 @@
-= link_to path do 
+= link_to path, method: option[:method] do 
   - if icon?
-    .[class=classes id=option[:id]]
+    .[class=classes id=option[:id] title=option[:title]]
       i[class=option[:icon]]
       = " #{label}"
   - else
-    .[class=classes id=option[:id]]
+    .[class=classes id=option[:id] title=option[:title]]
     = " #{label}"

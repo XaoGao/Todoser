@@ -1,4 +1,8 @@
-=link_to project_path(project), class: "card mb-4", id: "project-#{project.id}" do
+.card.mb-4
   .card-body
-    h5.card-title 
-      = project.title
+    h5.card-title.d-flex.justify-content-between
+      = link_to project.title, project_path(project)
+      .
+        = render Button::EditComponent.new(edit_project_path(project))
+        = render Button::DeleteComponent.new(project_path(project), class: "ml-4")
+

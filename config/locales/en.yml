@@ -47,6 +47,7 @@ en:
     logout: "Logout"
     remove: "Remove"
     delete: "Delete"
+    destroy: "Destroy"
     archive: "Archive"
     create: "Create"
     back: "Back"
