@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :tasks
 
   has_many :project_members
-  has_many :member_in_project, through: :project_members
+  has_many :member_in_project, through: :project_members, class_name: "Project", foreign_key: "project_id", source: :project
 
   validates :first_name, presence: true, length: { in: 2..100 }
   validates :last_name, presence: true, length: { in: 2..100 }

@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @projects = current_user.projects
+    @projects = current_user.member_in_project
   end
 
   def new
