@@ -1,6 +1,6 @@
-= title t(".title")
+= title t(".title", project_name: @project.title)
 
-h2.text-center = t(".title")
+h2.text-center = t(".title", project_name: @project.title )
 hr
 
 = render "projects/form", project: @project

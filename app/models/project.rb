@@ -25,6 +25,8 @@ class Project < ApplicationRecord
 
   validates :title, presence: true, length: { in: 2..100 }
 
+  has_rich_text :description
+
   #  TODO: replace to view component
   def member_to_select
     members.collect { |u| [u.email, u.id] }
