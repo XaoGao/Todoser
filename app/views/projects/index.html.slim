@@ -1,6 +1,7 @@
 = title t(".title")
 
 h3.text-center.mb-4 =t(".head_messge")
+= render Button::BaseComponent.new(t("button.add"), new_project_path, icon: "fa-solid fa-plus", class: "btn btn-primary", title: t(".create_project"))
 hr
 
 = render @projects

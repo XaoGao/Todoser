@@ -24,10 +24,15 @@ en:
     index:
       title: "Projects"
       head_messge: "Awailable Projects List"
+      create_project: "Create a new project"
     show:
       status: "Current statis is %{status}"
       description_placeholder: "Description is Empty"
       title: "%{project_title}"
+    new:
+      title: "New project"
+    edit:
+      title: "Edit a project %{project_name}"
   tasks:
     index:
       title: "Tasks"
