@@ -8,7 +8,6 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  delete_at   :datetime
-#  description :text             default("")
 #  short_title :string           default("")
 #  status      :integer
 #

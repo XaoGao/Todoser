@@ -4,7 +4,7 @@
       = project.title
     hr
     p.card-text.mt-3
-      = project_description_placeholder(project)
+      = render "projects/description", project: project
       hr
       = t("projects.show.status", status: project.status)
     hr
