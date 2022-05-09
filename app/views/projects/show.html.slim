@@ -2,4 +2,4 @@
 
 = render "projects/project_card", project: @project, task: @task
 hr
-= render "tasks/task_list", project: @project
+= render Task::TaskListComponent.new(@project)

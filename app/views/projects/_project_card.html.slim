@@ -4,11 +4,11 @@
       = project.title
     hr
     p.card-text.mt-3
-      = render "projects/description", project: project
-      hr
       = t("projects.show.status", status: project.status)
+      hr
+      = h project_description_placeholder(project)
     hr
     .text-right
-      = link_to t("button.edit"), edit_project_path(project), class: "btn btn-primary"
+      = render Button::EditComponent.new(edit_project_path(project))
       = button_to_archive(project)
-      = link_to t("button.add"), new_project_task_path(project, task), class: "btn btn-success ml-3"
+      = render Button::AddComponent.new(new_project_task_path(project, task), class: "ml-3")

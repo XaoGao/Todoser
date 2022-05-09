@@ -24,10 +24,6 @@ class Task::TaskComponent < ViewComponent::Base
   end
 
   def executor_full_name
-    if task.executor.blank?
-      "-"
-    else
-      task.executor.full_name
-    end
+    task.executor.blank? ? "" : task.executor.full_name
   end
 end
