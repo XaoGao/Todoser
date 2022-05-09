@@ -2,11 +2,10 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   .container
     a.navbar-brand
       | Todoser
-    button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
-      span.navbar-toggler-icon
-    #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.mr-auto
-        li.nav-item.active
-          = link_to "Home", root_path, class: "nav-link"
-  
-      = render "layouts/user_link_item"
+    ul.navbar-nav.mr-auto
+      li.nav-item
+        = link_to t("layouts.navbar.home"), root_path, class: "nav-link"
+      li.nav-item
+        = link_to t("layouts.navbar.dashboard"), dashboard_path, class: "nav-link"
+
+    = render "layouts/user_link_item"

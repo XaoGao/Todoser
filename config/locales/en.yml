@@ -14,6 +14,11 @@ en:
           done: "Done"
           release:  "Release"
           archive: "Archive"
+  
+  layouts:
+    navbar:
+      home: "Home"
+      dashboard: "My dashboard"
   projects:
     update:
       successful: "Project %{project_name} was successful updated"

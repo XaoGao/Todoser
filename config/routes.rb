@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get 'dashboard', to: 'users#dashboard'
 end
