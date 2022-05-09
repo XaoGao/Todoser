@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class Flash::FlashComponent < ViewComponent::Base
-  def initialize()
+  attr_reader :flash
+
+  def initialize(flash)
+    @flash = flash
   end
 
   def flash_class(type)

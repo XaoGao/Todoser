@@ -1,4 +1,8 @@
 .mb-5.text-center
   - flash.each do |key, value|
     .[class="#{flash_class(key)}"]
-      = value
+      .message
+        = value
+      button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
+        span[aria-hidden="true"]&times;
+

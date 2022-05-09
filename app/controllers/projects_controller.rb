@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = current_user.member_in_project
+    flash[:alert] = "test"
   end
 
   def new
