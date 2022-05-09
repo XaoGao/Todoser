@@ -6,8 +6,11 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require "view_component/test_helpers"
+require "capybara/rspec"
 require_relative "./support/factory_bot"
 require_relative "./support/desvise"
+require_relative "./support/view_component_helper"
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
