@@ -12,6 +12,7 @@
 #  last_name              :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  username               :string           default(""), not null
 #
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
@@ -25,6 +26,7 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true, length: { in: 2..100 }
   validates :last_name, presence: true, length: { in: 2..100 }
+  validates :username, presence: true, length: { in: 2..100 }
 
   def full_name
     [first_name, last_name].compact.join(" ")

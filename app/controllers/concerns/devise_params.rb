@@ -1,0 +1,3 @@
+module DeviseParams
+  
+end

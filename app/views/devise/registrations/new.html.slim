@@ -1,24 +1,35 @@
-h2
-  | Sign up
+= title t("registrations.sign_up")
+
+h2.text-center = t("registrations.sign_up")
+hr
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
-  .field
+  .form-group
     = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
+    = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+
+  .form-group
+    = f.label :username
+    = f.text_field :username, class: "form-control"
+
+  .form-group
+    = f.label :first_name
+    = f.text_field :first_name, class: "form-control"
+
+  .form-group
+    = f.label :last_name
+    = f.text_field :last_name, class: "form-control"
+
+  .form-group
     = f.label :password
     - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "new-password"
-  .field
+      em = " " + t("registrations.characters_minimum", minimum_password_length: @minimum_password_length)
+    = f.password_field :password, autocomplete: "new-password", class: "form-control"
+
+  .form-group
     = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
+
   .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+    = f.submit t("registrations.sign_up"), class: "btn btn-primary"
+    = render Button::BaseComponent.new(t("registrations.login"), new_user_session_path, class: "btn btn-success ml-3")

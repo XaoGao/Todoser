@@ -12,6 +12,7 @@
 #  last_name              :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  username               :string           default(""), not null
 #
 require 'rails_helper'
 

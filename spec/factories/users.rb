@@ -12,11 +12,13 @@
 #  last_name              :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  username               :string           default(""), not null
 #
 FactoryBot.define do
   factory :user do
     first_name { Faker::Name.first_name }
     last_name  { Faker::Name.last_name }
+    last_name  { "@#{Faker::Internet.username}" }
     email { Faker::Internet.email }
     password { "password" }
   end
