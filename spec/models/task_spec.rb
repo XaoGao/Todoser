@@ -4,7 +4,6 @@
 #
 #  id          :integer          not null, primary key
 #  title       :string           default(""), not null
-#  describle   :text             default("")
 #  status      :integer          default("selected"), not null
 #  author_id   :integer          not null
 #  project_id  :integer          not null

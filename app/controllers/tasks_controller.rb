@@ -63,7 +63,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :describle, :project_id, :status, :executor)
+    params.require(:task).permit(:title, :description, :project_id, :status, :executor)
   end
 
   def task_move_params
