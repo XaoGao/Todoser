@@ -48,6 +48,9 @@ en:
       title: "Edit a task %{task_title}"
     form:
       empty_executor: "Executor not selected"
+  users:
+    dashboard:
+      title: "Dashboard"
 
 
   button:
