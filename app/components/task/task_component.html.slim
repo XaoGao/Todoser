@@ -1,5 +1,5 @@
 .[data-controller="drag" data-drag-url=move_project_task_path(project, task) current-status=status]
-  = link_to project_task_path(project, task), class: "list-group-item list-group-item-action d-flex justify-content-between", id: dom_id(task) do 
+  = link_to project_task_path(project, task), class: "shadow list-group-item list-group-item-action d-flex justify-content-between", id: dom_id(task) do 
     .[title = task.title] 
       = truncate task.title, length: 15
       p
