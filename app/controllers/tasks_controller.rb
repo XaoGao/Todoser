@@ -57,7 +57,23 @@ class TasksController < ApplicationController
 
   def move
     task = Task.find(params[:id])
-    task.update task_move_params
+
+    tasks_old_column = Task.where("status = ? AND position > ?", Task.statuses[task.status], task.position)
+    tasks_new_column = Task.where("status = ? AND position >= ?", Task.statuses[params[:status]], params[:position])
+
+    ActiveRecord::Base.transaction do
+      tasks_old_column.each do |t|
+        t.update(position: t.position - 1)
+      end
+
+      tasks_new_column.each do |t|
+        t.update(position: t.position + 1)
+      end
+
+      task.update task_move_params
+    end
+
+    head :ok
   end
 
   private

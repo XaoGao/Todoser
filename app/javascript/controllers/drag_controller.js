@@ -13,18 +13,33 @@ export default class extends Controller {
   }
 
   end(event) {
-    const isEmptyList = event.to.attributes["id"] === undefined
-    var status = isEmptyList ? event.to.attributes["current-status"].nodeValue : event.to.attributes["id"].nodeValue.replace("tasks-list-", "")
-    var position = event.newIndex + 1
-    var url = this.data.get("url")
-    var data = new FormData
-    data.append("position", position)
-    data.append("status", status)
+    const url = this.data.get("url")
+    const data = this.requestData(event)
     
     Rails.ajax({
       url: url,
       type: "PUT",
       data: data
     })
+  }
+
+  requestData(event) {
+    const position = event.newIndex + 1
+    const status = this.newStatus(event)
+
+    var data = new FormData
+    data.append("position", position)
+    data.append("status", status)
+
+    return data
+  }
+
+  newStatus(event) {
+    const isEmptyList = event.to.attributes["id"] === undefined
+    if(isEmptyList) {
+      return event.to.attributes["current-status"].nodeValue
+    } else {
+      return event.to.attributes["id"].nodeValue.replace("tasks-list-", "")
+    } 
   }
 }
