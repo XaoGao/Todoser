@@ -13,7 +13,8 @@ export default class extends Controller {
   }
 
   end(event) {
-    var status = event.to.attributes["current-status"].nodeValue
+    const isEmptyList = event.to.attributes["id"] === undefined
+    var status = isEmptyList ? event.to.attributes["current-status"].nodeValue : event.to.attributes["id"].nodeValue.replace("tasks-list-", "")
     var position = event.newIndex + 1
     var url = this.data.get("url")
     var data = new FormData

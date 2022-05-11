@@ -30,4 +30,8 @@ class Project < ApplicationRecord
   def member_to_select
     members.collect { |u| [u.email, u.id] }
   end
+
+  def tasks_list_of(task_status)
+    tasks.public_send(task_status).order("position")
+  end
 end
