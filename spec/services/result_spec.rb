@@ -1,10 +1,31 @@
-RSpec.describe 'Check Service status' do
-  
-  it 'Result status return succes' do
-    expect(true).to be_truthy
+require 'rails_helper'
+
+RSpec.describe Result do
+  describe ".success?" do
+    it 'succes is true' do
+      result = Result.new(true, "some data", "some error")
+      expect(result.success?).to be true
+    end
   end
 
-  it 'Result status return failure' do
-    expect(false).to be_falsy
+  describe ".success?" do
+    it 'succes is false' do
+      result = Result.new(false, "some data", "some error")
+      expect(result.success?).to be false
+    end
+  end
+
+  describe ".failure?" do
+    it 'failure is true' do
+      result = Result.new(true, "some data", "some error")
+      expect(result.failure?).to be false # !true
+    end
+  end
+
+  describe ".failure?" do
+    it 'failure is false' do
+      result = Result.new(false, "some data", "some error")
+      expect(result.failure?).to be true # !false
+    end
   end
 end
