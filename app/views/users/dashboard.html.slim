@@ -1,1 +1,14 @@
 = title t(".title")
+
+h3.text-center.mb-4 =t(".title")
+hr
+
+.
+  - @projects.each do |project|
+    .card.shadow
+      .card-body
+        h4.card-title.text-center
+          = project.title
+    hr
+    = render Task::TaskListComponent.new(project)
+  hr
