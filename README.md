@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Todoser
 
-Things you may want to cover:
+### Requirements
 
-* Ruby version
+`ruby >= 2.7.0`
 
-* System dependencies
+`rails ~> 6.1.4`
 
-* Configuration
+### Installation & using
 
-* Database creation
+In `terminal` or `cmd`
 
-* Database initialization
+- `$ git clone git@github.com:XaoGao/Todoser.git`
 
-* How to run the test suite
+- `$ gem install bundler` - if needed
 
-* Services (job queues, cache servers, search engines, etc.)
+- `$ bundle install`
 
-* Deployment instructions
+- `$ rails db:migrate`
 
-* ...
+- `$ rails s` for server starting
+
+Then open `http://localhost:3000` at your web-browser
