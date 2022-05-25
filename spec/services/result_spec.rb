@@ -6,12 +6,15 @@ RSpec.describe Result do
       result = Result.new(true, "some data", "some error")
       expect(result.success?).to be true
     end
-  end
 
-  describe ".success?" do
     it 'succes is false' do
       result = Result.new(false, "some data", "some error")
       expect(result.success?).to be false
+    end
+
+    it 'success isn\'t be nil' do
+      result = Result.new(!nil, "some data", "some error")
+      expect(result.failure?).to_not be_nil
     end
   end
 
@@ -20,12 +23,15 @@ RSpec.describe Result do
       result = Result.new(true, "some data", "some error")
       expect(result.failure?).to be false # !true
     end
-  end
 
-  describe ".failure?" do
     it 'failure is false' do
       result = Result.new(false, "some data", "some error")
       expect(result.failure?).to be true # !false
+    end
+
+    it 'failure is be nil' do
+      result = Result.new(nil, "some data", "some error")
+      expect(result.failure?).to_not be_nil
     end
   end
 end
