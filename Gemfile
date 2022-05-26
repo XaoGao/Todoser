@@ -26,6 +26,7 @@ group :development do
   gem 'annotate', '~> 3.2'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'dotenv-rails'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rubocop', '~> 1.25', require: false
