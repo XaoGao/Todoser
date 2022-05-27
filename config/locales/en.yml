@@ -25,6 +25,9 @@ en:
     navbar:
       home: "Home"
       dashboard: "My dashboard"
+    welcome:
+      title: "Welcome"
+      head_message: "welcome to the club buddy"
   projects:
     update:
       successful: "Project %{project_name} was successful updated"
