@@ -18,9 +18,9 @@ In `terminal` or `cmd`
 
 - `$ yarn` - if needed
 
-- `$ bin/webpack-dev-server` - if needed
+- open second terminal and type `$ bin/webpack-dev-server` - if needed
 
-- `$ bundle install`
+- in first terminal type `$ bundle install`
 
 - `$ rails db:migrate`
 
