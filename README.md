@@ -16,8 +16,6 @@ In `terminal` or `cmd`
 
 - `$ gem install bundler` - if needed
 
-- `$ yarn` - if needed
-
 - `$ bundle install`
 
 - `$ rails db:migrate`
