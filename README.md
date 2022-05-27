@@ -16,6 +16,8 @@ In `terminal` or `cmd`
 
 - `$ gem install bundler` - if needed
 
+- `$ yarn` - if needed
+
 - `$ bin/webpack-dev-server` - if needed
 
 - `$ bundle install`
