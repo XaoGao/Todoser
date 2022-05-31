@@ -9,9 +9,10 @@ html
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = favicon_link_tag 'favicon.ico'
-  body
+  body.d-flex.flex-column.min-vh-100
     = render 'layouts/navbar'
-    .container.mt-5
-      = render Flash::FlashComponent.new(flash)
-      = yield
+    .wrapper.flex-grow-1
+      .container.mt-5
+        = render Flash::FlashComponent.new(flash)
+        = yield
     = render General::FooterComponent.new
