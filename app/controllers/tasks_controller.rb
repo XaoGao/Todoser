@@ -14,7 +14,8 @@ class TasksController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     executor = User.find_by(id: task_params[:executor])
-    @task = @project.tasks.build(task_params.merge(author: current_user, executor: executor))
+    default_value = { author: current_user, executor: executor, status: Task.statuses[:selected] }
+    @task = @project.tasks.build(task_params.merge(default_value))
 
     if @task.save
       redirect_to project_path @project
