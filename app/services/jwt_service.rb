@@ -5,7 +5,7 @@ class JwtService
   end
 
   def self.decode(token)
-    decoded_token = JWT.decode(token, Rails.application.credentials.jwt_secret_key, 
+    decoded_token = JWT.decode(token, Rails.application.credentials.jwt_secret_key,
                                true, { algorithm: 'HS256' })[0]
     HashWithIndifferentAccess.new(decoded_token)
   end
