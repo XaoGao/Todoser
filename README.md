@@ -18,6 +18,24 @@ In `terminal` or `cmd`
 
 - `$ bundle install`
 
+- `$ docker-compose up` for postgresql in docker
+
+If the following error messages appear in the console:
+
+```console
+connection to server at "127.0.0.1", port 5432 failed: FATAL:  password authentication fail
+```
+or
+
+```
+FATAL:  role "postgres" does not exist
+```
+container needs to be recreated:
+
+- `$ docker-compose down`
+
+- `$ docker-compose up --force-recreate`
+
 - `$ rails db:migrate`
 
 - `$ rails s` for server starting
