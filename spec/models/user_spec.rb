@@ -13,6 +13,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  username               :string           default(""), not null
+#  online                 :boolean          default(FALSE)
 #
 require 'rails_helper'
 

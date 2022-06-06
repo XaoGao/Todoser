@@ -10,10 +10,11 @@
     = form.label :description
     = form.rich_text_area :description, class: "form-control"
 
-  .input-group.mb-3
-    .input-group-prepend
-      = form.label :status, class: "input-group-text", for: "input-group-select-task"
-    = form.select :status, Task.statuses.keys, {}, class: "custom-select", id: "input-group-select-task"
+  - if !task.id.blank?
+    .input-group.mb-3
+      .input-group-prepend
+        = form.label :status, class: "input-group-text", for: "input-group-select-task"
+      = form.select :status, Task.statuses.keys, {}, class: "custom-select", id: "input-group-select-task"
 
   .input-group.mb-3
     .input-group-prepend
