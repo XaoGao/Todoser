@@ -6,6 +6,12 @@ module Tasks
       tasks_old_column = Task.where("status = ? AND position > ?", Task.statuses[task.status], task.position)
       tasks_new_column = Task.where("status = ? AND position >= ?", Task.statuses[new_status], new_position)
 
+      success(task)
+    end
+
+    private
+
+    def transact
       ActiveRecord::Base.transaction do
         tasks_old_column.each do |t|
           t.update(position: t.position - 1)
@@ -17,8 +23,6 @@ module Tasks
 
         task.update task_move_params
       end
-
-      success(task)
     end
   end
 end
