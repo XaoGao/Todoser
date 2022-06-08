@@ -4,10 +4,12 @@ RSpec.describe Service do
   let(:service) { described_class.new }
 
   describe ".success" do
-    it { expect(service.success("test data").class).to eq(Result) }
+    let(:result) { service.success("test data") }
+    it { expect(result.class).to eq(Result) }
   end
 
   describe ".failure" do
-    it { expect(service.failure("test data").class).to eq(Result) }
+    let(:result) { service.failure("test data") }
+    it { expect(result.class).to eq(Result) }
   end
 end
