@@ -5,7 +5,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
     ul.navbar-nav.mr-auto
       li.nav-item
         = link_to t("layouts.navbar.home"), root_path, class: "nav-link"
-      li.nav-item
-        = link_to t("layouts.navbar.dashboard"), dashboard_path, class: "nav-link"
+      - if user_signed_in?
+        li.nav-item
+          = link_to t("layouts.navbar.dashboard"), dashboard_path, class: "nav-link"
 
     = render "layouts/user_link_item"
