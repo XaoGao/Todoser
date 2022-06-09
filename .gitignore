@@ -41,5 +41,4 @@ yarn-debug.log*
 .env
 
 coverage
-
-.ruby-version
+yarn.lock
