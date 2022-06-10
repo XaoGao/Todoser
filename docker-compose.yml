@@ -3,7 +3,7 @@ version: '3.5'
 services:
   postgres:
     container_name: postgres_container
-    image: postgres:14
+    image: postgres:13.5
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -11,7 +11,7 @@ services:
     volumes:
        - postgres:/data/postgres
     ports:
-      - "127.0.0.1:54320:5432"
+      - "${DATABASE_PORT}:5432"
     networks:
       - postgres
     restart: unless-stopped
