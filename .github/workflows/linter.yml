@@ -3,7 +3,7 @@
 # https://habr.com/ru/post/507528/
 name: Lint Code Base
 on: true
-  - push:
+  push:
     branches-ignore:
       - master
   #- pull_request
