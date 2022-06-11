@@ -1,17 +1,16 @@
 ---
 
-name: Linting
-on:
-  - pull_request
+# https://habr.com/ru/post/507528/
+name: Lint Code Base
+on: true
+  - push:
+    branches-ignore:
+      - master
+  #- pull_request
 jobs:
-  yamllint:
-    name: Yamllint
+  linter:
+    name: Super Linter
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Yamllint
-        uses: karancode/yamllint-github-action@master
-        with:
-          yamllint_comment: true
-        env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker://github/super-linter:v4.9.4
