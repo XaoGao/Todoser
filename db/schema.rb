@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 2022_06_11_072315) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body", default: "", null: false
-    t.datetime "delete_at"
     t.bigint "user_id", null: false
-    t.string "commentable_type", null: false
-    t.bigint "commentable_id", null: false
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.datetime "delete_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
