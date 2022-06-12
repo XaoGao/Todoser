@@ -22,6 +22,8 @@ class Task < ApplicationRecord
 
   belongs_to :executor, class_name: "User", foreign_key: "executor_id", optional: true
 
+  has_many :comments, as: :commentable
+
   enum status: [:selected, :doing, :done, :release, :archive]
   enum priority: [:lowest, :low, :medium, :high, :highest]
 
