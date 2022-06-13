@@ -18,26 +18,27 @@ In `terminal` or `cmd`
 
 - `$ bundle install`
 
-- `$ docker-compose up` for postgresql in docker
+- `$ cp .env.example .env`
 
-If the following error messages appear in the console:
+- `$ docker-compose up` for postgresql in docker or `$ docker-compose up -d` in background
 
-```console
-connection to server at "127.0.0.1", port 5432 failed: FATAL:  password authentication fail
-```
-or
+- [if the following errors](#connection-error)
 
-```
-FATAL:  role "postgres" does not exist
-```
-container needs to be recreated:
-
-- `$ docker-compose down`
-
-- `$ docker-compose up --force-recreate`
+- `$ rails db:create`
 
 - `$ rails db:migrate`
 
 - `$ rails s` for server starting
 
 Then open `http://localhost:3000` at your web-browser
+
+
+### connection error
+
+If the following error messages appear in the console:
+
+	@@ -34,10 +49,4 @@ container needs to be recreated:
+
+- `$ docker-compose down`
+
+- `$ docker-compose up --force-recreate`
