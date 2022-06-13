@@ -85,4 +85,6 @@ en:
 
   errors:
     not_found: "Record is not found"
-
+    incorrect_password: "Incorrect password"
+    user_not_found_blocked: "User not found or blocked"
+    no_email_and_password: "Enter email and password"
