@@ -32,4 +32,9 @@ class User < ApplicationRecord
   def full_name
     [first_name, last_name].compact.join(" ")
   end
+
+  def enable?
+    true
+    #TODO implements after add delete_at field to users model
+  end
 end
