@@ -57,6 +57,13 @@ en:
   users:
     dashboard:
       title: "Dashboard"
+  api:
+    v1:
+      sessions:
+        errors:
+          incorrect_email_or_password: "Incorrect email or password"
+          user_not_found_blocked: "User not found or blocked"
+          no_email_and_password: "Enter email and password"
 
   button:
     sign_in: "Sign In"
@@ -85,6 +92,3 @@ en:
 
   errors:
     not_found: "Record is not found"
-    incorrect_password: "Incorrect password"
-    user_not_found_blocked: "User not found or blocked"
-    no_email_and_password: "Enter email and password"
