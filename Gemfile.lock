@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action_policy (0.6.1)
+      ruby-next-core (>= 0.14.0)
     actioncable (6.1.4.6)
       actionpack (= 6.1.4.6)
       activesupport (= 6.1.4.6)
@@ -132,9 +134,13 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.7.1)
     minitest (5.15.0)
     msgpack (1.4.5)
     nio4r (2.5.8)
+    nokogiri (1.13.1)
+      mini_portile2 (~> 2.7.0)
+      racc (~> 1.4)
     nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -231,6 +237,7 @@ GEM
       rubocop (>= 1.7.0, < 2.0)
     rubocop-rspec (2.7.0)
       rubocop (~> 1.19)
+    ruby-next-core (0.15.1)
     ruby-progressbar (1.11.0)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
@@ -309,6 +316,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  action_policy (~> 0.6.1)
   annotate (~> 3.2)
   better_errors
   binding_of_caller
