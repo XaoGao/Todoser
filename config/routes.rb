@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'pages/about_us', as: :about_us
-  get 'pages/contacts', as: :contacts
   root "welcome#index"
   devise_for :users
+
+  get "pages/about_us", as: :about_us
+  get "pages/contacts", as: :contacts
 
   resources :projects do
     member do
