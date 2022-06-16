@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
     if @project.save
       render :show, notice: t("projects.create.successful", project_name: @project.title)
     else
-      flash[alert] = t("projects.create.error", project_name: @project.title)
+      flash[:alert] = t("projects.create.error", project_name: @project.title)
       render :new
     end
   end
@@ -28,13 +28,16 @@ class ProjectsController < ApplicationController
     if @project.update project_params
       redirect_to project_path(@project), notice: t("projects.update.successful", project_name: @project.title)
     else
-      flash[alert] = t("projects.update.error", project_name: @project.title)
+      flash[:alert] = t("projects.update.error", project_name: @project.title)
       render :edit
     end
   end
 
   def show
     @project = Project.includes(:tasks).find(params[:id])
+
+    authorize! @project
+
     @task = @project.tasks.build
   end
 
