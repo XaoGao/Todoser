@@ -25,6 +25,8 @@ en:
     navbar:
       home: "Home"
       dashboard: "My dashboard"
+      about_us: "About us"
+      contacts: "Contacts"
   projects:
     update:
       successful: "Project %{project_name} was successful updated"
@@ -64,6 +66,11 @@ en:
           incorrect_email_or_password: "Incorrect email or password"
           user_not_found_blocked: "User not found or blocked"
           no_email_and_password: "Enter email and password"
+  pages:
+    about_us:
+      title: "About us"
+    contacts:
+      title: "Contacts"
 
   button:
     sign_in: "Sign In"
