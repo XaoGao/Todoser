@@ -35,3 +35,7 @@ end
     user: User.all.sample
   )
 end
+
+%w[#00d600 #ffde24 #ffb224 #ff5252 #b452ff #24ffff].each do |color|
+  Mark.create(color: color)
+end
