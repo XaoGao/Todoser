@@ -17,7 +17,7 @@ RSpec.describe FavoritePolicy, type: :policy do
     end
 
     failed "when user is not member for project"
-    failed "when record is known type" do
+    failed "when record is unknown type" do
       before do
         record = "change type"
       end
@@ -33,7 +33,7 @@ RSpec.describe FavoritePolicy, type: :policy do
     end
 
     failed "when user is not member for project"
-    failed "when record is known type" do
+    failed "when record is unknown type" do
       before do
         record = "change type"
       end
