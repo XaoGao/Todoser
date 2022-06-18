@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :favorites, only: %i[index create]
+  delete :favorites, to: "favorites#destroy"
+
   get 'dashboard', to: 'users#dashboard'
 
   namespace :api do

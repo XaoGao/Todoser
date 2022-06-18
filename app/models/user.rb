@@ -27,10 +27,15 @@ class User < ApplicationRecord
                                source: :project
 
   has_many :favorites
+  has_many :favorites_tasks, through: :favorites, source: :favoriteable, source_type: "Task"
 
   validates :first_name, presence: true, length: { in: 2..100 }
   validates :last_name, presence: true, length: { in: 2..100 }
   validates :username, presence: true, length: { in: 2..100 }
+
+  def active_favorites
+    favorites.where(user: self, delete_at: nil)
+  end
 
   def full_name
     [first_name, last_name].compact.join(" ")

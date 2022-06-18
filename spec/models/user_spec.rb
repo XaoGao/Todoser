@@ -22,4 +22,20 @@ RSpec.describe User, type: :model do
     let(:user) { build(:user, first_name: "Joe", last_name: "Doe") }
     it { expect(user.full_name).to eq("Joe Doe") }
   end
+
+  describe ".active_favorites" do
+    let(:user) { create(:user) }
+    let(:tasks) { create_list(:task, 3) }
+
+    before(:each) do
+      tasks.each do |task|
+        Favorite.create(user: user, favoriteable: task)
+      end
+      Favorite.last.update(delete_at: DateTime.now)
+    end
+
+    it "return only active favorite" do
+      expect(user.active_favorites.count).to eq(2)
+    end
+  end
 end
