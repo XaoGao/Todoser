@@ -14,7 +14,7 @@ RSpec.describe Favorites::FindFavoriteableService do
     end
 
     it "unknown type" do
-      expect { service.call!("unknown type", 1) }.to raise_error
+      expect { service.call!("unknown type", 1) }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end

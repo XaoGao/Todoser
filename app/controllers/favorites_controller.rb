@@ -10,6 +10,19 @@ class FavoritesController < ApplicationController
   def create
     authorize! @favoriteable, with: FavoritePolicy
 
+    # TODO: create a CreateFavoriteService
+    @favorite = @favoriteable.favorites.find_by(user: current_user)
+    # already exist
+    if @favorite.present? && @favorite.delete_at.nil?
+      return head :bad_request
+    end
+
+    # enable old favorite
+    if @favorite.present? && !@favorite.delete_at.nil?
+      @favorite.update(delete_at: nil)
+      return head :ok
+    end
+
     @favorite = Favorite.new(favoriteable: @favoriteable, user: current_user)
     if @favorite.save
       head :ok
@@ -21,9 +34,14 @@ class FavoritesController < ApplicationController
   def destroy
     authorize! @favoriteable, with: FavoritePolicy
 
+    # TODO: create a DestroyFavoriteService
     @favorite = @favoriteable.favorites.find_by(user: current_user)
     if @favorite.blank?
-      head :bad_request
+      return head :bad_request
+    end
+
+    if @favorite.present? && !@favorite.delete_at.nil?
+      return head :bad_request
     end
 
     if @favorite.update(delete_at: DateTime.now)
