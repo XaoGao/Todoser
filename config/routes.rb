@@ -14,4 +14,10 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard', to: 'users#dashboard'
+
+  namespace :api do
+    namespace :v1 do
+      post 'login', to: 'sessions#create'
+    end
+  end
 end
