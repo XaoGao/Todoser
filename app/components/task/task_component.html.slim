@@ -1,10 +1,12 @@
 .[data-controller="drag" data-drag-url=move_project_task_path(project, task) current-status=status]
-  = link_to project_task_path(project, task), class: "shadow list-group-item list-group-item-action d-flex justify-content-between", id: dom_id(task) do 
+  .[class="shadow list-group-item list-group-item-action d-flex justify-content-between" id=dom_id(task)]
     .[title = task.title] 
-      = truncate task.title, length: 15
+      = link_to truncate(task.title, length: 15), project_task_path(project, task)
       p
         span.badge.badge-success.mt-3 title="executor"
           = executor_full_name
     . title = t("activerecord.attributes.task.priority")
       i[class="#{icon} mr-2"]
       = task.priority
+      .text-right
+        = render Favorites::FavoriteComponent.new(favoriteable: task, user: user)    

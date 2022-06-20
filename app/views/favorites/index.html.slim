@@ -1,0 +1,10 @@
+= title t(".title")
+
+h3.text-center.mb-4 =t(".title")
+hr
+
+/ TODO: refactor for polymorphic or we use favorite only for task
+
+- @favorites.each do |favorite|
+  .mb-3
+    = render Task::TaskComponent.new(favorite.project, nil, favorite, current_user)

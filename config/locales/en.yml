@@ -25,6 +25,7 @@ en:
     navbar:
       home: "Home"
       dashboard: "My dashboard"
+      favorites: "Favorites"
   projects:
     update:
       successful: "Project %{project_name} was successful updated"
@@ -57,6 +58,15 @@ en:
   users:
     dashboard:
       title: "Dashboard"
+  favorites:
+    index:
+      title: "Favorites"
+    create:
+      already_favorited: "Already favorited"
+      unknow_error: "Unknow error"
+    destroy:
+      not_exist: "Record is not favorited"
+      unknow_error: "Unknow error"
   api:
     v1:
       sessions:
