@@ -66,6 +66,11 @@ en:
           no_email_and_password: "Enter email and password"
     errors:
       unauthorized: "You don't have access to that."
+  pages:
+    about_us:
+      title: "About us"
+    contacts:
+      title: "Contacts"
 
   button:
     sign_in: "Sign In"
