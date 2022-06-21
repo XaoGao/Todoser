@@ -10,5 +10,6 @@
     = form.rich_text_area :description
 
   .text-right.mb-2
-    = render Button::BackComponent.new(projects_path, class: "mr-3")
+    = render Button::BackComponent.new(class: "mr-3")
     = form.submit t("button.save"), class: "btn btn-primary"
+    
