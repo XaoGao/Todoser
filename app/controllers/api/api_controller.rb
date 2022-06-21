@@ -4,11 +4,13 @@ module Api
 
     def token_authenticate_user
       token = request.headers["Authorization"]
-      if token.present?
-        token = token.split.last
+      token = token.split.last if token
+      begin
         decoded = JwtService.decode(token)
         @current_user ||= User.find(decoded[:id])
-      else
+      rescue ActiveRecord::RecordNotFound
+        render status: :unauthorized, json: { error: I18n.t("api.errors.unauthorized") }
+      rescue JWT::DecodeError
         render status: :unauthorized, json: { error: I18n.t("api.errors.unauthorized") }
       end
     end
