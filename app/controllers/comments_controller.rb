@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  before_action :load_task!
   before_action :authenticate_user!
+  before_action :load_task!
 
   private
 
   def load_task
-    @task = Task.find_by!(id: comment_params[:task_id])
+    # TODO Add a check that the task exists
+    @task = Task.find(comment_params[:task_id])
   end
 
   def comment_params
