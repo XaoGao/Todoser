@@ -25,6 +25,8 @@ en:
     navbar:
       home: "Home"
       dashboard: "My dashboard"
+      about_us: "About us"
+      contacts: "Contacts"
   projects:
     update:
       successful: "Project %{project_name} was successful updated"

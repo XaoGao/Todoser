@@ -47,6 +47,6 @@ hr
     = f.password_field :current_password, autocomplete: "current-password", class: "form-control"
 
   .actions
-    = render Button::BackComponent.new(root_path)
+    = render Button::BackComponent.new
     = f.submit t("registrations.update"), class: "btn btn-primary ml-3"
     = link_to t("registrations.cancel_my_account"), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger ml-3"  

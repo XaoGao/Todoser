@@ -9,7 +9,7 @@
       = h project_description_placeholder
     hr
     .text-right
-      = render Button::BackComponent.new(projects_path)
+      = render Button::BackComponent.new(path: projects_path)
       = render Button::EditComponent.new(edit_project_path(project), class: "ml-3")
       = button_to_archive
       = render Button::AddComponent.new(new_project_task_path(project, task), class: "ml-3")
