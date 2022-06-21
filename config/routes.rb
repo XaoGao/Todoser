@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :comments, only: %i[index create edit destroy]
+
   get 'dashboard', to: 'users#dashboard'
 
   namespace :api do
