@@ -6,7 +6,7 @@ RSpec.describe "Comments", type: :request do
   let(:task) { create(:task, author: user) }
 
   describe "POST comments" do
-    let(:comment) { build(:comment, body: "Comment for task", author: user, task: task) }
+    let(:comment) { build(:comment, author: user, commentable: task) }
 
     context "user is sign in" do
       before(:each) do
@@ -26,7 +26,7 @@ RSpec.describe "Comments", type: :request do
 
     context "user is not sign in" do
       it "returns redirect to sign in page" do
-        post post comments_path(comment)
+        post comments_path(comment)
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to new_user_session_path
       end

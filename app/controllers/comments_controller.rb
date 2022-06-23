@@ -4,12 +4,12 @@ class CommentsController < ApplicationController
 
   private
 
-  def load_task
+  def load_task!
     # TODO Add a check that the task exists
     @task = Task.find(comment_params[:task_id])
   end
 
   def comment_params
-    params.require(:comment).permit(:body, :task_id)
+    params.require(:comment).permit(:body, :commentable)
   end
 end
