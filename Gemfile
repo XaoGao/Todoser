@@ -42,6 +42,8 @@ end
 
 group :test do
   gem 'capybara', '>= 3.26'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
   gem 'webdrivers'
