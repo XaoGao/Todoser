@@ -7,7 +7,6 @@ RSpec.describe "Comments", type: :request do
       let(:project) { create(:project, author: user) }
       let(:task) { create(:task, author: user) }
       let(:comment) { build(:comment, author: user, commentable: task) }
-    end
 
       before(:each) do
         sign_in user
@@ -22,7 +21,7 @@ RSpec.describe "Comments", type: :request do
         post comments_path, params: { commentable_type: comment.class, commentable_id: comment.id }
         expect(Comment.first.body).to eq(comment)
       end
-
+    end
 
     context "user is not sign in" do
       it "returns redirect to sign in page" do
