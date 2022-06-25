@@ -11,6 +11,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+    if @commentable.update(commentable: @commentable, user: current_user)
+      redirect_to request.referer
+    else
+      redirect_to root_path
+    end
+  end
+
   private
 
   def load_commentable!
