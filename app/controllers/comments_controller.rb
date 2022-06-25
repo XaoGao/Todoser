@@ -4,18 +4,16 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(commentable: @commentable, user: current_user)
-    # already exist
     if @comment.save
-      return head :bad_request
+      redirect_to request.referer
     else
-      return head :bad_request
+      redirect_to root_path
     end
   end
 
   private
 
   def load_commentable!
-    # TODO Add a check that the task exists
     @commentable = Task.find(comment_params[:commentable_id])
   end
 
