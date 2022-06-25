@@ -12,11 +12,18 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @commentable.update(commentable: @commentable, user: current_user)
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
       redirect_to request.referer
     else
       redirect_to root_path
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to root_path
   end
 
   private
