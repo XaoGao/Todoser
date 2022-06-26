@@ -23,5 +23,6 @@
     = form.select :executor, project.member_to_select, { include_blank: t("tasks.form.empty_executor") }, class: "custom-select", id: "input-group-executor-task"
 
   .text-right.mb-2
-    = render Button::BackComponent.new(project_path(project), class: "mr-3")
+    = render Button::BackComponent.new(path: project_path(project), class: "mr-3")
     = form.submit t("button.save"), class: "btn btn-primary"
+    
