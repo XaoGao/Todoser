@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   include NotFoundHandler
   include Unauthorized
+  include Authentication
 
   protected
 
