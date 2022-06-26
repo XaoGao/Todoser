@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class Task::TaskComponent < ViewComponent::Base
-  attr_reader :project, :task, :status
+  attr_reader :project, :task, :status, :user
 
-  def initialize(project, status, task)
+  def initialize(project, status, task, user)
     @project = project
     @task = task
     @status = status
+    @user = user
   end
 
   def icon

@@ -7,4 +7,4 @@
 
           - project.tasks_list_of(key).each do |task|
             li.list
-              = render Task::TaskComponent.new(project, key, task)
+              = render Task::TaskComponent.new(project, key, task, user)

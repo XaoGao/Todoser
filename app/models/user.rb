@@ -34,7 +34,15 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { in: 2..100 }
 
   def active_favorites
-    favorites.where(user: self, delete_at: nil)
+    favorites.where(delete_at: nil)
+  end
+
+  def active_favorites_tasks
+    favorites_tasks.where(delete_at: nil)
+  end
+
+  def favorited?(favoriteable)
+    favorites.exists?(favoriteable: favoriteable, delete_at: nil)
   end
 
   def full_name

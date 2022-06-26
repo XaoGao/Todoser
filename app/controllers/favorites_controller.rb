@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
 
   def index
     # TODO: refactor for polymorphic or we use favorite only for task
-    @favorites = current_user.active_favorites
+    @favorites = current_user.active_favorites_tasks
   end
 
   def create
@@ -14,7 +14,7 @@ class FavoritesController < ApplicationController
     @favorite = @favoriteable.favorites.find_by(user: current_user)
     # already exist
     if @favorite.present? && @favorite.delete_at.nil?
-      return head :bad_request
+      return render json: { errors: t(".already_favorited") }, status: :bad_request
     end
 
     # enable old favorite
@@ -27,7 +27,7 @@ class FavoritesController < ApplicationController
     if @favorite.save
       head :ok
     else
-      head :bad_request
+      render json: { errors: t(".unknow_error") }, status: :bad_request
     end
   end
 
@@ -37,17 +37,17 @@ class FavoritesController < ApplicationController
     # TODO: create a DestroyFavoriteService
     @favorite = @favoriteable.favorites.find_by(user: current_user)
     if @favorite.blank?
-      return head :bad_request
+      return render json: { errors: t(".not_exist") }, status: :bad_request
     end
 
     if @favorite.present? && !@favorite.delete_at.nil?
-      return head :bad_request
+      return render json: { errors: t(".not_exist") }, status: :bad_request
     end
 
     if @favorite.update(delete_at: DateTime.now)
       head :ok
     else
-      head :bad_request
+      render json: { errors: t(".unknow_error") }, status: :bad_request
     end
   end
 
