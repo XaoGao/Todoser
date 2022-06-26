@@ -11,6 +11,7 @@ require "capybara/rspec"
 require_relative "./support/factory_bot"
 require_relative "./support/desvise"
 require_relative "./support/view_component_helper"
+require_relative "./support/api_helper"
 
 begin
   ActiveRecord::Migration.maintain_test_schema!

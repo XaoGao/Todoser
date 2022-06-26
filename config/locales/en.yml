@@ -68,6 +68,7 @@ en:
           no_email_and_password: "Enter email and password"
     errors:
       unauthorized: "You don't have access to that."
+      not_found: "User not found or blocked"
   pages:
     about_us:
       title: "About us"
