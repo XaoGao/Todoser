@@ -76,6 +76,13 @@ en:
           incorrect_email_or_password: "Incorrect email or password"
           user_not_found_blocked: "User not found or blocked"
           no_email_and_password: "Enter email and password"
+    errors:
+      unauthorized: "You don't have access to that."
+      not_found: "User not found or blocked"
+      not_bearer_type: "Wrong scheme, you have to use a Bearer"
+      blank_token: "Token is nil or empty"
+      expired_token: "Token is expired"
+      unexpected_error: "Unexpected error"
   pages:
     about_us:
       title: "About us"
