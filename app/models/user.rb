@@ -41,10 +41,6 @@ class User < ApplicationRecord
     favorites_tasks.where(delete_at: nil)
   end
 
-  def favorited?(favoriteable)
-    favorites.exists?(favoriteable: favoriteable, delete_at: nil)
-  end
-
   def full_name
     [first_name, last_name].compact.join(" ")
   end

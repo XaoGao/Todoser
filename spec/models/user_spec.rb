@@ -38,18 +38,4 @@ RSpec.describe User, type: :model do
       expect(user.active_favorites.count).to eq(2)
     end
   end
-
-  describe ".favorited?" do
-    let(:user) { create(:user) }
-    let(:task) { create(:task) }
-
-    it "have favorites" do
-      create(:favorite, user: user, favoriteable: task)
-      expect(user.favorited?(task)).to be true
-    end
-
-    it "have not favorites" do
-      expect(user.favorited?(task)).to be false
-    end
-  end
 end
