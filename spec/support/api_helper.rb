@@ -5,5 +5,5 @@ module ApiHelpers
 end
 
 RSpec.configure do |config| 
-  config.include ApiHelpers
+  config.include ApiHelpers, type: :controller
 end
