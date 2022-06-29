@@ -9,6 +9,12 @@ RSpec.describe Favorites::FavoriteComponent, type: :component do
     Current.user = user
   end
 
+  before do
+    def favoriteable.favorited
+      true
+    end
+  end
+
   describe ".type" do
     it { expect(favorite_component.type).to eq("Task") }
   end
@@ -19,6 +25,9 @@ RSpec.describe Favorites::FavoriteComponent, type: :component do
 
   describe ".classes" do
     it "when is not favorited" do
+      def favoriteable.favorited
+        false
+      end
       expect(favorite_component.classes).to eq("fa-regular fa-star")
     end
 

@@ -6,7 +6,7 @@ class Favorites::FavoriteComponent < ViewComponent::Base
   def initialize(favoriteable:)
     @favoriteable = favoriteable
     @user = Current.user
-    @status = user.favorited?(favoriteable)
+    @status = favoriteable.favorited
   end
 
   def type
