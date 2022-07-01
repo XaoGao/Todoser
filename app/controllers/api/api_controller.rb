@@ -2,6 +2,8 @@ module Api
   class ApiController < ApplicationController
     protect_from_forgery with: :null_session
 
+    include ApiResponders
+
     def token_authenticate_user
       if authorization_header.blank?
         unauthorized("api.errors.unauthorized") and return
@@ -54,18 +56,6 @@ module Api
 
     def set_user
       @current_user = User.find(decoded[:id])
-    end
-
-    def unauthorized(message)
-      render status: :unauthorized, json: { error: t(message) }
-    end
-
-    def bad_request(message)
-      render status: :bad_request, json: { error: t(message) }
-    end
-
-    def ok(obj = {})
-      render status: :ok, json: obj
     end
   end
 end
