@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_17_105605) do
+ActiveRecord::Schema.define(version: 2022_07_02_103334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,17 @@ ActiveRecord::Schema.define(version: 2022_06_17_105605) do
     t.string "color", null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "recipient_id", null: false
+    t.string "body", default: "", null: false
+    t.datetime "read_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
+  end
+
   create_table "project_members", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.bigint "user_id", null: false
@@ -136,6 +147,8 @@ ActiveRecord::Schema.define(version: 2022_06_17_105605) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "users"
+  add_foreign_key "notifications", "users", column: "recipient_id"
+  add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "project_members", "projects"
   add_foreign_key "project_members", "users"
   add_foreign_key "projects", "users", column: "author_id"
