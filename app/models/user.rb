@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint           not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -14,6 +14,7 @@
 #  updated_at             :datetime         not null
 #  username               :string           default(""), not null
 #  online                 :boolean          default(FALSE)
+#  locale                 :string           default("en"), not null
 #
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
@@ -32,7 +33,6 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { in: 2..100 }
   validates :last_name, presence: true, length: { in: 2..100 }
   validates :username, presence: true, length: { in: 2..100 }
-  validates :locale, default: "en"
 
   def active_favorites
     favorites.where(delete_at: nil)
