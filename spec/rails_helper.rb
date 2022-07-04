@@ -8,6 +8,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require "view_component/test_helpers"
 require "capybara/rspec"
+require 'database_cleaner'
 require_relative "./support/factory_bot"
 require_relative "./support/desvise"
 require_relative "./support/view_component_helper"
@@ -24,4 +25,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
 end

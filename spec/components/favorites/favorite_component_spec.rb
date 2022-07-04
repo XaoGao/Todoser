@@ -3,7 +3,11 @@ require "rails_helper"
 RSpec.describe Favorites::FavoriteComponent, type: :component do
   let(:user) { create(:user) }
   let(:favoriteable) { create(:task) }
-  subject(:favorite_component) { described_class.new(favoriteable: favoriteable, user: user) }
+  subject(:favorite_component) { described_class.new(favoriteable: favoriteable) }
+
+  before do
+    Current.user = user
+  end
 
   before do
     def favoriteable.favorited

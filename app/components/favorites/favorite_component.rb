@@ -3,10 +3,9 @@
 class Favorites::FavoriteComponent < ViewComponent::Base
   attr_reader :favoriteable, :user, :status
 
-  # TODO: refactor use ActiveSupport::CurrentAttributes for user
-  def initialize(favoriteable:, user:)
+  def initialize(favoriteable:)
     @favoriteable = favoriteable
-    @user = user
+    @user = Current.user
     @status = favoriteable.favorited
   end
 
