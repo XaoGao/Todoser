@@ -10,4 +10,8 @@ class Task::TaskListComponent < ViewComponent::Base
   def statuses_for_list
     Task.statuses.except(:archive)
   end
+  
+  def tasks
+    TaskFavoriteQuery.new(project, Current.user)
+  end
 end
