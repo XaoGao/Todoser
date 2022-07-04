@@ -32,6 +32,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { in: 2..100 }
   validates :last_name, presence: true, length: { in: 2..100 }
   validates :username, presence: true, length: { in: 2..100 }
+  validates :locale, default: "en"
 
   def active_favorites
     favorites.where(delete_at: nil)
