@@ -165,6 +165,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jsonapi-serializer (2.2.0)
+      activesupport (>= 4.2)
     jwt (2.3.0)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -188,6 +190,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.1)
       mini_portile2 (~> 2.7.0)
+      racc (~> 1.4)
+    nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.21.0)
@@ -378,6 +382,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2)
   faker
   jbuilder (~> 2.7)
+  jsonapi-serializer (~> 2.2.0)
   jwt (~> 2.3.0)
   listen (~> 3.3)
   pg
