@@ -6,25 +6,25 @@ module Api
 
     def token_authenticate_user
       if authorization_header.blank?
-        unauthorized("api.errors.unauthorized") and return
+        unauthorized(t("api.errors.unauthorized")) and return
       end
 
       unless authenticate_scheme_bearer?
-        unauthorized("api.errors.not_bearer_type") and return
+        unauthorized(t("api.errors.not_bearer_type")) and return
       end
 
       if token_blank?
-        unauthorized("api.errors.blank_token") and return
+        unauthorized(t("api.errors.blank_token")) and return
       end
 
       begin
         set_user
       rescue ActiveRecord::RecordNotFound
-        unauthorized("api.errors.not_found")
+        unauthorized(t("api.errors.not_found"))
       rescue JWT::ExpiredSignature
-        unauthorized("api.errors.expired_token")
+        unauthorized(t("api.errors.expired_token"))
       rescue JWT::DecodeError
-        unauthorized("api.errors.unexpected_error")
+        unauthorized(t("api.errors.unexpected_error"))
       end
     end
 
