@@ -5,8 +5,8 @@ RSpec.describe Notification, type: :model do
     let(:notification) { create(:notification, read_at: nil) }
 
     it "read is not nil" do
-
-      expect(notification.read).to not_nil
+      notification.read
+      expect(notification.read_at).not_to be_nil
     end
   end
 end
