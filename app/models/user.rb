@@ -36,8 +36,6 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  after_commit :add_default_avatar, on: [:create, :update]
-
   def active_favorites
     favorites.where(delete_at: nil)
   end
@@ -53,15 +51,5 @@ class User < ApplicationRecord
   def enable?
     true
     # TODO: implements after add delete_at field to users model
-  end
-
-  private
-
-  def add_default_avatar
-    return if avatar.attached?
-
-    avatar.attach(io: File.open(Rails.root.join("app", "assets", "images", "default_avatar.jpeg")),
-                  filename: "default_avatar.jpeg",
-                  content_type: "image/jpeg")
   end
 end
