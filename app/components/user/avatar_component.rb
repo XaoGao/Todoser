@@ -6,9 +6,9 @@ class User::AvatarComponent < ViewComponent::Base
   # TODO: may be create abstract avatar component and user_avatar_component
   def initialize(user:, **options)
     @user = user
-    @size = options[:size].nil? ? "50x50" : options[:size]
+    @size = options[:size] || "50x50"
     @classes = create_classes options
-    @title = options[:title].nil? ? "" : options[:title].nil?
+    @title = options[:title] || ""
   end
 
   def avatar
