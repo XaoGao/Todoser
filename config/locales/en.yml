@@ -39,6 +39,8 @@ en:
       title: "Projects"
       head_messge: "Awailable Projects List"
       create_project: "Create a new project"
+      search_field: "Search by title"
+      search_title: "Title"
     show:
       status: "Current statis is %{status}"
       description_placeholder: "Description is Empty"
@@ -102,6 +104,8 @@ en:
     back: "Back"
     save: "Save"
     add: "Add"
+    search: "Search"
+    clear: "Clear"
 
   registrations:
     sign_in: "Sign in"
