@@ -11,6 +11,8 @@
 #  updated_at   :datetime         not null
 #
 class Notification < ApplicationRecord
+  belongs_to :recipient, class_name: "User", foreign_key: "recipient_id"
+  belongs_to :sender, class_name: "User", foreign_key: "sender_id"
 
   validates :body, presence: true, length: { in: 1..200 }
 

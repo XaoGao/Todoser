@@ -15,6 +15,6 @@ FactoryBot.define do
     body { Faker::Lorem.sentence(word_count: 3) }
     read_at { nil }
     association :sender, factory: :user
-    association :recepient, factory: :user
+    association :recipient, factory: :user
   end
 end
