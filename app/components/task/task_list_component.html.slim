@@ -5,6 +5,6 @@
           button.list-group-item.list-group-item-action.active[type="button"]
             h3.text-center = t("activerecord.attributes.task.statuses.#{key}")
 
-          - TaskFavoriteQuery.new(project, user).tasks_list_of(key).each do |task|
+          - tasks.tasks_list_of(key).each do |task|
             li.list
-              = render Task::TaskComponent.new(project, key, task, user)
+              = render Task::TaskComponent.new(project, key, task)

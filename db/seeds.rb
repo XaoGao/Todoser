@@ -4,7 +4,8 @@
     last_name: Faker::Name.last_name,
     username: Faker::Internet.username,
     email: "t#{i}@t.t",
-    password: "password"
+    password: "password",
+    locale: "en"
   )
 end
 
