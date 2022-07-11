@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_04_160249) do
+ActiveRecord::Schema.define(version: 2022_07_07_165343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,13 @@ ActiveRecord::Schema.define(version: 2022_07_04_160249) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "invitations", force: :cascade do |t|
+    t.bigint "recipient_id", null: false
+    t.boolean "agree"
+    t.datetime "delete_at"
+    t.index ["recipient_id"], name: "index_invitations_on_recipient_id"
+  end
+
   create_table "marks", force: :cascade do |t|
     t.string "color", null: false
   end
@@ -137,6 +144,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_160249) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "users"
+  add_foreign_key "invitations", "users", column: "recipient_id"
   add_foreign_key "project_members", "projects"
   add_foreign_key "project_members", "users"
   add_foreign_key "projects", "users", column: "author_id"
