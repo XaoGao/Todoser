@@ -29,6 +29,8 @@ class User < ApplicationRecord
 
   has_many :favorites
   has_many :favorites_tasks, through: :favorites, source: :favoriteable, source_type: "Task"
+  
+  has_many :notifications, foreign_key: :recipient_id
 
   validates :first_name, presence: true, length: { in: 2..100 }
   validates :last_name, presence: true, length: { in: 2..100 }
