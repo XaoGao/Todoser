@@ -2,14 +2,19 @@
 #
 # Table name: notifications
 #
-#  id         :integer         not null, primary key
-#  body       :string          not null
-#  read_at    :datetime        default: nil
+#  id           :bigint           not null, primary key
+#  sender_id    :bigint           not null
+#  recipient_id :bigint           not null
+#  body         :string           default(""), not null
+#  read_at      :datetime
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 FactoryBot.define do
   factory :notification do
     body { Faker::Lorem.sentence(word_count: 3) }
     read_at { nil }
-    association factory: :user
+    association :sender, factory: :user
+    association :recepient, factory: :user
   end
 end
