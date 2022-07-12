@@ -9,7 +9,7 @@
 #
 FactoryBot.define do
   factory :invitation do
-    agree { nil } 
+    agree { nil }
     delete_at { nil }
     association :recipient, factory: :user
   end
