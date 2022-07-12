@@ -1,0 +1,8 @@
+= search_form_for @search, data: { controller: "search" } do |f|
+  .input-group
+    .input-group-prepend
+      span.input-group-text = t("projects.index.search_title")
+    = f.search_field :title_cont, class: "form-control", data: { "search-target": "name" }, placeholder: t("projects.index.search_field")
+    .input-group-append
+      = f.submit t("button.search"), class: "btn btn-primary"
+      button[class="btn btn-outline-secondary" data-action="click->search#clear"] = t("button.clear")

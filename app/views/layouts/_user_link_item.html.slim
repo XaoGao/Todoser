@@ -1,7 +1,8 @@
 - if user_signed_in?
   .dropdown
-    button.btn.btn-outline-primary.dropdown-toggle[href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
-      =current_user.full_name
+    button.btn.btn-outline-primary.dropdown-toggle[href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]      
+      = render User::AvatarComponent.new(user: current_user, size: "35x35", class: "mr-2")
+      = current_user.full_name
     .dropdown-menu[aria-labelledby="navbarDropdown"]
       = link_to t("button.edit"), edit_user_registration_path, class: "dropdown-item"
       = link_to t("button.logout"), destroy_user_session_path, class: "dropdown-item", method: :delete

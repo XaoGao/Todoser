@@ -2,27 +2,29 @@ module Api
   class ApiController < ApplicationController
     protect_from_forgery with: :null_session
 
+    include ApiResponders
+
     def token_authenticate_user
       if authorization_header.blank?
-        render status: :unauthorized, json: { error: t("api.errors.unauthorized") } and return
+        unauthorized(t("api.errors.unauthorized")) and return
       end
 
       unless authenticate_scheme_bearer?
-        render status: :unauthorized, json: { error: t("api.errors.not_bearer_type") } and return
+        unauthorized(t("api.errors.not_bearer_type")) and return
       end
 
       if token_blank?
-        render status: :unauthorized, json: { error: t("api.errors.blank_token") } and return
+        unauthorized(t("api.errors.blank_token")) and return
       end
 
       begin
         set_user
       rescue ActiveRecord::RecordNotFound
-        render status: :unauthorized, json: { error: t("api.errors.not_found") }
+        unauthorized(t("api.errors.not_found"))
       rescue JWT::ExpiredSignature
-        render status: :unauthorized, json: { error: t("api.errors.expired_token") }
+        unauthorized(t("api.errors.expired_token"))
       rescue JWT::DecodeError
-        render status: :unauthorized, json: { error: t("api.errors.unexpected_error") }
+        unauthorized(t("api.errors.unexpected_error"))
       end
     end
 

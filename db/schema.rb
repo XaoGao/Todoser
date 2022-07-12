@@ -87,6 +87,17 @@ ActiveRecord::Schema.define(version: 2022_07_07_165343) do
     t.string "color", null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "recipient_id", null: false
+    t.string "body", default: "", null: false
+    t.datetime "read_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
+  end
+
   create_table "project_members", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.bigint "user_id", null: false
@@ -145,6 +156,8 @@ ActiveRecord::Schema.define(version: 2022_07_07_165343) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "users"
   add_foreign_key "invitations", "users", column: "recipient_id"
+  add_foreign_key "notifications", "users", column: "recipient_id"
+  add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "project_members", "projects"
   add_foreign_key "project_members", "users"
   add_foreign_key "projects", "users", column: "author_id"
