@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @projects = current_user.member_in_project
+    @search = current_user.member_in_project.ransack(params[:q])
+    @projects = @search.result(distinct: true)
   end
 
   def new
