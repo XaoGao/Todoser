@@ -106,6 +106,7 @@ en:
     add: "Add"
     search: "Search"
     clear: "Clear"
+    upload: "Upload"
 
   registrations:
     sign_in: "Sign in"
