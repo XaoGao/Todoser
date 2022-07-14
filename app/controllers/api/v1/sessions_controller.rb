@@ -3,6 +3,7 @@ module Api
     class SessionsController < Api::ApiController
       def create
         result = Users::SessionCreateUserService.new.call(email: params[:email], password: params[:password])
+        
         if result.success?
           ok(token: result.data)
         else
