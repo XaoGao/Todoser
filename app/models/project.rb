@@ -20,6 +20,9 @@ class Project < ApplicationRecord
   has_many :project_members
   has_many :members, through: :project_members, class_name: "User", foreign_key: "user_id", source: :user
 
+  has_many :project_marks
+  has_many :marks, through: :project_marks
+
   enum status: [:active, :archive, :removed]
 
   validates :title, presence: true, length: { in: 2..100 }

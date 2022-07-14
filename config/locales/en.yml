@@ -122,3 +122,4 @@ en:
   errors:
     not_found: "Record is not found"
     unauthorized: "You don't have access to that."
+    unexpected_error: "Unexpected error, please try again later"
