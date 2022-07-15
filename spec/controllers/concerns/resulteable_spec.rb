@@ -25,14 +25,16 @@ describe Resulteable, type: :controller do
     end
   end
 
-  it 'success flash resulteable' do
-    get :success
-    expect(flash[:notice]).to match(/Success/)
-  end
+  describe ".flash_service_result" do
+    it "success flash resulteable" do
+      get :success
+      expect(flash[:notice]).to match(/Success/)
+    end
 
-  it 'error flash resulteable' do
-    get :error
-    expect(flash[:alert]).to match(/Error message/)
+    it "error flash resulteable" do
+      get :error
+      expect(flash[:alert]).to match(/Error message/)
+    end
   end
-
+  
 end
