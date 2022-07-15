@@ -7,6 +7,5 @@ module Resulteable
     else
       flash[:alert] = result.error_messages
     end
-  end 
-
+  end
 end

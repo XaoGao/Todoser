@@ -17,7 +17,6 @@ describe Resulteable, type: :controller do
     end
   end
 
-
   before do
     routes.draw do
       get :success, to: "anonymous#success"
@@ -36,5 +35,4 @@ describe Resulteable, type: :controller do
       expect(flash[:alert]).to match(/Error message/)
     end
   end
-  
 end
