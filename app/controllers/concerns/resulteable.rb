@@ -1,9 +1,7 @@
 module Resulteable
   extend ActiveSupport::Concern
 
-    
   def flash_service_result(result)
-    result = Service.new.call
 
     if result.success?
       flash[:notice] = result.data
