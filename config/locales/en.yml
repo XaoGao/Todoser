@@ -28,6 +28,10 @@ en:
       favorites: "Favorites"
       about_us: "About us"
       contacts: "Contacts"
+  welcome:
+    index:
+      title: "Welcome"
+      head_messge: "Example: Hello message"
   projects:
     update:
       successful: "Project %{project_name} was successful updated"
