@@ -28,5 +28,8 @@ class Task < ApplicationRecord
   enum status: [:selected, :doing, :done, :release, :archive]
   enum priority: [:lowest, :low, :medium, :high, :highest]
 
+  has_many :task_project_marks
+  has_many :project_marks, through: :task_project_marks
+
   has_rich_text :description
 end
