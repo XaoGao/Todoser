@@ -25,7 +25,7 @@
   .input-group.mb-3
     .input-group-prepend
       = form.label :priority, class: "input-group-text", for: "input-group-priority-task"
-    = form.select :priority, Task.priorities.keys, { include_blank: t("tasks.form.empty_priority") }, class: "custom-select", id: "input-group-priority-task"
+    = form.select :priority, Task.priorities.keys, selected: "medium", class: "custom-select", id: "input-group-priority-task"
 
   .text-right.mb-2
     = render Button::BackComponent.new(path: project_path(project), class: "mr-3")
