@@ -31,4 +31,30 @@ RSpec.describe "Comments", type: :request do
       end
     end
   end
+
+  describe "PUT /comments/:id" do
+    context "user is sign in" do
+      let(:user) { create(:user) }
+      let(:task) { create(:task) }
+      let(:comment) { create(:comment, body: "first text") }
+
+      before(:each) do
+        sign_in(user)
+      end
+
+      it "success updated comment" do
+        put comment_path(comment), params: { comment: { body: "second value", commentable_type: task.class, commentable_id: task.id} }
+
+        updated_comment = Comment.find(comment.id)
+
+        expect(updated_comment.body).to eq("second value")
+      end
+
+      it "return success http response" do
+        put comment_path(comment), params: { comment: { body: "second value", commentable_type: task.class, commentable_id: task.id} }
+
+        expect(response).to have_http_status(:redirect)
+      end
+    end
+  end
 end
