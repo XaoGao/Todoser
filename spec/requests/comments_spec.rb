@@ -12,9 +12,9 @@ RSpec.describe "Comments", type: :request do
         sign_in user
       end
 
-      it "returns http success" do
-        post comments_path, params: { commentable_type: comment.class, commentable_id: comment.id }
-        expect(response).to have_http_status(:success)
+      it "returns http redirect success" do
+        post comments_path, params: {comment: { commentable_type: task.class, commentable_id: task.id, body: "Lorem ipsum dolor sit amet" }}, headers: { 'HTTP_REFERER' => root_path }
+        expect(response).to have_http_status(:redirect)
       end
 
       it "create a new comment" do
