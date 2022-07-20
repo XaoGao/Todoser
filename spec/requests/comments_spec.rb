@@ -6,7 +6,7 @@ RSpec.describe "Comments", type: :request do
       let(:user) { create(:user) }
       let(:project) { create(:project, author: user) }
       let(:task) { create(:task, author: user) }
-      let(:comment) { build(:comment, author: user, commentable: task) }
+      let(:comment) { build(:comment, user: user, commentable: task) }
 
       before(:each) do
         sign_in user
@@ -18,8 +18,8 @@ RSpec.describe "Comments", type: :request do
       end
 
       it "create a new comment" do
-        post comments_path, params: { commentable_type: comment.class, commentable_id: comment.id }
-        expect(Comment.first.body).to eq(comment)
+        post comments_path, params: {comment: { commentable_type: task.class, commentable_id: task.id, body: "Lorem ipsum dolor sit amet" }}, headers: { 'HTTP_REFERER' => root_path }
+        expect(Comment.first.body).to eq("Lorem ipsum dolor sit amet")
       end
     end
 

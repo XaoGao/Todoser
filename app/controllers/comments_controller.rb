@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :load_commentable!
 
   def create
-    @comment = Comment.new(commentable: @commentable, user: current_user)
+    @comment = Comment.new(commentable: @commentable, user: current_user, body: comment_params[:body])
     if @comment.save
       redirect_to request.referer
     else
