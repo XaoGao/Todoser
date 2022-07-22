@@ -6,8 +6,12 @@ module Localeable
   end
 
   private
-  
+
   def set_locale
-    current_user ? I18n.locale = current_user.locale : I18n.default_locale
+    if current_user
+      I18n.locale = current_user.locale
+    else
+      I18n.default_locale
+     end
   end
 end
