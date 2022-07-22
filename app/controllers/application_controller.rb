@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include Unauthorized
   include Authentication
   include Resulteable
+  include Localeable
 
   protected
 
