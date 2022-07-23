@@ -11,7 +11,7 @@ module Localeable
     if current_user
       I18n.locale = current_user.locale
     else
-      I18n.default_locale
+      I18n.locale = I18n.default_locale
      end
   end
 end
