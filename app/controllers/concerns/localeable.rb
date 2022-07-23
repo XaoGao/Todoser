@@ -8,7 +8,7 @@ module Localeable
   private
 
   def set_locale
-    if current_user
+    if user_signed_in?
       I18n.locale = current_user.locale
     else
       I18n.locale = I18n.default_locale
