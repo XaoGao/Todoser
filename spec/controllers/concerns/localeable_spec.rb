@@ -31,7 +31,7 @@ describe Localeable, type: :controller do
     context "when user is not sign in" do
       it do
         get :fake_action
-        expect(I18n.locale).not_to eq(current_user.locale.to_sym)
+        expect(I18n.locale).to eq(I18n.default_locale)
       end
     end
   end
