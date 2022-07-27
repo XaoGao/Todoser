@@ -12,7 +12,7 @@ module Api
     end
 
     def user_not_authorized
-      unauthorized(t("api.errors.unauthorized")) and return
+      unauthorized(t("api.errors.unauthorized"))
     end
   end
 end
