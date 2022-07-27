@@ -5,6 +5,7 @@ module Api
 
       def show
         task = Task.find(params[:id])
+        authorize! task, with: ApiTaskPolicy
         serialized_task = TaskSerializer.new(task).serializable_hash.to_json
         ok(task: serialized_task)
       end
