@@ -13,6 +13,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         li.nav-item
           = link_to t("layouts.navbar.dashboard"), dashboard_path, class: "nav-link"
         li.nav-item
-          = link_to t("layouts.navbar.favorites"), favorites_path, class: "nav-link"
-
+          = link_to t("layouts.navbar.favorites"), favorites_path, class: "nav-link"         
+        li.nav-item
+          a class="nav-link" #{select_tag :locale, options_for_select(I18n.available_locales)}
+            
     = render "layouts/user_link_item"
