@@ -4,5 +4,11 @@ module Api
 
     include ApiResponders
     include ApiAuthenticate
+
+    private
+
+    def record_not_found(exception)
+      bad_request(t("api.v1.tasks.errors.task_not_found"))
+    end
   end
 end
