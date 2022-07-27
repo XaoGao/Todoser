@@ -13,8 +13,12 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         li.nav-item
           = link_to t("layouts.navbar.dashboard"), dashboard_path, class: "nav-link"
         li.nav-item
-          = link_to t("layouts.navbar.favorites"), favorites_path, class: "nav-link"         
-        li.nav-item
-          a class="nav-link" #{select_tag :locale, options_for_select(I18n.available_locales)}
+          = link_to t("layouts.navbar.favorites"), favorites_path, class: "nav-link" 
+        .dropdown
+          button.btn.btn-outline-primary.dropdown-toggle[href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+            = 'Language'
+          .dropdown-menu[aria-labelledby="navbarDropdown"]
+            = link_to "#{I18n.available_locales.first}", '#', class: "dropdown-item" 
+            = link_to "#{I18n.available_locales.second}", '#', class: "dropdown-item" 
             
     = render "layouts/user_link_item"
