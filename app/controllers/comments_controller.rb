@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
+    @comment.update(delete_at: DateTime.now)
     redirect_to root_path
   end
 
