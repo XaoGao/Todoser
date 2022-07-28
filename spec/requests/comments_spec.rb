@@ -13,12 +13,14 @@ RSpec.describe "Comments", type: :request do
       end
 
       it "returns http redirect success" do
-        post comments_path, params: {comment: { commentable_type: task.class, commentable_id: task.id, body: "Lorem ipsum dolor sit amet" }}, headers: { 'HTTP_REFERER' => root_path }
+        post comments_path,
+             params: { comment: { commentable_type: task.class, commentable_id: task.id, body: "Lorem ipsum dolor sit amet" } }, headers: { 'HTTP_REFERER' => root_path }
         expect(response).to have_http_status(:redirect)
       end
 
       it "create a new comment" do
-        post comments_path, params: {comment: { commentable_type: task.class, commentable_id: task.id, body: "Lorem ipsum dolor sit amet" }}, headers: { 'HTTP_REFERER' => root_path }
+        post comments_path,
+             params: { comment: { commentable_type: task.class, commentable_id: task.id, body: "Lorem ipsum dolor sit amet" } }, headers: { 'HTTP_REFERER' => root_path }
         expect(Comment.first.body).to eq("Lorem ipsum dolor sit amet")
       end
     end
@@ -44,13 +46,15 @@ RSpec.describe "Comments", type: :request do
       end
 
       it "success updated comment" do
-        put comment_path(comment), params: { comment: { body: "second value", commentable_type: task.class, commentable_id: task.id} }, headers: { 'HTTP_REFERER' => root_path }
+        put comment_path(comment),
+            params: { comment: { body: "second value", commentable_type: task.class, commentable_id: task.id } }, headers: { 'HTTP_REFERER' => root_path }
         updated_comment = Comment.find(comment.id)
         expect(updated_comment.body).to eq("second value")
       end
 
       it "return success http response" do
-        put comment_path(comment), params: { comment: { body: "second value", commentable_type: task.class, commentable_id: task.id} }, headers: { 'HTTP_REFERER' => root_path }
+        put comment_path(comment),
+            params: { comment: { body: "second value", commentable_type: task.class, commentable_id: task.id } }, headers: { 'HTTP_REFERER' => root_path }
         expect(response).to have_http_status(:redirect)
       end
     end
@@ -67,12 +71,14 @@ RSpec.describe "Comments", type: :request do
       end
 
       it "returns http redirect after success" do
-        delete comment_path(comment), params: { comment: { body: "", commentable_type: task.class, commentable_id: task.id} }, headers: { 'HTTP_REFERER' => root_path }
+        delete comment_path(comment),
+               params: { comment: { body: "", commentable_type: task.class, commentable_id: task.id } }, headers: { 'HTTP_REFERER' => root_path }
         expect(response).to have_http_status(:redirect)
       end
 
       it "destroy a comment" do
-        delete comment_path(comment), params: { comment: { body: "", commentable_type: task.class, commentable_id: task.id} }, headers: { 'HTTP_REFERER' => root_path }
+        delete comment_path(comment),
+               params: { comment: { body: "", commentable_type: task.class, commentable_id: task.id } }, headers: { 'HTTP_REFERER' => root_path }
         expect(Comment.first.delete_at).to be_present
       end
     end
