@@ -79,7 +79,7 @@ RSpec.describe "Comments", type: :request do
       it "destroy a comment" do
         delete comment_path(comment),
                params: { comment: { body: "", commentable_type: task.class, commentable_id: task.id } }, headers: { 'HTTP_REFERER' => root_path }
-        expect(Comment.first.delete_at).to be_present
+        expect(Comment.first.delete_at).not_to be_nil
       end
     end
 
