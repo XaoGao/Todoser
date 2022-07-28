@@ -71,6 +71,10 @@ en:
     destroy:
       not_exist: "Record is not favorited"
       unknow_error: "Unknow error"
+  project_marks:
+    edit:
+      not_exist: "Record is exist"
+      
   api:
     v1:
       sessions:
