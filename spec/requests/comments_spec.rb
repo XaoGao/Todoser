@@ -37,7 +37,6 @@ RSpec.describe "Comments", type: :request do
   describe "PUT /comments/:id" do
     context "user is sign in" do
       let(:user) { create(:user) }
-      # let(:project) { create(:project, author: user) }
       let(:task) { create(:task) }
       let(:comment) { create(:comment, user: user, commentable: task, body: "First text") }
 

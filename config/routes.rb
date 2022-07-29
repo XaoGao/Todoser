@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :comments
+  resources :comments, only: [:create, :update, :destroy]
 
   get 'dashboard', to: 'users#dashboard'
 
