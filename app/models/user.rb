@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint           not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -14,6 +14,7 @@
 #  updated_at             :datetime         not null
 #  username               :string           default(""), not null
 #  online                 :boolean          default(FALSE)
+#  locale                 :string           default("en"), not null
 #
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
@@ -27,10 +28,23 @@ class User < ApplicationRecord
                                source: :project
 
   has_many :favorites
+  has_many :favorites_tasks, through: :favorites, source: :favoriteable, source_type: "Task"
+  
+  has_many :notifications, foreign_key: :recipient_id
 
   validates :first_name, presence: true, length: { in: 2..100 }
   validates :last_name, presence: true, length: { in: 2..100 }
   validates :username, presence: true, length: { in: 2..100 }
+
+  has_one_attached :avatar
+
+  def active_favorites
+    favorites.where(delete_at: nil)
+  end
+
+  def active_favorites_tasks
+    favorites_tasks.where(delete_at: nil)
+  end
 
   def full_name
     [first_name, last_name].compact.join(" ")

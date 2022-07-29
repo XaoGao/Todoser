@@ -15,4 +15,7 @@ class Favorite < ApplicationRecord
 
   belongs_to :user, dependent: :destroy
   belongs_to :favoriteable, polymorphic: true, dependent: :destroy
+
+  # TODO: add validates like:
+  # validates :user_id, uniqueness: { scope: [:favoriteable_id, :favoriteable_type]}
 end
