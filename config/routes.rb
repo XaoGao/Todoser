@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     put "marks", to: "project_marks#edit"
   end
 
+
+  resources :comments, only: [:create, :update, :destroy]
+
   resources :favorites, only: %i[index create]
   delete :favorites, to: "favorites#destroy"
 
