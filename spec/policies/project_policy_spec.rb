@@ -18,4 +18,17 @@ RSpec.describe ProjectPolicy, type: :policy do
       # end
     end
   end
+
+  describe_rule :edit? do
+    succeed "when user is member for project" do
+      before { create(:project_member, user: user, project: record) }
+    end
+
+    failed "when user is not member for project" do
+      # TODO: write test after add roles to user model
+      # succeed "when user is a admin" do
+      #   before { user.role = "admin" }
+      # end
+    end
+  end
 end
