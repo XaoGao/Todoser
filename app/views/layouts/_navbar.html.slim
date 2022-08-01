@@ -18,7 +18,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
           button.btn.btn-outline-primary.dropdown-toggle[href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
             = 'Language'
           .dropdown-menu[aria-labelledby="navbarDropdown"]
-            = link_to "#{I18n.available_locales.first}", '#', class: "dropdown-item" 
-            = link_to "#{I18n.available_locales.second}", '#', class: "dropdown-item" 
+            - I18n.available_locales.each do |locale|
+              = link_to I18n.t("locales.#{locale}"), change_locale_path(locale: locale), method: :put, class: "dropdown-item" 
             
     = render "layouts/user_link_item"

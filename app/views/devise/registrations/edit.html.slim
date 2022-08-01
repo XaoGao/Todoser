@@ -57,8 +57,7 @@ hr
   .form-group
     = f.label :locale    
     = f.select :locale, I18n.available_locales,  class: 'form-control', id: 'user-locale'
-    -if params[:commit]
-      - change_locale_url locale: params[:locale]
+    - change_locale_path locale: params[:locale]
 
   .actions
     = render Button::BackComponent.new

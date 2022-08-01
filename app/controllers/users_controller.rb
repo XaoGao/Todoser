@@ -5,12 +5,11 @@ class UsersController < ApplicationController
     @projects = current_user.member_in_project
   end
 
-  def change_locale
-    if locale.empty? || !I18n.available_locales.include?(locale.to_sym)
-      redirect_to root_path, error: 'Unexpected error'
-    else
-      current_user.update!(locale: locale)
-      redirect_to request.refere
+  def change_locale    
+    if params[:locale].empty? || !I18n.available_locales.include?(params[:locale].to_sym)
+      redirect_to root_path, alert: t("errors.unexpected_error")
     end
+      current_user.update!(locale: params[:locale])
+      redirect_to request.referer    
   end
 end

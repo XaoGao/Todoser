@@ -41,8 +41,7 @@ hr
   .form-group
     = f.label :locale    
     = f.select :locale, I18n.available_locales,  class: 'form-control', id: 'user-locale'
-    -if params[:commit]
-      - change_locale_url locale: params[:locale] 
+    - change_locale_path locale: params[:locale] 
 
   .actions
     = f.submit t("registrations.sign_up"), class: "btn btn-primary", id: "submit_registration"
