@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   include NotFoundHandler
   include Unauthorized
   include Authentication
+  include Resulteable
+  include Localeable
 
   protected
 
