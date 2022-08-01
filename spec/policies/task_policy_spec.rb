@@ -1,21 +1,73 @@
 require "rails_helper"
+require "action_policy/rspec/dsl"
 
 RSpec.describe TaskPolicy, type: :policy do
-  # See https://actionpolicy.evilmartians.io/#/testing?id=rspec-dsl
-  #
-  # let(:user) { build_stubbed :user }
-  # let(:record) { build_stubbed :post, draft: false }
-  # let(:context) { {user: user} }
+  let(:user) { create(:user) }
+  let(:project) { create(:project) }
+
+  let(:record) { create(:task, author: user, project: project) }
+  let(:context) { { user: user } }
 
   describe_rule :index? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    succeed "when user is member for task" do
+      before do
+        create(:project_member, user: user, project: project)
+      end
+    end
+    failed "when user is not member for task"
+  end
+
+  describe_rule :new? do
+    succeed "when user is member for task" do
+      before do
+        create(:project_member, user: user, project: project)
+      end
+    end
+    failed "when user is not member for task"
   end
 
   describe_rule :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    succeed "when user is member for task" do
+      before do
+        create(:project_member, user: user, project: project)
+      end
+    end
+    failed "when user is not member for task"
   end
 
-  describe_rule :manage? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe_rule :edit? do
+    succeed "when user is member for task" do
+      before do
+        create(:project_member, user: user, project: project)
+      end
+    end
+    failed "when user is not member for task"
+  end
+
+  describe_rule :update? do
+    succeed "when user is member for task" do
+      before do
+        create(:project_member, user: user, project: project)
+      end
+    end
+    failed "when user is not member for task"
+  end
+
+  describe_rule :destroy? do
+    succeed "when user is member for task" do
+      before do
+        create(:project_member, user: user, project: project)
+      end
+    end
+    failed "when user is not member for task"
+  end
+
+  describe_rule :show? do
+    succeed "when user is member for task" do
+      before do
+        create(:project_member, user: user, project: project)
+      end
+    end
+    failed "when user is not member for task"
   end
 end
