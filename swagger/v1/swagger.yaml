@@ -1,0 +1,36 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/login":
+    post:
+      summary: creates a new session
+      tags:
+      - Login
+      description: creates a new JWT token
+      parameters: []
+      responses:
+        '200':
+          description: success
+        '400':
+          description: failure
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
