@@ -8,8 +8,9 @@ class UsersController < ApplicationController
   def change_locale    
     if params[:locale].empty? || !I18n.available_locales.include?(params[:locale].to_sym)
       redirect_to root_path, alert: t("errors.unexpected_error")
-    end
+    else
       current_user.update!(locale: params[:locale])
-      redirect_to request.referer    
+      redirect_to request.referer 
+    end   
   end
 end
