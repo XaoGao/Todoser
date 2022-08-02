@@ -25,23 +25,20 @@ RSpec.describe "Users", type: :request do
   end
 
   describe 'PUT #change_locale' do
-
     before(:each) do
       sign_in user
     end
 
-    context 'with valid attributes' do      
-
-      it "should change locale" do  
+    context 'with valid attributes' do
+      it "must change locale" do
         put change_locale_path, params: { locale: "ru" }, headers: { 'HTTP_REFERER' => root_path }
-        user.reload        
+        user.reload
         expect(user.locale).to eq "ru"
         expect(response).to redirect_to request.referer
       end
     end
 
-    context 'with invalid attributes' do      
-
+    context 'with invalid attributes' do
       it "returns root path with emty locale" do
         put change_locale_path, params: { locale: "" }
         expect(response).to redirect_to root_path
