@@ -20,7 +20,7 @@ en:
           done: "Done"
           release:  "Release"
           archive: "Archive"
-  
+
   layouts:
     navbar:
       home: "Home"
