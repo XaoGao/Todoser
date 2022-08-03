@@ -54,6 +54,10 @@ hr
       = " (#{t("registrations.confirm_your_changes")})"
     = f.password_field :current_password, autocomplete: "current-password", class: "form-control"
 
+  .form-group
+    = f.label :locale    
+    = f.select :locale, I18n.available_locales,  class: 'form-control', id: 'user-locale'
+
   .actions
     = render Button::BackComponent.new
     = f.submit t("registrations.update"), class: "btn btn-primary ml-3"

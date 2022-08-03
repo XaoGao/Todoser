@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   delete :favorites, to: "favorites#destroy"
 
   get 'dashboard', to: 'users#dashboard'
-
+  put 'change_locale', to: 'users#change_locale'
+  
   namespace :api do
     namespace :v1 do
       post 'login', to: 'sessions#create'

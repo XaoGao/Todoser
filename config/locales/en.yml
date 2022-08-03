@@ -20,7 +20,7 @@ en:
           done: "Done"
           release:  "Release"
           archive: "Archive"
-  
+
   layouts:
     navbar:
       home: "Home"
@@ -134,3 +134,7 @@ en:
     not_found: "Record is not found"
     unauthorized: "You don't have access to that."
     unexpected_error: "Unexpected error, please try again later"
+
+  locales:
+    en: English
+    ru: Russian
