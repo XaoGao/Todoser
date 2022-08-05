@@ -9,7 +9,8 @@ class TasksController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
-    @task = Task.new
+    @task = Task.new(priority: Task.priorities[:medium])
+
     authorize! @task
   end
 
@@ -86,7 +87,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :project_id, :status, :executor)
+    params.require(:task).permit(:title, :description, :project_id, :status, :executor, :priority)
   end
 
   def task_move_params
