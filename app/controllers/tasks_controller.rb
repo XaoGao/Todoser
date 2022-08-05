@@ -4,12 +4,11 @@ class TasksController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @tasks = Task.where(project_id: params[:project_id])
-    authorize! @task
   end
 
   def new
     @project = Project.find(params[:project_id])
-    @task = Task.new(priority: Task.priorities[:medium])
+    @task = @project.tasks.build(priority: Task.priorities[:medium])
 
     authorize! @task
   end
@@ -19,7 +18,9 @@ class TasksController < ApplicationController
     executor = User.find_by(id: task_params[:executor])
     default_value = { author: current_user, executor: executor, status: Task.statuses[:selected] }
     @task = @project.tasks.build(task_params.merge(default_value))
+
     authorize! @task
+
     if @task.save
       redirect_to project_path @project
     else
@@ -37,7 +38,9 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     executor = User.find_by(id: task_params[:executor])
     @task = Task.find(params[:id])
+
     authorize! @task
+
     if @task.update task_params.merge(executor: executor)
       redirect_to project_path @project
     else
