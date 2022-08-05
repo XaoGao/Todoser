@@ -7,12 +7,18 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         = link_to t("layouts.navbar.home"), root_path, class: "nav-link"
       li.nav-item
         = link_to t("layouts.navbar.about_us"), about_us_path, class: "nav-link"
-      li.nav-item  
+      li.nav-item
         = link_to t("layouts.navbar.contacts"), contacts_path, class: "nav-link"
       - if user_signed_in?
         li.nav-item
           = link_to t("layouts.navbar.dashboard"), dashboard_path, class: "nav-link"
         li.nav-item
           = link_to t("layouts.navbar.favorites"), favorites_path, class: "nav-link"
+        .dropdown
+          button.btn.btn-outline-primary.dropdown-toggle[href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+            = I18n.t("locales.#{current_user.locale}")
+          .dropdown-menu[aria-labelledby="navbarDropdown"]
+            - I18n.available_locales.each do |locale|
+              = link_to I18n.t("locales.#{locale}"), change_locale_path(locale: locale), method: :put, class: "dropdown-item"
 
     = render "layouts/user_link_item"

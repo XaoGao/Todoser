@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   root "welcome#index"
   devise_for :users
 
@@ -13,12 +15,13 @@ Rails.application.routes.draw do
     resources :tasks do
       member do
         put :move
+        post "mark", to: "task_project_marks#create"
+        delete "mark", to: "task_project_marks#destroy"
       end
     end
 
     put "marks", to: "project_marks#edit"
   end
-
 
   resources :comments, only: [:create, :update, :destroy]
 
@@ -26,7 +29,8 @@ Rails.application.routes.draw do
   delete :favorites, to: "favorites#destroy"
 
   get 'dashboard', to: 'users#dashboard'
-
+  put 'change_locale', to: 'users#change_locale'
+  
   namespace :api do
     namespace :v1 do
       post 'login', to: 'sessions#create'
