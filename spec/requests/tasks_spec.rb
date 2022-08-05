@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Tasks", type: :request do
   let(:user) { create(:user) }
   let(:project) { create(:project, author: user) }
+  let!(:project_member) { create(:project_member, user: user, project: project) }
 
   describe "GET project/{project_id}/tasks" do
     context "when user is sign in" do
