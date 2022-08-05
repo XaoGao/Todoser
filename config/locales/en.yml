@@ -78,6 +78,14 @@ en:
   project_marks:
     edit:
       not_exist: "Record is exist"
+  task_project_marks:
+    create:
+      mark_not_exist: "Mark is not exist"
+      project_mark_not_exist: "Record between project and mark is not exist"
+    destroy:
+      mark_not_exist: "Mark is not exist"
+      project_mark_not_exist: "Record between project and mark is not exist"
+      task_project_mark_not_exist: "Current task have not a this mark"
       
   api:
     v1:

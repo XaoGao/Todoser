@@ -15,12 +15,13 @@ Rails.application.routes.draw do
     resources :tasks do
       member do
         put :move
+        post "mark", to: "task_project_marks#create"
+        delete "mark", to: "task_project_marks#destroy"
       end
     end
 
     put "marks", to: "project_marks#edit"
   end
-
 
   resources :comments, only: [:create, :update, :destroy]
 
