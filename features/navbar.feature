@@ -4,3 +4,4 @@ Feature: Navbar
       Given I logged in and visit my page
       When I click on navbar href
       Then I see a page message
+      
