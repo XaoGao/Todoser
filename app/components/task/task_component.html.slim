@@ -5,6 +5,11 @@
       p
         span.badge.badge-success.mt-3 title="executor"
           = executor_full_name
+        br
+        - task.project_marks.each do |project_mark|
+          span[class="mark-short mr-1" style="background-color:#{project_mark.mark.color}"]
+            = ""
+
     . title = t("activerecord.attributes.task.priority")
       i[class="#{icon} mr-2"]
       = task.priority
