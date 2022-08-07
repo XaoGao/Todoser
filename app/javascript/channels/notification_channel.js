@@ -4,7 +4,7 @@ consumer.subscriptions.create("NotificationChannel", {
   received(data) {
     var level = data.level ? data.level : "info"
     switch (level) {
-      case "success ":
+      case "success":
         toastr.success(data.message)
         break;
       case "info":
