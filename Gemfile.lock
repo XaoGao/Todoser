@@ -79,6 +79,9 @@ GEM
     bootsnap (1.10.3)
       msgpack (~> 1.2)
     builder (3.2.4)
+    bundler-audit (0.9.1)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     capybara (3.36.0)
       addressable
       matrix
@@ -193,6 +196,8 @@ GEM
     nokogiri (1.13.1)
       mini_portile2 (~> 2.7.0)
       racc (~> 1.4)
+    nokogiri (1.13.1-x86_64-linux)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.21.0)
     parser (3.1.0.0)
@@ -306,6 +311,8 @@ GEM
       rubocop (~> 1.19)
     ruby-next-core (0.15.1)
     ruby-progressbar (1.11.0)
+    ruby_audit (2.1.0)
+      bundler-audit (~> 0.9.0)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -415,6 +422,7 @@ DEPENDENCIES
   rubocop-performance (~> 1.11)
   rubocop-rails (~> 2.11)
   rubocop-rspec (~> 2.7)
+  ruby_audit
   sass-rails (>= 6)
   selenium-webdriver
   simplecov
