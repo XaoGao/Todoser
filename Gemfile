@@ -22,6 +22,7 @@ gem 'view_component'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
+  gem 'brakeman'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker'
   gem 'pry', '~> 0.13.1'
