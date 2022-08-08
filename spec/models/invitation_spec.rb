@@ -6,6 +6,8 @@
 #  recipient_id :bigint           not null
 #  agree        :boolean
 #  delete_at    :datetime
+#  project_id   :bigint
+#  consumer_id  :bigint
 #
 require 'rails_helper'
 

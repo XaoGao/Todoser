@@ -14,6 +14,11 @@ Rails.application.routes.draw do
         put :move
       end
     end
+    resources :invitations, only: %i[create] do
+      member do
+        put :agree
+      end
+    end
   end
 
   resources :favorites, only: %i[index create]

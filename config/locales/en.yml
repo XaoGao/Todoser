@@ -71,6 +71,9 @@ en:
     destroy:
       not_exist: "Record is not favorited"
       unknow_error: "Unknow error"
+  invitations:
+    create:
+      successful: "Invitation is created"
   api:
     v1:
       sessions:
@@ -122,3 +125,4 @@ en:
   errors:
     not_found: "Record is not found"
     unauthorized: "You don't have access to that."
+    user_not_found: "User not found"
