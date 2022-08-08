@@ -7,44 +7,44 @@ RSpec.describe Api::V1::ProjectsController do
   let(:task) { create(:task, project: project) }
   let(:serialized) { ProjectSerializer.new(project).serializable_hash }
 
-  describe "#index" do
-    it "returns serialized projects object" do
+  describe "GET /api/v1/projects" do
+    it "serialized projects object" do
       request.headers["Authorization"] = "Bearer #{token}"
       get :index
       expect(response).to have_http_status(:ok)
     end
   end
 
-  describe "#show" do
+  describe "GET /api/v1/projects/{project_id}" do
     context "when user is member for project" do
       before do
         create(:project_member, user: user, project: project)
       end
 
-      it "returns serialized project object" do
-        request.headers["Authorization"] = "Bearer #{token}"
+      it "serialized project object" do
+        authorization_header(token)
         get :show, params: { id: project.id }
         expect(json_response["project"]).to eq serialized.to_json
       end
     end
 
     context "when user is not member for project" do
-      it "returns unauthorized error" do
-        request.headers["Authorization"] = "Bearer #{token}"
+      it "unauthorized error" do
+        authorization_header(token)
         get :show, params: { id: project.id }
         expect(json_response["error"]).to eq I18n.t("api.errors.unauthorized")
       end
     end
 
-    it "returns error if user unuathorized" do
+    it "error if user unuathorized" do
       get :show, params: { id: project.id }
       expect(json_response["error"]).to eq I18n.t("api.errors.unauthorized")
     end
 
-    it "returns error if task is not found" do
-      request.headers["Authorization"] = "Bearer #{token}"
+    it "error if task is not found" do
+      authorization_header(token)
       get :show, params: { id: 10 }
-      expect(json_response["error"]).to eq I18n.t("api.v1.projects.errors.project_not_found")
+      expect(json_response["error"]).to eq I18n.t("api.errors.not_found")
     end
   end
 end
