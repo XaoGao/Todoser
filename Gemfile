@@ -33,6 +33,7 @@ group :development do
   gem 'annotate', '~> 3.2'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'bundler-audit'
   gem 'brakeman'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
