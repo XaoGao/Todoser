@@ -41,4 +41,5 @@ yarn-debug.log*
 .env
 
 coverage
-yarn.lock
+
+brakeman_output.html

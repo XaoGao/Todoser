@@ -15,6 +15,7 @@
     "popper.js": "^1.16.1",
     "sortablejs": "^1.15.0",
     "stimulus": "^3.0.1",
+    "toastr": "^2.1.4",
     "trix": "^1.2.0",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",

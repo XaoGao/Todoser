@@ -32,4 +32,9 @@ class Task < ApplicationRecord
   has_many :project_marks, through: :task_project_marks
 
   has_rich_text :description
+
+  # TODO: replace to view component or helper
+  def executor_name
+    executor.blank? ? "-" : executor.full_name
+  end
 end
