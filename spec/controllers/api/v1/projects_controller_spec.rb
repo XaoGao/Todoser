@@ -16,7 +16,7 @@ RSpec.describe Api::V1::ProjectsController do
   end
 
   describe "#show" do
-    context "user is member for project" do
+    context "when user is member for project" do
       before do
         create(:project_member, user: user, project: project)
       end
@@ -28,7 +28,7 @@ RSpec.describe Api::V1::ProjectsController do
       end
     end
 
-    context "user is not member for project" do
+    context "when user is not member for project" do
       it "returns unauthorized error" do
         request.headers["Authorization"] = "Bearer #{token}"
         get :show, params: { id: project.id }
