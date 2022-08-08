@@ -1,3 +1,7 @@
+%w[#00d600 #ffde24 #ffb224 #ff5252 #b452ff #24ffff].each do |color|
+  Mark.create(color: color)
+end
+
 10.times do |i|
   User.create(
     first_name: Faker::Name.first_name,
@@ -10,12 +14,16 @@
 end
 
 10.times do |i|
-  Project.create(
+  project = Project.create(
     title: Faker::App.name,
     author: User.all.sample,
     short_title: "#{i}-p",
     status: Project.statuses[:active]
   )
+
+  Mark.all.each do |mark|
+    ProjectMark.create(project: project, mark: mark)
+  end
 end
 
 Project.all.each do |project|
@@ -35,8 +43,4 @@ end
     project: Project.all.sample,
     user: User.all.sample
   )
-end
-
-%w[#00d600 #ffde24 #ffb224 #ff5252 #b452ff #24ffff].each do |color|
-  Mark.create(color: color)
 end

@@ -10,14 +10,23 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  # TODO: create a service object
   def create
     @project = current_user.projects.build project_params
-    if @project.save
-      render :show, notice: t("projects.create.successful", project_name: @project.title)
-    else
-      flash[:alert] = t("projects.create.error", project_name: @project.title)
-      render :new
+
+    ActiveRecord::Base.transaction do
+      if @project.save
+        Mark.all.each do |mark|
+          @project.project_marks.create(mark: mark)
+        end
+        render :show, notice: t("projects.create.successful", project_name: @project.title)
+      else
+        flash[:alert] = t("projects.create.error", project_name: @project.title)
+        render :new
+      end
     end
+    rescue
+      redirect_to root_path, alert: t("errors.unexpected_error")
   end
 
   def edit

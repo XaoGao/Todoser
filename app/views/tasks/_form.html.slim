@@ -18,6 +18,11 @@
 
   .input-group.mb-3
     .input-group-prepend
+      = form.label :priority, class: "input-group-text", for: "input-group-priority-task"
+    = form.select :priority, options_for_select(Task.priorities.map { |key, value| [key.titleize, Task.priorities.key(value)] }, task.priority), {}, class: "custom-select", id: "input-group-priority-task"
+
+  .input-group.mb-3
+    .input-group-prepend
       = form.label :executor, class: "input-group-text", for: "input-group-executor-task"
       
     = form.select :executor, project.member_to_select, { include_blank: t("tasks.form.empty_executor") }, class: "custom-select", id: "input-group-executor-task"

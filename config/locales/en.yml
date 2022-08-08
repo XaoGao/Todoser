@@ -20,7 +20,7 @@ en:
           done: "Done"
           release:  "Release"
           archive: "Archive"
-  
+
   layouts:
     navbar:
       home: "Home"
@@ -28,6 +28,10 @@ en:
       favorites: "Favorites"
       about_us: "About us"
       contacts: "Contacts"
+  welcome:
+    index:
+      title: "Welcome"
+      head_messge: "Example: Hello message"
   projects:
     update:
       successful: "Project %{project_name} was successful updated"
@@ -71,6 +75,18 @@ en:
     destroy:
       not_exist: "Record is not favorited"
       unknow_error: "Unknow error"
+  project_marks:
+    edit:
+      not_exist: "Record is exist"
+  task_project_marks:
+    create:
+      mark_not_exist: "Mark is not exist"
+      project_mark_not_exist: "Record between project and mark is not exist"
+    destroy:
+      mark_not_exist: "Mark is not exist"
+      project_mark_not_exist: "Record between project and mark is not exist"
+      task_project_mark_not_exist: "Current task have not a this mark"
+      
   invitations:
     create:
       successful: "Invitation is created"
@@ -79,11 +95,14 @@ en:
       sessions:
         errors:
           incorrect_email_or_password: "Incorrect email or password"
-          user_not_found_blocked: "User not found or blocked"
+          user_not_found_blocked: "User is not found or blocked"
           no_email_and_password: "Enter email and password"
+      tasks:
+        errors:
+          task_not_found: "Task is not found"
     errors:
       unauthorized: "You don't have access to that."
-      not_found: "User not found or blocked"
+      not_found: "User is not found or blocked"
       not_bearer_type: "Wrong scheme, you have to use a Bearer"
       blank_token: "Token is nil or empty"
       expired_token: "Token is expired"
@@ -126,3 +145,8 @@ en:
     not_found: "Record is not found"
     unauthorized: "You don't have access to that."
     user_not_found: "User not found"
+    unexpected_error: "Unexpected error, please try again later"
+
+  locales:
+    en: English
+    ru: Russian

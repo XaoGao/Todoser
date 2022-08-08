@@ -8,7 +8,9 @@ class TasksController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
-    @task = Task.new
+    @task = @project.tasks.build(priority: Task.priorities[:medium])
+
+    authorize! @task
   end
 
   def create
@@ -16,6 +18,8 @@ class TasksController < ApplicationController
     executor = User.find_by(id: task_params[:executor])
     default_value = { author: current_user, executor: executor, status: Task.statuses[:selected] }
     @task = @project.tasks.build(task_params.merge(default_value))
+
+    authorize! @task
 
     if @task.save
       redirect_to project_path @project
@@ -27,12 +31,16 @@ class TasksController < ApplicationController
   def edit
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
+    authorize! @task
   end
 
   def update
     @project = Project.find(params[:project_id])
     executor = User.find_by(id: task_params[:executor])
     @task = Task.find(params[:id])
+
+    authorize! @task
+
     if @task.update task_params.merge(executor: executor)
       redirect_to project_path @project
     else
@@ -43,6 +51,7 @@ class TasksController < ApplicationController
   def destroy
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
+    authorize! @task
     if @task.disabled
       flash[:success] = "ok"
     else
@@ -54,6 +63,7 @@ class TasksController < ApplicationController
   def show
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
+    authorize! @task
   end
 
   def move
@@ -80,7 +90,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :project_id, :status, :executor)
+    params.require(:task).permit(:title, :description, :project_id, :status, :executor, :priority)
   end
 
   def task_move_params

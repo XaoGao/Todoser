@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_21_191259) do
+ActiveRecord::Schema.define(version: 2022_07_15_145751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,16 @@ ActiveRecord::Schema.define(version: 2022_07_21_191259) do
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
+  create_table "project_marks", force: :cascade do |t|
+    t.bigint "mark_id", null: false
+    t.bigint "project_id", null: false
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["mark_id"], name: "index_project_marks_on_mark_id"
+    t.index ["project_id"], name: "index_project_marks_on_project_id"
+  end
+
   create_table "project_members", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.bigint "user_id", null: false
@@ -120,6 +130,15 @@ ActiveRecord::Schema.define(version: 2022_07_21_191259) do
     t.string "short_title", default: ""
     t.integer "status"
     t.index ["author_id"], name: "index_projects_on_author_id"
+  end
+
+  create_table "task_project_marks", force: :cascade do |t|
+    t.bigint "project_mark_id", null: false
+    t.bigint "task_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_mark_id"], name: "index_task_project_marks_on_project_mark_id"
+    t.index ["task_id"], name: "index_task_project_marks_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -163,9 +182,13 @@ ActiveRecord::Schema.define(version: 2022_07_21_191259) do
   add_foreign_key "invitations", "users", column: "recipient_id"
   add_foreign_key "notifications", "users", column: "recipient_id"
   add_foreign_key "notifications", "users", column: "sender_id"
+  add_foreign_key "project_marks", "marks"
+  add_foreign_key "project_marks", "projects"
   add_foreign_key "project_members", "projects"
   add_foreign_key "project_members", "users"
   add_foreign_key "projects", "users", column: "author_id"
+  add_foreign_key "task_project_marks", "project_marks"
+  add_foreign_key "task_project_marks", "tasks"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "users", column: "author_id"
   add_foreign_key "tasks", "users", column: "executor_id"
