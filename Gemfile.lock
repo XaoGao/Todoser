@@ -400,8 +400,8 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.4)
-  bundler-audit
   brakeman
+  bundler-audit
   capybara (>= 3.26)
   cucumber-rails
   database_cleaner
