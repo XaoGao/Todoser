@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     put "marks", to: "project_marks#edit"
   end
 
-  resources :comments, only: [:create, :update, :destroy]
+  resources :comments, only: %i[create update destroy]
 
   resources :favorites, only: %i[index create]
   delete :favorites, to: "favorites#destroy"
@@ -35,8 +35,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'login', to: 'sessions#create'
 
-      resources :projects, only: [:index, :show]
-      
+      resources :projects, only: %i[index show]
+
       resources :tasks, only: :show
     end
   end

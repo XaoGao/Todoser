@@ -15,7 +15,7 @@ RSpec.describe Api::V1::ProjectsController do
     end
   end
 
-  describe "GET /api/v1/projects/{project_id}" do
+  describe "GET /api/v1/projects/:id" do
     context "when user is member for project" do
       before do
         create(:project_member, user: user, project: project)

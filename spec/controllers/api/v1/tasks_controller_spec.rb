@@ -7,7 +7,7 @@ RSpec.describe Api::V1::TasksController do
   let(:task) { create(:task, project: project) }
   let(:serialized) { TaskSerializer.new(task).serializable_hash }
 
-  describe "GET /api/v1/tasks/{task_id}" do
+  describe "GET /api/v1/tasks/:id" do
     context "when user is member for project" do
       before do
         create(:project_member, user: user, project: project)
