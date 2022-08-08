@@ -22,7 +22,6 @@ gem 'view_component'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
-  gem 'brakeman'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker'
   gem 'pry', '~> 0.13.1'
@@ -33,6 +32,7 @@ group :development do
   gem 'annotate', '~> 3.2'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'brakeman'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rubocop', '~> 1.25', require: false
