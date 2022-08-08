@@ -14,6 +14,7 @@ en:
         title: "Title"
         status: "Status"
         priority: "Priority"
+        executor: "Executor"
         statuses:
           selected: "Selected"
           doing: "Doing"
@@ -63,6 +64,8 @@ en:
       title: "Edit a task %{task_title}"
     form:
       empty_executor: "Executor not selected"
+    show:
+      marks: "Marks"
   users:
     dashboard:
       title: "Dashboard"

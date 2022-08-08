@@ -14,4 +14,9 @@ class ProjectMark < ApplicationRecord
   belongs_to :mark
 
   validates :title, length: { maximum: 50 }
+
+  # TODO: replace to view component or helper
+  def present_title
+    title.nil? ? "-" : title.capitalize
+  end
 end
