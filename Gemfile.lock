@@ -313,6 +313,8 @@ GEM
       rubocop (~> 1.19)
     ruby-next-core (0.15.1)
     ruby-progressbar (1.11.0)
+    ruby_audit (2.1.0)
+      bundler-audit (~> 0.9.0)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -425,6 +427,7 @@ DEPENDENCIES
   rubocop-performance (~> 1.11)
   rubocop-rails (~> 2.11)
   rubocop-rspec (~> 2.7)
+  ruby_audit
   sass-rails (>= 6)
   selenium-webdriver
   simplecov
