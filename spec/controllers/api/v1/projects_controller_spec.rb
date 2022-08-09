@@ -9,7 +9,7 @@ RSpec.describe Api::V1::ProjectsController do
 
   describe "GET /api/v1/projects" do
     it "serialized projects object" do
-      request.headers["Authorization"] = "Bearer #{token}"
+      authorization_header(token)
       get :index
       expect(response).to have_http_status(:ok)
     end
