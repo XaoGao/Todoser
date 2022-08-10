@@ -3,5 +3,5 @@ Given("I am on the homepage") do
 end
 
 Then("I see a welcome message") do
-  expect(page).to have_content("Example: Hello message")
+  expect(page).to have_content("Welcome#index")
 end

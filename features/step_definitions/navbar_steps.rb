@@ -1,28 +1,28 @@
-Given('I visit my page') do
+Given("I visit welcome page for about us") do
   visit root_path
 end
 
-When('I click on navbar href about us') do
-  click_on "About us"
+When("I click on a link about us") do
+  click_on I18n.t("layouts.navbar.about_us")
 end
 
-Then('I see a page message') do
-  expect(page).to have_content("Pangu and the creation of the world")
+Then("I should see a about us title") do
+  expect(page).to have_content(I18n.t("layouts.navbar.about_us"))
 end
 
-Given('I visit root page') do
+Given("I visit welcome page for contacts") do
   visit root_path
 end
 #
-When('I click on navbar href contacts') do
-  click_on "Contacts"
+When("I click on a link contacts") do
+  click_on I18n.t("layouts.navbar.contacts")
 end
 
-Then('I see a page') do
-  expect(page).to have_content("BRAAIIINS Ipsum")
+Then("I should see a contacts title") do
+  expect(page).to have_content(I18n.t("layouts.navbar.contacts"))
 end
 
-Given('I visit on dashboard page') do
+Given("I visit welcome page for dashboard") do
   user = FactoryBot.create(:user, email: 'test@test.com', password: 'password')
   visit new_user_session_path
   fill_in "user_email", with: user.email
@@ -30,15 +30,15 @@ Given('I visit on dashboard page') do
   click_on "user_signin_submit"
 end
 #
-When('I click on navbar href my dashboard') do
-  click_on "My dashboard"
+When("I click on a link my dashboard") do
+  click_on  I18n.t("layouts.navbar.dashboard")
 end
 
-Then('I see a message') do
-  expect(page).to have_content("Dashboard")
+Then("I should see a dashboard title") do
+  expect(page).to have_content(I18n.t("layouts.navbar.dashboard"))
 end
 
-Given('I visit on favorite page') do
+Given("I visit welcome page for favorites") do
   user = FactoryBot.create(:user, email: 'test@test.com', password: 'password')
   visit new_user_session_path
   fill_in "user_email", with: user.email
@@ -46,10 +46,10 @@ Given('I visit on favorite page') do
   click_on "user_signin_submit"
 end
 #
-When('I click on navbar href favorites') do
-  click_on "Favorites"
+When("I click on a link favorites") do
+  click_on I18n.t("layouts.navbar.favorites")
 end
 
-Then('I see a favorite message') do
-  expect(page).to have_content("Favorites")
+Then("I should see a favorites title") do
+  expect(page).to have_content(I18n.t("layouts.navbar.favorites"))
 end

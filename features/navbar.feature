@@ -1,21 +1,21 @@
 Feature: Navbar
 
-  Scenario: I can click a navbar href about us
-    Given I visit my page
-    When I click on navbar href about us
-    Then I see a page message
+  Scenario: I can visit about us page
+    Given I visit welcome page for about us
+    When I click on a link about us
+    Then I should see a about us title
 
-  Scenario: I can click a navbar href contacts
-    Given I visit root page
-    When I click on navbar href contacts
-    Then I see a page
+  Scenario: I can visit contacts page
+    Given I visit welcome page for contacts
+    When I click on a link contacts
+    Then I should see a contacts title
 
-  Scenario: I can click a navbar href my dashboard
-    Given I visit on dashboard page
-    When I click on navbar href my dashboard
-    Then I see a message
+  Scenario: I can visit my dashboard page
+    Given I visit welcome page for dashboard
+    When I click on a link my dashboard
+    Then I should see a dashboard title
 
-  Scenario: I can click a navbar href favorites
-    Given I visit on favorite page
-    When I click on navbar href favorites
-    Then I see a favorite message
+  Scenario: I can visit favorites page
+    Given I visit welcome page for favorites
+    When I click on a link favorites
+    Then I should see a favorites title
