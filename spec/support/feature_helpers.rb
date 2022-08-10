@@ -5,6 +5,6 @@ module FeatureHelpers
     fill_in "user_email", with: email
     fill_in "user_password", with: password
     click_on "user_signin_submit"
-    #user
+    user
   end
 end

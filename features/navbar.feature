@@ -11,6 +11,11 @@ Feature: Navbar
     Then I see a page
 
   Scenario: I can click a navbar href my dashboard
-    Given I visit on sign in page
+    Given I visit on dashboard page
     When I click on navbar href my dashboard
     Then I see a message
+
+  Scenario: I can click a navbar href favorites
+    Given I visit on favorite page
+    When I click on navbar href favorites
+    Then I see a favorite message
