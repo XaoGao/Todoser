@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   before_action :load_commentable!
 
   def create
-    @comment = Comment.new(commentable: @commentable, user: current_user, body: comment_params[:body])
+    @comment = Comment.new(commentable: @commentable, user: current_user, message: comment_params[:message])
+
     if @comment.save
       redirect_to request.referer
     else
@@ -13,6 +14,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
+
     if @comment.update(comment_params)
       redirect_to request.referer
     else
@@ -23,6 +25,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.update(delete_at: DateTime.now)
+
     redirect_to root_path
   end
 
@@ -33,6 +36,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body, :commentable_type, :commentable_id)
+    params.require(:comment).permit(:message, :commentable_type, :commentable_id)
   end
 end
