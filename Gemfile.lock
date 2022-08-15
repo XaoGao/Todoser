@@ -83,6 +83,9 @@ GEM
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
+    cable_ready (4.5.0)
+      rails (>= 5.2)
+      thread-local (>= 1.1.0)
     capybara (3.36.0)
       addressable
       matrix
@@ -352,10 +355,17 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    stimulus_reflex (3.4.1)
+      cable_ready (>= 4.5)
+      nokogiri
+      rack
+      rails (>= 5.2)
+      redis
     sys-uname (1.2.2)
       ffi (~> 1.1)
     temple (0.8.2)
     thor (1.2.1)
+    thread-local (1.1.0)
     tilt (2.0.10)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -402,6 +412,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   brakeman
   bundler-audit
+  cable_ready (~> 4.5)
   capybara (>= 3.26)
   cucumber-rails
   database_cleaner
@@ -433,6 +444,7 @@ DEPENDENCIES
   simplecov
   slim-rails
   spring
+  stimulus_reflex (~> 3.4)
   turbolinks (~> 5)
   view_component
   web-console (>= 4.1.0)
