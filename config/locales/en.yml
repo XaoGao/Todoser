@@ -53,6 +53,9 @@ en:
       title: "New project"
     edit:
       title: "Edit a project %{project_name}"
+    destroy:
+      success: "User was successfully destroed"
+      error: "Can`t destroy user, user wasn`t found"
   tasks:
     index:
       title: "Tasks"
@@ -78,7 +81,7 @@ en:
   project_marks:
     edit:
       not_exist: "Record is exist"
-      
+
   api:
     v1:
       sessions:

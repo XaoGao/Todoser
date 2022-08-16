@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
 
     put "marks", to: "project_marks#edit"
+
+    resources :project_members, only: [:destroy]
   end
 
 
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'users#dashboard'
   put 'change_locale', to: 'users#change_locale'
-  
+
   namespace :api do
     namespace :v1 do
       post 'login', to: 'sessions#create'
