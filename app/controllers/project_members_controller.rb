@@ -1,16 +1,13 @@
 class ProjectMembersController < ApplicationController
   before_action :authenticate_user!
-  
-  def destroy
+
+  def leave
     project = Project.find(params[:project_id])
     authorize! project
-    project_member = ProjectMember.find(params[:id])
-    #TODO User.find_by(email: params[:email])
-    user = project_member.user
-
-    if user
-      project_member.delete
-      redirect_to project_path(project), notice: t("projects.destroy.success", project_name: project.title)
+    
+    if user_signed_in?
+      project.members.delete(current_user)
+      redirect_to root_path, notice: t("projects.destroy.success", project_name: project.title)
     else
       redirect_to request.referer, alert: t("projects.destroy.error", project_name: project.title)
     end

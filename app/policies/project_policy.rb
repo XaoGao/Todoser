@@ -8,7 +8,7 @@ class ProjectPolicy < ApplicationPolicy
     record.members.include?(user) || record.author == user
   end
 
-  def destroy?
+  def leave?
     record.members.include?(user) || record.author == user
   end
 end

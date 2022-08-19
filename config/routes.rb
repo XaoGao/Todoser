@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     put "marks", to: "project_marks#edit"
 
-    resources :project_members, only: [:destroy]
+    delete "leave", to: "project_members#leave"
   end
 
 
