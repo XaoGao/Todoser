@@ -1,0 +1,11 @@
+/ TODO: create a view component 
+.[class="card" id=dom_id(comment)]
+  .card-body
+    = h(comment.message)
+    hr
+    .d-flex.justify-content-between
+      / TODO: create a methods for date
+      span 
+        = comment.user.full_name 
+      span
+        = comment.created_at

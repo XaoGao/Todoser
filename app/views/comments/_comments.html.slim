@@ -1,0 +1,6 @@
+.[class="comments" id="commentable-#{commentable.id}-comments"]
+  - commentable.comments.each do |comment|
+    .mb-3
+      = render comment
+.
+  = render "comments/form", commentable: commentable

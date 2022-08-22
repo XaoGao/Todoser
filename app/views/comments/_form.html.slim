@@ -1,0 +1,13 @@
+/ TODO: rewrite in future form_with model: [commentable, Comment.new]
+/ TODO: create js controller for async create and send WS
+.card
+  .card-body
+    = form_with model: [Comment.new] do |form|
+      .form-group
+        = form.hidden_field :commentable_id, value: commentable.id
+        = form.hidden_field :commentable_type, value: commentable.class
+
+        = form.rich_text_area :message, class: "form-control"
+
+        .text-right.mt-3
+          = form.submit "Create", class: "btn btn-primary"
