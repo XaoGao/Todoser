@@ -4,10 +4,11 @@ RSpec.describe "ProjectMembers", type: :request do
   let(:user) { create(:user) }
   let(:project) { create(:project, author: user) }
 
-  describe "DELETE project/{project_id}/project_members/{id}" do
+  describe "DELETE project/{project_id}/leave" do
 
     context "when user is sign in" do
       let(:project_member) { create(:project_member, user: user, project: project) }
+      
       before do
         sign_in user
       end

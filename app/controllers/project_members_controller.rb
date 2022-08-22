@@ -5,12 +5,8 @@ class ProjectMembersController < ApplicationController
     project = Project.find(params[:project_id])
     authorize! project
     
-    if user_signed_in?
-      project.members.delete(current_user)
-      redirect_to root_path, notice: t("projects.destroy.success", project_name: project.title)
-    else
-      redirect_to request.referer, alert: t("projects.destroy.error", project_name: project.title)
-    end
+    project.members.delete(current_user)
+    redirect_to root_path, notice: t("projects.destroy.success", project_name: project.title)
   end
 
   private
