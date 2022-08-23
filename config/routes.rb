@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     end
 
     put "marks", to: "project_marks#edit"
+
+    delete "leave", to: "project_members#leave"
   end
 
   resources :comments, only: %i[create update destroy]
