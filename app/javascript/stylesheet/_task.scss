@@ -18,3 +18,29 @@
   list-style: none;
   padding-left: 0;
 }
+
+.side-bar ul {
+  padding: 0;
+  margin: 0;
+  list-style: outside none none;
+}
+
+.main-window {
+  min-height: 400px;
+}
+
+.mark-short {
+  border-radius: 30px;
+  cursor: pointer;
+  padding-left: 30%;
+}
+.mark-medium {
+  border-radius: 10px;
+  cursor: pointer;
+  width:10%;
+}
+.mark-long {
+  border-radius: 10px;
+  cursor: pointer;
+  width:50%;
+}

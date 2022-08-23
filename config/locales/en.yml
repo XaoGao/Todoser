@@ -14,6 +14,7 @@ en:
         title: "Title"
         status: "Status"
         priority: "Priority"
+        executor: "Executor"
         statuses:
           selected: "Selected"
           doing: "Doing"
@@ -66,6 +67,8 @@ en:
       title: "Edit a task %{task_title}"
     form:
       empty_executor: "Executor not selected"
+    show:
+      marks: "Marks"
   users:
     dashboard:
       title: "Dashboard"
@@ -81,7 +84,15 @@ en:
   project_marks:
     edit:
       not_exist: "Record is exist"
-
+  task_project_marks:
+    create:
+      mark_not_exist: "Mark is not exist"
+      project_mark_not_exist: "Record between project and mark is not exist"
+    destroy:
+      mark_not_exist: "Mark is not exist"
+      project_mark_not_exist: "Record between project and mark is not exist"
+      task_project_mark_not_exist: "Current task have not a this mark"
+      
   api:
     v1:
       sessions:
@@ -89,12 +100,9 @@ en:
           incorrect_email_or_password: "Incorrect email or password"
           user_not_found_blocked: "User is not found or blocked"
           no_email_and_password: "Enter email and password"
-      tasks:
-        errors:
-          task_not_found: "Task is not found"
     errors:
       unauthorized: "You don't have access to that."
-      not_found: "User is not found or blocked"
+      not_found: "Record is not found"
       not_bearer_type: "Wrong scheme, you have to use a Bearer"
       blank_token: "Token is nil or empty"
       expired_token: "Token is expired"

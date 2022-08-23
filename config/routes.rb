@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :tasks do
       member do
         put :move
+        post "mark", to: "task_project_marks#create"
+        delete "mark", to: "task_project_marks#destroy"
       end
     end
 
@@ -23,8 +25,7 @@ Rails.application.routes.draw do
     delete "leave", to: "project_members#leave"
   end
 
-
-  resources :comments, only: [:create, :update, :destroy]
+  resources :comments, only: %i[create update destroy]
 
   resources :favorites, only: %i[index create]
   delete :favorites, to: "favorites#destroy"
@@ -35,7 +36,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post 'login', to: 'sessions#create'
+
+      resources :projects, only: %i[index show]
+
       resources :tasks, only: :show
     end
   end
+
+  mount ActionCable.server, at: '/cable'
 end

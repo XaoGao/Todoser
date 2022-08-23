@@ -2,18 +2,36 @@
 
 h2.text-center = @task.title
 hr
-p
-  = "Project: #{@task.project.title}"
-p
-  = "Description: #{h @task.description}"
-p
-  = "Status: #{@task.status}"
-p
-  = "Created: #{@task.author.full_name}"
-p
-  = "Exceuter: #{@task.executor.blank? ? "-" : @task.executor.full_name}"
+
+.row
+  .col-8.border-right
+    .main-window
+      .pl-5
+        = h @task.description
+    .d-flex.flex-row
+      - @task.project_marks.each do |project_mark|
+        .[class="mark-medium text-center mb-2 mr-1" style="background-color:#{project_mark.mark.color}"]
+          = project_mark.present_title
+
+  .col-4
+    .mb-3
+      = "#{t("activerecord.attributes.task.status")}: #{@task.status.capitalize}"
+    .mb-3
+      = "#{t("activerecord.attributes.task.executor")}: #{@task.executor_name.capitalize}"
+    .side-bar
+      .mb-2
+        = "#{t(".marks")}:"
+      ul.project-marks
+        - @task.project.project_marks.each do |project_mark|
+          li.text-center
+            .[class= "mark-long text-center mb-2" style="background-color:#{project_mark.mark.color}"]
+              = project_mark.present_title
 
 hr
 .text-right
   = render Button::BackComponent.new
   = link_to t("button.edit"), edit_project_task_path(@task.project, @task), class: "btn btn-primary ml-4"
+
+hr
+.mt-5
+  = render "comments/comments", commentable: @task
