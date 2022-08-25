@@ -92,7 +92,7 @@ en:
       mark_not_exist: "Mark is not exist"
       project_mark_not_exist: "Record between project and mark is not exist"
       task_project_mark_not_exist: "Current task have not a this mark"
-      
+
   api:
     v1:
       sessions:
@@ -129,6 +129,7 @@ en:
     search: "Search"
     clear: "Clear"
     upload: "Upload"
+    leave: "Leave"
 
   registrations:
     sign_in: "Sign in"
