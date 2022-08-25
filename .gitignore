@@ -39,7 +39,7 @@
 yarn-debug.log*
 .yarn-integrity
 .env
-
+dump.rdb
 coverage
 
 brakeman_output.html
