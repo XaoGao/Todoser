@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
         Mark.all.each do |mark|
           @project.project_marks.create(mark: mark)
         end
+        ProjectMember.create(user: current_user, project: @project)
         render :show, notice: t("projects.create.successful", project_name: @project.title)
       else
         flash[:alert] = t("projects.create.error", project_name: @project.title)
