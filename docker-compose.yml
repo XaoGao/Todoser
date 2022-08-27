@@ -33,13 +33,6 @@ services:
       - postgres
     restart: unless-stopped
 
-  redis:
-    image: redis:latest
-    ports:
-      - "${REDIS_PORT}:6379"
-    volumes:
-        - redis_data:/data
-
 networks:
   postgres:
     driver: bridge
@@ -47,4 +40,3 @@ networks:
 volumes:
     postgres:
     pgadmin:
-    redis_data:

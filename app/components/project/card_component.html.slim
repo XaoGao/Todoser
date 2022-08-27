@@ -8,8 +8,7 @@
       hr
       = h project_description_placeholder
     .text-left
-      = I18n.t("project.members")
-      = h project.project_members_count
+      = t("project.members", number: project.project_members_count)
     hr
     .text-right
       = render Button::BackComponent.new(path: projects_path)

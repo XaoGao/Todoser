@@ -59,8 +59,8 @@ en:
       error: "Can`t destroy user, user wasn`t found"
 
   project:
-    members: "Project members: "
-    
+    members: "Project members: %{number}"
+
   tasks:
     index:
       title: "Tasks"
