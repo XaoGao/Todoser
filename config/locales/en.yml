@@ -57,6 +57,10 @@ en:
     destroy:
       success: "User was successfully destroed"
       error: "Can`t destroy user, user wasn`t found"
+
+  project:
+    members: "Project members: "
+    
   tasks:
     index:
       title: "Tasks"

@@ -7,6 +7,9 @@
       = status
       hr
       = h project_description_placeholder
+    .text-left
+      = I18n.t("project.members")
+      = h project.project_members.size
     hr
     .text-right
       = render Button::BackComponent.new(path: projects_path)
