@@ -7,6 +7,8 @@
       = status
       hr
       = h project_description_placeholder
+    .text-left
+      = t("project.members", number: project.project_members_count)
     hr
     .text-right
       = render Button::BackComponent.new(path: projects_path)
