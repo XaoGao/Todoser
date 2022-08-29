@@ -80,6 +80,9 @@ GEM
       msgpack (~> 1.2)
     brakeman (5.3.1)
     builder (3.2.4)
+    bullet (7.0.3)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
@@ -377,6 +380,7 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    uniform_notifier (1.16.0)
     unicode-display_width (2.2.0)
     view_component (2.69.0)
       activesupport (>= 5.0.0, < 8.0)
@@ -418,6 +422,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.4.4)
   brakeman
+  bullet
   bundler-audit
   cable_ready (~> 4.5)
   capybara (>= 3.26)
