@@ -63,7 +63,6 @@ RSpec.describe "Projects", type: :request do
         post projects_path, params: { project: project.attributes }
         new_project = Project.first
         expect(new_project.title).to eq(project.title)
-        expect(ProjectMember.find_by(user: user, project: new_project)).not_to be_nil
       end
     end
 

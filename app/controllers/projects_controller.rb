@@ -14,20 +14,12 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build project_params
 
-    ActiveRecord::Base.transaction do
-      if @project.save
-        Mark.all.each do |mark|
-          @project.project_marks.create(mark: mark)
-        end
-        ProjectMember.create(user: current_user, project: @project)
-        render :show, notice: t("projects.create.successful", project_name: @project.title)
-      else
-        flash[:alert] = t("projects.create.error", project_name: @project.title)
-        render :new
-      end
+    result = Projects::CreateProjectService.new.call(@project, current_user)
+    if result.success?
+      render :show, notice: result.data
+    else
+      render :new, alert: result.error_messages
     end
-    rescue
-      redirect_to root_path, alert: t("errors.unexpected_error")
   end
 
   def edit
