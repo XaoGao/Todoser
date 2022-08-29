@@ -5,12 +5,10 @@ RSpec.describe "ProjectMembers", type: :request do
   let(:project) { create(:project, author: user) }
 
   describe "DELETE project/{project_id}/leave" do
-
     context "when user is sign in" do
-      let(:project_member) { create(:project_member, user: user, project: project) }
-      
       before do
         sign_in user
+        create(:project_member, user: user, project: project)
       end
 
       it "http status redirect" do
@@ -19,8 +17,7 @@ RSpec.describe "ProjectMembers", type: :request do
       end
 
       it "destroy user from project members" do
-        project_member
-        delete project_leave_path(user)
+        delete project_leave_path(project, user)
         expect(project.members.count).to eq 0
       end
     end
