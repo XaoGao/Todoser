@@ -54,6 +54,13 @@ en:
       title: "New project"
     edit:
       title: "Edit a project %{project_name}"
+    destroy:
+      success: "User was successfully destroed"
+      error: "Can`t destroy user, user wasn`t found"
+
+  project:
+    members: "Project members: %{number}"
+
   tasks:
     index:
       title: "Tasks"
@@ -89,7 +96,7 @@ en:
       mark_not_exist: "Mark is not exist"
       project_mark_not_exist: "Record between project and mark is not exist"
       task_project_mark_not_exist: "Current task have not a this mark"
-      
+
   api:
     v1:
       sessions:
@@ -126,6 +133,7 @@ en:
     search: "Search"
     clear: "Clear"
     upload: "Upload"
+    leave: "Leave"
 
   registrations:
     sign_in: "Sign in"

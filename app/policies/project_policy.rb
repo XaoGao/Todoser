@@ -7,4 +7,8 @@ class ProjectPolicy < ApplicationPolicy
   def edit?
     record.members.include?(user) || record.author == user
   end
+
+  def leave?
+    record.members.include?(user) || record.author == user
+  end
 end

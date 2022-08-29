@@ -9,6 +9,6 @@
 #  updated_at :datetime         not null
 #
 class ProjectMember < ApplicationRecord
-  belongs_to :project
+  belongs_to :project, counter_cache: true
   belongs_to :user, class_name: 'User'
 end
