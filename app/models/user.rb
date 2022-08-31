@@ -17,6 +17,8 @@
 #  locale                 :string           default("en"), not null
 #
 class User < ApplicationRecord
+  include Lockable
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
