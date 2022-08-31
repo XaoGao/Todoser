@@ -18,7 +18,7 @@
 #
 class User < ApplicationRecord
   include Lockable
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -53,7 +53,6 @@ class User < ApplicationRecord
   end
 
   def enable?
-    true
-    # TODO: implements after add delete_at field to users model
+    delete_at.blank?
   end
 end
