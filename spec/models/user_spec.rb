@@ -39,4 +39,12 @@ RSpec.describe User, type: :model do
       expect(user.active_favorites.count).to eq(2)
     end
   end
+
+  describe ".enable?" do
+    let(:user) { create(:user) }
+
+    it "delete_at is empty" do
+      expect(user.enable?).to be true
+    end
+  end
 end
