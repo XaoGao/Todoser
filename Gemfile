@@ -23,6 +23,7 @@ gem 'pg'
 gem 'turbolinks', '~> 5'
 gem 'view_component'
 gem 'webpacker', '~> 5.0'
+gem 'kaminari', '~> 1.2.1'
 
 group :development, :test do
   gem 'bullet'
