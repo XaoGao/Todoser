@@ -25,6 +25,7 @@ FactoryBot.define do
     password { "password" }
     online { false }
     locale { "en" }
+    role { "#{User.roles.keys.sample}" }
 
     trait :with_avatar do
       avatar { Rack::Test::UploadedFile.new("spec/support/assets/test_image.png", "image/png") }
