@@ -451,8 +451,9 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jsonapi-serializer (~> 2.2.0)
   jwt (~> 2.3.0)
-  kaminari
+  kaminari (~> 1.2.1)
   listen (~> 3.3)
+  nokogiri (~> 1.13)
   pg
   pry-byebug (~> 3.9)
   pry-rails
