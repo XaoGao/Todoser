@@ -15,6 +15,7 @@
 #  username               :string           default(""), not null
 #  online                 :boolean          default(FALSE)
 #  locale                 :string           default("en"), not null
+#  delete_at :datetime
 #
 FactoryBot.define do
   factory :user do
@@ -25,7 +26,8 @@ FactoryBot.define do
     password { "password" }
     online { false }
     locale { "en" }
-    role { "#{User.roles.keys.sample}" }
+    role { User.roles.keys.sample }
+    delete_at { nil }
 
     trait :with_avatar do
       avatar { Rack::Test::UploadedFile.new("spec/support/assets/test_image.png", "image/png") }

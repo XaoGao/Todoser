@@ -10,7 +10,8 @@ end
     email: "t#{i}@t.t",
     password: "password",
     role: User.roles.keys.sample,
-    locale: "en"
+    locale: "en",
+    delete_at: nil
   )
 end
 
