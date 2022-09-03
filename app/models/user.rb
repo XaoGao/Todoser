@@ -40,6 +40,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  enum role: [:user, :moderator, :admin]
+  
   def active_favorites
     favorites.where(delete_at: nil)
   end

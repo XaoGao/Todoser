@@ -26,6 +26,7 @@ FactoryBot.define do
     password { "password" }
     online { false }
     locale { "en" }
+    role { User.roles.keys.sample }
     delete_at { nil }
 
     trait :with_avatar do

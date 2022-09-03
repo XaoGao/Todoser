@@ -9,6 +9,7 @@ end
     username: Faker::Internet.username,
     email: "t#{i}@t.t",
     password: "password",
+    role: User.roles.keys.sample,
     locale: "en",
     delete_at: nil
   )
