@@ -64,6 +64,15 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
     authorize! @task
+
+    respond_to do |format|
+      format.js do
+        render json: { data: render_message(@task) }, status: :ok
+      end
+      format.html do
+        render :show
+      end
+    end
   end
 
   def move
@@ -95,5 +104,9 @@ class TasksController < ApplicationController
 
   def task_move_params
     params.permit(:id, :project_id, :status, :position)
+  end
+
+  def render_message(task)
+    ApplicationController.render(partial: 'tasks/task', locals: { task: task })
   end
 end
