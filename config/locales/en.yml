@@ -150,6 +150,8 @@ en:
     not_found: "Record is not found"
     unauthorized: "You don't have access to that."
     unexpected_error: "Unexpected error, please try again later"
+    empty_message: "Message is empty"
+    deleted_user: "User is deleted"
 
   locales:
     en: English
