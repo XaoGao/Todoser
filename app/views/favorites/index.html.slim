@@ -7,4 +7,4 @@ hr
 
 - @favorites.each do |favorite|
   .mb-3
-    = render Task::TaskComponent.new(favorite.project, nil, favorite, current_user)
+    = render Task::TaskComponent.new(favorite.project, favorite.status, favorite)
