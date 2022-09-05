@@ -66,12 +66,8 @@ class TasksController < ApplicationController
     authorize! @task
 
     respond_to do |format|
-      format.js do
-        render json: { data: render_message(@task) }, status: :ok
-      end
-      format.html do
-        render :show
-      end
+      format.js { render json: { data: render_task(@task) }, status: :ok }
+      format.html { render :show }
     end
   end
 
@@ -106,7 +102,7 @@ class TasksController < ApplicationController
     params.permit(:id, :project_id, :status, :position)
   end
 
-  def render_message(task)
+  def render_task(task)
     ApplicationController.render(partial: 'tasks/task', locals: { task: task })
   end
 end
