@@ -29,6 +29,8 @@ class Project < ApplicationRecord
 
   has_rich_text :description
 
+  paginates_per 10
+
   #  TODO: replace to view component
   def member_to_select
     members.collect { |u| [u.email, u.id] }

@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
     @search = current_user.member_in_project.ransack(params[:q])
-    @projects = @search.result(distinct: true)
+    @projects = @search.result(distinct: true).page(params[:page])
   end
 
   def new
