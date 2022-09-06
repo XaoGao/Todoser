@@ -15,4 +15,5 @@ html
       .container.mt-5
         = render Flash::FlashComponent.new(flash)
         = yield
+    = render "shared/modal"
     = render General::FooterComponent.new

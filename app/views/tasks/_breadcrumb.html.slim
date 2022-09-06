@@ -1,0 +1,6 @@
+nav aria-label="breadcrumb" 
+  ol.breadcrumb
+    li.breadcrumb-item 
+      = link_to task.project.title, project_path(task.project)
+    li.breadcrumb-item.active 
+      = link_to task.title, project_task_path(task.project, task)
