@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "pages/contacts", as: :contacts
 
   resources :projects do
+    resources :invitations, only: :create
     member do
       put :archive
     end
