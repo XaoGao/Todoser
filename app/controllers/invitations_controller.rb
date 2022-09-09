@@ -4,4 +4,8 @@ class InvitationsController < ApplicationController
   def create
 
   end
+
+  def agree
+
+  end
 end

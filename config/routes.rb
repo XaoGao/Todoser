@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get "pages/contacts", as: :contacts
 
   resources :projects do
-    resources :invitations, only: :create
+    resources :invitations, only: :create do
+      member do
+        put :agree
+      end
+    end
     member do
       put :archive
     end
