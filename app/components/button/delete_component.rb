@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class Button::DeleteComponent < Button::BaseComponent
-  def initialize(path, option = {})
-    super("", path, option.merge(icon: "fa-solid fa-trash", title: I18n.t("button.delete"), method: :delete))
+  def initialize(options = {})
+    label = options[:label] || ""
+    icon = options[:icon] || "fa-solid fa-trash"
+    title = options[:title] || I18n.t("button.delete")
+    super(options.merge(label: label, icon: icon, title: title, method: :delete))
   end
 
   def default_classes
