@@ -67,7 +67,9 @@ class TasksController < ApplicationController
   end
 
   def move
-    result = Tasks::MoveService.new.call(params[:id], params[:status], params[:position], task_move_params)
+    @task = Task.find(params[:id])
+    authorize! @task
+    result = Tasks::MoveService.new.call(@task, params[:status], params[:position], task_move_params)
     if result.success?
       head :ok
     else

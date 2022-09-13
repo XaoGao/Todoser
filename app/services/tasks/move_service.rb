@@ -1,8 +1,6 @@
 module Tasks
   class MoveService < Service
-    def call(task_id, new_status, new_position, task_move_params)
-      task = Task.find(task_id)
-
+    def call(task, new_status, new_position, task_move_params)
       tasks_old_column = Task.where("status = ? AND position > ?", Task.statuses[task.status], task.position)
       tasks_new_column = Task.where("status = ? AND position >= ?", Task.statuses[new_status], new_position)
 
