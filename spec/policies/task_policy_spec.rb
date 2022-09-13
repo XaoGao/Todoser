@@ -70,4 +70,13 @@ RSpec.describe TaskPolicy, type: :policy do
     end
     failed "when user is not member for task"
   end
+
+  describe_rule :move? do
+    succeed "when user is member for task" do
+      before do
+        create(:project_member, user: user, project: project)
+      end
+    end
+    failed "when user is not member for task"
+  end
 end

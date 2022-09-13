@@ -27,4 +27,8 @@ class TaskPolicy < ApplicationPolicy
   def show?
     record.project.members.include?(user) || record.author != user
   end
+
+  def move?
+    record.project.members.include?(user) || record.author != user
+  end
 end

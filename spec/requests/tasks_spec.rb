@@ -181,4 +181,41 @@ RSpec.describe "Tasks", type: :request do
       it { expect(response).to redirect_to new_user_session_path }
     end
   end
+
+  describe "PUT /projects/{project_id}/tasks/{id}/move" do
+    let(:task) { create(:task, status: Task.statuses[:selected]) }
+    let(:new_task) { build(:task, status: Task.statuses[:done]) }
+
+    context "when user is sign in" do
+      before do
+        sign_in user
+        put move_project_task_path(project, task), params: { status: new_task.status,
+                                                             position: new_task.position }
+      end
+
+      it "result is success" do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it "updates a task" do
+        expect(Task.first.status).to eq(new_task.status)
+      end
+
+      it "result is failure" do
+        put move_project_task_path(project, task), params: { status: "wrong",
+                                                             position: new_task.position }
+        expect(response).to redirect_to root_path
+      end
+    end
+
+    context "when user is not sign in" do
+      before do
+        put move_project_task_path(project, task), params: { status: new_task.status,
+                                                             position: new_task.position }
+      end
+
+      it { expect(response).to have_http_status(:redirect) }
+      it { expect(response).to redirect_to new_user_session_path }
+    end
+  end
 end
