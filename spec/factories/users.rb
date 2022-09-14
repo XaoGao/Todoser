@@ -15,7 +15,8 @@
 #  username               :string           default(""), not null
 #  online                 :boolean          default(FALSE)
 #  locale                 :string           default("en"), not null
-#  delete_at :datetime
+#  delete_at              :datetime
+#  role                   :integer
 #
 FactoryBot.define do
   factory :user do
