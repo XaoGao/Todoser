@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  include AutoInject["create_project_service"]
+
   before_action :authenticate_user!
 
   def index
@@ -14,7 +16,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build project_params
 
-    result = Projects::CreateProjectService.new.call(@project, current_user)
+    result = create_project_service.call(@project, current_user)
     if result.success?
       render :show, notice: result.data
     else
