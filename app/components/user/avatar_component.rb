@@ -6,7 +6,7 @@ class User::AvatarComponent < ViewComponent::Base
   # TODO: may be create abstract avatar component and user_avatar_component
   def initialize(user:, **options)
     @user = user
-    @size = options[:size] || "50x50"
+    @size = options[:size] || default_size
     @classes = create_classes options
     @title = options[:title] || ""
   end
@@ -20,6 +20,10 @@ class User::AvatarComponent < ViewComponent::Base
   end
 
   def default_class
-    "rounded-circle"
+    ""
+  end
+
+  def default_size
+    "100x100"
   end
 end

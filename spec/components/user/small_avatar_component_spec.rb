@@ -1,21 +1,23 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
-RSpec.describe User::AvatarComponent, type: :component do
-  subject(:avatar_component) { described_class.new(user: user) }
-
+RSpec.describe User::SmallAvatarComponent, type: :component do
   let(:user) { build(:user, :with_avatar) }
 
+  subject(:avatar_component) { described_class.new(user: user) }
+
   describe ".default_class" do
-    it { expect(avatar_component.default_class).to eq("") }
+    it { expect(avatar_component.default_class).to eq("rounded-circle") }
   end
 
   describe ".create_classes" do
     it "return only default class" do
-      expect(avatar_component.create_classes).to eq("")
+      expect(avatar_component.create_classes).to eq("rounded-circle")
     end
 
     it "return default css class with option" do
-      expect(avatar_component.create_classes({ class: "mb-3" })).to eq("mb-3 ")
+      expect(avatar_component.create_classes({ class: "mb-3" })).to eq("mb-3 rounded-circle")
     end
   end
 
