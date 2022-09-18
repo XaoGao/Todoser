@@ -26,4 +26,4 @@ Rails/FilePath:
   EnforcedStyle: arguments
 
 Metrics/BlockLength:
-  IgnoredMethods: ['describe', 'context']
+  AllowedMethods: ['describe', 'context']

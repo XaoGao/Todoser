@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
@@ -44,4 +46,9 @@ Rails.application.routes.draw do
   end
 
   mount ActionCable.server, at: '/cable'
+
+  # TODO: check user is admin
+  authenticate :user, lambda { |u| true } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
