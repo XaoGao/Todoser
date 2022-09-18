@@ -1,0 +1,18 @@
+.card.shadow-lg.mt-3
+  .card-body
+    h5.card-title.text-center
+      = t("users.show.info")
+    hr
+    p
+      = t("users.show.email", email: user.email)
+    p
+      = t("users.show.full_name", full_name: user.full_name)
+    p
+      = t("users.show.username", username: user.username)
+    / TODO: Add to user model this field
+    p
+      = t("users.show.company", company: "")
+    p 
+      = t("users.show.department", department: "")
+    p
+      = t("users.show.position", position: "")

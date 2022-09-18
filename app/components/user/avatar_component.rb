@@ -16,7 +16,11 @@ class User::AvatarComponent < ViewComponent::Base
   end
 
   def create_classes(options = {})
-    options[:class].nil? ? default_class : "#{options[:class]} #{default_class}"
+    class_empty?(options) ? default_class : "#{options[:class]} #{default_class}"
+  end
+
+  def class_empty?(options)
+    options[:class].nil? || options[:class] == ""
   end
 
   def default_class

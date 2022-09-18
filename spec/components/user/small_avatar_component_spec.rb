@@ -3,9 +3,9 @@
 require "rails_helper"
 
 RSpec.describe User::SmallAvatarComponent, type: :component do
-  let(:user) { build(:user, :with_avatar) }
-
   subject(:avatar_component) { described_class.new(user: user) }
+
+  let(:user) { build(:user, :with_avatar) }
 
   describe ".default_class" do
     it { expect(avatar_component.default_class).to eq("rounded-circle") }
@@ -36,7 +36,7 @@ RSpec.describe User::SmallAvatarComponent, type: :component do
   it "renders avatar component" do
     render_inline(avatar_component)
 
-    expect(rendered_component).to have_css("img[alt='#{user.username}']")
+    expect(page).to have_css("img[alt='#{user.username}']")
     # TODO: how to test src image ?
     # expect(rendered_component).to have_css("img[src='#{user.avatar.filename}']")
   end

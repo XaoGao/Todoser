@@ -34,7 +34,7 @@ RSpec.describe User::AvatarComponent, type: :component do
   it "renders avatar component" do
     render_inline(avatar_component)
 
-    expect(rendered_component).to have_css("img[alt='#{user.username}']")
+    expect(page).to have_css("img[alt='#{user.username}']")
     # TODO: how to test src image ?
     # expect(rendered_component).to have_css("img[src='#{user.avatar.filename}']")
   end

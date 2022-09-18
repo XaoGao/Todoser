@@ -5,37 +5,9 @@ hr
 
 .row.mt-5
   .col-4
-    = render User::AvatarComponent.new(user: current_user, size: "350x350", class: "mr-2")
-    - if @user == current_user
-      .text-center
-        = link_to t("button.edit"), edit_user_registration_path, class: "btn btn-primary mt-3"
-    .card.shadow-lg.mt-3
-      .card-body
-        h5.card-title.text-center
-          | Informations
-        hr
-        p
-          | Email: #{@user.email}
-        p
-          | Full name: #{@user.full_name}
-        p
-          | Username: #{@user.username}
-        / TODO: Add to user model this field
-        p
-          | Compony
-        p 
-          | Department
-        p
-          | Position
+    = render "users/avatar", user: @user
+    = render "users/info", user: @user
   .col-1.ml-4.border-right
   .col-6.ml-4
-    
-    .card.shadow-lg.mt-3
-      .card-body
-        h5.card-title.text-center
-          | Projects
-        hr
-      - @user.member_in_project.each do |project|
-        .pl-3.pr-3
-          = render project
+    = render "users/project_list", user: @user
         
