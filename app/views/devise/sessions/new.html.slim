@@ -18,4 +18,4 @@ hr
       = f.label :remember_me
   .actions
     = f.submit "Log in", class: "btn btn-primary", id: "user_signin_submit"
-    = render base_button(t("registrations.sign_up"), new_user_registration_path, class: "btn btn-success ml-3")
+    = render base_button(label: t("registrations.sign_up"), path: new_user_registration_path, class: "btn btn-success ml-3")
