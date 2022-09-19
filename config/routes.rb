@@ -43,5 +43,8 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+  end
+
   mount ActionCable.server, at: '/cable'
 end
