@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       redirect_to root_path, alert: t("errors.unexpected_error")
     else
       current_user.update!(locale: params[:locale])
-      redirect_to request.referer 
+      redirect_to request.referer
     end
   end
 end

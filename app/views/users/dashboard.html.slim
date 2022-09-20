@@ -10,5 +10,6 @@ hr
         h4.card-title.text-center
           = project.title
     hr
-    = render Task::TaskListComponent.new(project)
+    / TODO: change giving tasks
+    = render Task::TaskListComponent.new(project: project, tasks: TaskFavoriteQuery.new.call(project, current_user))
   hr
