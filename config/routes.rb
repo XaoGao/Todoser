@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root "welcome#index"
   devise_for :users
 
-  get "about_us", action: :about_us, controller: "pages"
-  get "pages/contacts", as: :contacts
+  get "about_us", to: "pages#about_us"
+  get "contacts", to: "pages#contacts"
 
   resources :projects do
     member do
