@@ -1,0 +1,18 @@
+-if user == @current_user
+  .card.shadow-lg.mt-3
+    .card-body
+      h5.card-title.text-center
+        = t("users.show.your_project")
+      hr
+    - user.member_in_project.each do |project|
+      .pl-3.pr-3
+        = render project
+- else
+  .card.shadow-lg.mt-3
+    .card-body
+      h5.card-title.text-center
+        = t("users.show.common_projects")
+      hr
+    - user.common_projects(current_user).each do |project|
+      .pl-3.pr-3
+        = render project

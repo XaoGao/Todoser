@@ -15,6 +15,8 @@
 #  username               :string           default(""), not null
 #  online                 :boolean          default(FALSE)
 #  locale                 :string           default("en"), not null
+#  delete_at              :datetime
+#  role                   :integer
 #
 require 'rails_helper'
 

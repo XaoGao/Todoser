@@ -44,4 +44,4 @@ hr
 
   .actions
     = f.submit t("registrations.sign_up"), class: "btn btn-primary", id: "submit_registration"
-    = render Button::BaseComponent.new(t("registrations.login"), new_user_session_path, class: "btn btn-success ml-3")
+    = render base_button(label: t("registrations.login"), path: new_user_session_path, class: "btn btn-success ml-3")

@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  mount Rswag::Ui::Engine => '/api-docs'
-  mount Rswag::Api::Engine => '/api-docs'
+  mount Rswag::Ui::Engine => "/api-docs"
+  mount Rswag::Api::Engine => "/api-docs"
+
   root "welcome#index"
   devise_for :users
 
-  get "pages/about_us", as: :about_us
-  get "pages/contacts", as: :contacts
+  get "about_us", to: "pages#about_us"
+  get "contacts", to: "pages#contacts"
 
   resources :projects do
     member do
@@ -30,12 +31,13 @@ Rails.application.routes.draw do
   resources :favorites, only: %i[index create]
   delete :favorites, to: "favorites#destroy"
 
-  get 'dashboard', to: 'users#dashboard'
-  put 'change_locale', to: 'users#change_locale'
+  resources :users, only: [:show]
+  get "dashboard", to: "users#dashboard"
+  put "change_locale", to: "users#change_locale"
 
   namespace :api do
     namespace :v1 do
-      post 'login', to: 'sessions#create'
+      post "login", to: "sessions#create"
 
       resources :projects, only: %i[index show]
 
@@ -43,5 +45,5 @@ Rails.application.routes.draw do
     end
   end
 
-  mount ActionCable.server, at: '/cable'
+  mount ActionCable.server, at: "/cable"
 end

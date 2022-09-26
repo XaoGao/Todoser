@@ -29,6 +29,7 @@ en:
       favorites: "Favorites"
       about_us: "About us"
       contacts: "Contacts"
+      profile: "Profile"
   welcome:
     index:
       title: "Welcome"
@@ -76,6 +77,17 @@ en:
   users:
     dashboard:
       title: "Dashboard"
+    show:
+      title: "Profile's %{username}"
+      info: "Information"
+      email: "Email: %{email}"
+      full_name: "Full name: %{full_name}"
+      username: "Username: %{username}"
+      company: "Company: %{company}"
+      department: "Departmant: %{department}"
+      position: "Position: %{position}"
+      your_project: "Your projects"
+      common_projects: "Common projects"
   favorites:
     index:
       title: "Favorites"

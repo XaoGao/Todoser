@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Project::CardComponent < ViewComponent::Base
+  include ApplicationHelper
+
   attr_reader :project, :task
 
   def initialize(project, task)

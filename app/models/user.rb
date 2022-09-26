@@ -15,6 +15,8 @@
 #  username               :string           default(""), not null
 #  online                 :boolean          default(FALSE)
 #  locale                 :string           default("en"), not null
+#  delete_at              :datetime
+#  role                   :integer
 #
 class User < ApplicationRecord
   include Lockable
@@ -31,7 +33,7 @@ class User < ApplicationRecord
 
   has_many :favorites
   has_many :favorites_tasks, through: :favorites, source: :favoriteable, source_type: "Task"
-  
+
   has_many :notifications, foreign_key: :recipient_id
 
   validates :first_name, presence: true, length: { in: 2..100 }
@@ -41,7 +43,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   enum role: [:user, :moderator, :admin]
-  
+
   def active_favorites
     favorites.where(delete_at: nil)
   end
@@ -56,5 +58,11 @@ class User < ApplicationRecord
 
   def enable?
     delete_at.blank?
+  end
+
+  # TODO: replace to repository
+  def common_projects(another_user)
+    s = ProjectMember.select(:project_id).group(:project_id).having("count(project_id) = 2").where(user_id: [id,another_user.id])
+    Project.where(id: s)
   end
 end

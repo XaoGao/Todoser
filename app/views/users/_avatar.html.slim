@@ -1,0 +1,4 @@
+= render User::AvatarComponent.new(user: user, size: "350x350", class: "mr-2")
+  - if user == current_user
+    .text-center
+      = link_to t("button.edit"), edit_user_registration_path, class: "btn btn-primary mt-3"
