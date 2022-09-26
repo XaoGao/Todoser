@@ -43,6 +43,8 @@ class ProjectsController < ApplicationController
 
     authorize! @project
 
+    @tasks = TaskFavoriteQuery.new.call(@project, current_user)
+
     @task = @project.tasks.build
   end
 
