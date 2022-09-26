@@ -6,6 +6,6 @@ RSpec.describe General::FooterComponent, type: :component do
   it "renders footer" do
     render_inline(footer)
 
-    expect(rendered_component).to have_text("Copyright: Todoser.com")
+    expect(page).to have_text("Copyright: Todoser.com")
   end
 end

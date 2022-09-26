@@ -5,6 +5,7 @@
           button.list-group-item.list-group-item-action.active[type="button"]
             h3.text-center = t("activerecord.attributes.task.statuses.#{key}")
 
-          - tasks.tasks_list_of(key).each do |task|
-            li.list
-              = render Task::TaskComponent.new(project, key, task)
+          - unless tasks.nil?
+            - tasks.public_send(key).each do |task|
+              li.list
+                = render Task::TaskComponent.new(project: project, status: key, task: task)

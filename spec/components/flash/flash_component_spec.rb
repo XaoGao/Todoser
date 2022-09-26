@@ -14,12 +14,13 @@ RSpec.describe Flash::FlashComponent, type: :component do
   end
 
   describe "render" do
-    let(:flash_message) { "Test message" }
     subject(:flash_component) { described_class.new({ notice: flash_message }) }
+
+    let(:flash_message) { "Test message" }
 
     it "renders base button" do
       render_inline(flash_component)
-      expect(rendered_component).to have_text(flash_message)
+      expect(page).to have_text(flash_message)
     end
   end
 end

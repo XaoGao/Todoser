@@ -2,14 +2,15 @@
 #
 # Table name: projects
 #
-#  id          :integer          not null, primary key
-#  title       :string           not null
-#  author_id   :integer          not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  delete_at   :datetime
-#  short_title :string           default("")
-#  status      :integer
+#  id                    :bigint           not null, primary key
+#  title                 :string           not null
+#  author_id             :bigint           not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  delete_at             :datetime
+#  short_title           :string           default("")
+#  status                :integer
+#  project_members_count :integer          default(0), not null
 #
 class Project < ApplicationRecord
   include Lockable
@@ -34,9 +35,5 @@ class Project < ApplicationRecord
   #  TODO: replace to view component
   def member_to_select
     members.collect { |u| [u.email, u.id] }
-  end
-
-  def tasks_list_of(task_status)
-    tasks.public_send(task_status).order("position")
   end
 end

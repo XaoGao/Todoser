@@ -3,7 +3,7 @@
 class Task::TaskComponent < ViewComponent::Base
   attr_reader :project, :task, :status
 
-  def initialize(project, status, task)
+  def initialize(project:, status:, task:)
     @project = project
     @task = task
     @status = status

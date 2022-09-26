@@ -1,0 +1,13 @@
+= title t(".title", username: @user.full_name)
+
+h3.text-center.mb-4 =t(".title", username: @user.full_name)
+hr
+
+.row.mt-5
+  .col-4
+    = render "users/avatar", user: @user
+    = render "users/info", user: @user
+  .col-1.ml-4.border-right
+  .col-6.ml-4
+    = render "users/project_list", user: @user
+        

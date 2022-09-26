@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def dashboard
     @projects = current_user.member_in_project
   end
@@ -10,7 +14,7 @@ class UsersController < ApplicationController
       redirect_to root_path, alert: t("errors.unexpected_error")
     else
       current_user.update!(locale: params[:locale])
-      redirect_to request.referer 
+      redirect_to request.referer
     end
   end
 end

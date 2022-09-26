@@ -3,6 +3,6 @@
     h5.card-title.d-flex.justify-content-between
       = link_to project.title, project_path(project), class: "project-item"
       .
-        = render Button::EditComponent.new(edit_project_path(project))
-        = render Button::DeleteComponent.new(project_path(project), class: "ml-4")
+        = render edit_button(path: edit_project_path(project))
+        = render delete_button(path: project_path(project), class: "ml-4")
 

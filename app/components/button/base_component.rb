@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class Button::BaseComponent < ViewComponent::Base
-  attr_reader :label, :path, :icon, :classes, :option
+  attr_reader :label, :path, :icon, :classes, :options
 
-  def initialize(label, path, option = {})
-    @label = label
-    @path = path
-    @icon = option[:icon]
-    @classes = get_classes(option)
-    @option = option
+  def initialize(options = {})
+    @label = options[:label] || ""
+    @path = options[:path] || ""
+    @icon = options[:icon]
+    @classes = get_classes(options)
+    @options = options
   end
 
   alias icon? icon
@@ -19,11 +19,11 @@ class Button::BaseComponent < ViewComponent::Base
 
   private
 
-  def get_classes(option)
-    if option[:class].nil?
-      option[:class] = default_classes
-    else
-      option[:class] = "#{option[:class]} #{default_classes}"
-    end
+  def get_classes(options)
+    options[:class] = if options[:class].nil?
+                        default_classes
+                      else
+                        "#{options[:class]} #{default_classes}"
+                      end
   end
 end
