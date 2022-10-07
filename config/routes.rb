@@ -49,6 +49,9 @@ Rails.application.routes.draw do
 
   mount ActionCable.server, at: '/cable'
 
+  namespace :admin do
+  end
+
   # TODO: check user is admin
   authenticate :user, lambda { |u| true } do
     mount Sidekiq::Web => '/sidekiq'
