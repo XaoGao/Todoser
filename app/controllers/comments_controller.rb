@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
   before_action :load_commentable!
 
   def create
+    authorize! @commentable, with: CommentPolicy
+
     @comment = Comment.new(commentable: @commentable, user: current_user, message: comment_params[:message])
 
     if @comment.save
@@ -15,6 +17,8 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
 
+    authorize! @comment, with: CommentPolicy
+
     if @comment.update(comment_params)
       redirect_to request.referer
     else
@@ -24,6 +28,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+
+    authorize! @comment, with: CommentPolicy
+
     @comment.update(delete_at: DateTime.now)
 
     redirect_to root_path
