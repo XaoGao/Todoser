@@ -1,5 +1,5 @@
 = title t(".title", project_title: @project.title)
 
-= render Project::CardComponent.new(@project, @task)
+= render Project::CardComponent.new(project: @project, task: @task)
 hr
 = render Task::TaskListComponent.new(project: @project, tasks: @tasks)

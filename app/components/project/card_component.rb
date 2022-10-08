@@ -5,7 +5,7 @@ class Project::CardComponent < ViewComponent::Base
 
   attr_reader :project, :task
 
-  def initialize(project, task)
+  def initialize(project:, task:)
     @project = project
     @task = task
   end

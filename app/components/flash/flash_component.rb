@@ -3,7 +3,7 @@
 class Flash::FlashComponent < ViewComponent::Base
   attr_reader :flash
 
-  def initialize(flash)
+  def initialize(flash:)
     @flash = flash
   end
 
