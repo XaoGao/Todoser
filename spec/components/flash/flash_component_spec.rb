@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Flash::FlashComponent, type: :component do
-  subject(:flash_component) { described_class.new({}) }
+  subject(:flash_component) { described_class.new(flash: {}) }
 
   describe ".flash_class" do
     it "notice type" do
@@ -14,11 +14,11 @@ RSpec.describe Flash::FlashComponent, type: :component do
   end
 
   describe "render" do
-    subject(:flash_component) { described_class.new({ notice: flash_message }) }
+    subject(:flash_component) { described_class.new(flash: { notice: flash_message }) }
 
     let(:flash_message) { "Test message" }
 
-    it "renders base button" do
+    it "renders flash text" do
       render_inline(flash_component)
       expect(page).to have_text(flash_message)
     end

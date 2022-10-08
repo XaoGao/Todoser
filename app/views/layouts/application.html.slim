@@ -13,7 +13,7 @@ html
     = render 'layouts/navbar'
     .wrapper.flex-grow-1
       .container.mt-5
-        = render Flash::FlashComponent.new(flash)
+        = render Flash::FlashComponent.new(flash: flash)
         = yield
     = render "shared/modal"
     = render General::FooterComponent.new
