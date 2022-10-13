@@ -1,0 +1,16 @@
+= title t(".title")
+
+h1.text-center = t(".title")
+
+hr
+
+.card
+  .card-body
+    = form_with model: [@project, @invitation] do |f|
+      .form-group
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+
+      .text-right.mb-2
+        = render back_button(class: "mr-3")
+        = f.submit t("button.create"), class: "btn btn-primary"

@@ -6,6 +6,9 @@
 #  recipient_id :bigint           not null
 #  agree        :boolean
 #  delete_at    :datetime
+#  sender_id    :bigint           not null
+#  project_id   :bigint           not null
+#  token        :string           default(""), not null
 #
 require 'rails_helper'
 

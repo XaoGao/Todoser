@@ -114,6 +114,17 @@ en:
       empty_message: "Message is empty"
       deleted_user: "User is deleted"
 
+  invitations:
+    new:
+      title: "Create a new invitation"
+    create:
+      success: "The invitation has been sent to %{username}"
+      error: "Error when sending an invitation"
+      user_not_found: "User is not found"
+    confirm:
+      not_found: "Invitation is not found"
+
+
   api:
     v1:
       sessions:
