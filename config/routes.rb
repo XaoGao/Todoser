@@ -23,6 +23,10 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :invitations, only: %i[new create] do
+      put "confirm/:token", to: "invitations#confirm", on: :collection, as: "confirm"
+    end
+
     put "marks", to: "project_marks#edit"
 
     delete "leave", to: "project_members#leave"

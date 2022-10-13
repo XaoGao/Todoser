@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_02_143132) do
+ActiveRecord::Schema.define(version: 2022_10_10_180645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,7 +80,13 @@ ActiveRecord::Schema.define(version: 2022_09_02_143132) do
     t.bigint "recipient_id", null: false
     t.boolean "agree"
     t.datetime "delete_at"
+    t.bigint "sender_id", null: false
+    t.bigint "project_id", null: false
+    t.string "token", default: "", null: false
+    t.index ["project_id"], name: "index_invitations_on_project_id"
     t.index ["recipient_id"], name: "index_invitations_on_recipient_id"
+    t.index ["sender_id"], name: "index_invitations_on_sender_id"
+    t.index ["token"], name: "index_invitations_on_token", unique: true
   end
 
   create_table "marks", force: :cascade do |t|
@@ -169,7 +175,6 @@ ActiveRecord::Schema.define(version: 2022_09_02_143132) do
     t.string "locale", default: "en", null: false
     t.datetime "delete_at"
     t.integer "role"
-
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -178,7 +183,9 @@ ActiveRecord::Schema.define(version: 2022_09_02_143132) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "users"
+  add_foreign_key "invitations", "projects"
   add_foreign_key "invitations", "users", column: "recipient_id"
+  add_foreign_key "invitations", "users", column: "sender_id"
   add_foreign_key "notifications", "users", column: "recipient_id"
   add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "project_marks", "marks"
