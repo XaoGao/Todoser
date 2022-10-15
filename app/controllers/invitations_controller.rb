@@ -1,4 +1,6 @@
 class InvitationsController < ApplicationController
+  include AutoInject["invitation_create_service", "invitation_confirm_service"]
+
   before_action :authenticate_user!
 
   def new
@@ -14,18 +16,12 @@ class InvitationsController < ApplicationController
 
     authorize! project, with: InvitationPolicy
 
-    user = User.find_by(email: params[:invitation][:email])
-    if user.nil?
-      return redirect_to root_path, alert: t(".user_not_found")
-    end
+    result = invitation_create_service.call(params[:invitation][:email], current_user, project)
 
-    token = generate_token
-    @invitation = Invitation.new(recipient: user, sender: current_user, token: token, project: project)
-
-    if @invitation.save
-      redirect_to project_path(project), notice: t(".success", username: user.full_name)
+    if result.success?
+      redirect_to project_path(project), notice: result.data
     else
-      redirect_to project_path(project), alert: t(".error")
+      redirect_to project_path(project), alert: result.error_messages
     end
   end
 
@@ -38,21 +34,8 @@ class InvitationsController < ApplicationController
 
     authorize! invitation, with: InvitationPolicy
 
-    ActiveRecord::Base.transaction do
-      invitation.update(agree: true)
-      ProjectMember.create(project: invitation.project, user: invitation.recipient)
-    end
+    invitation_confirm_service.call(invitation)
 
     redirect_to project_path(invitation.project)
-  end
-
-  private
-
-  def generate_token
-    loop do
-      token = SecureRandom.hex(10)
-
-      break token unless Invitation.exists?(token: token)
-    end
   end
 end
