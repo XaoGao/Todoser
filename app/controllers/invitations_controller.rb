@@ -9,6 +9,11 @@ class InvitationsController < ApplicationController
     authorize! @project, with: InvitationPolicy
 
     @invitation = Invitation.new
+
+    respond_to do |format|
+      format.js { render json: { data: render_invitation(@project, @invitation) }, status: :ok }
+      format.html { render :new }
+    end
   end
 
   def create
@@ -37,5 +42,9 @@ class InvitationsController < ApplicationController
     invitation_confirm_service.call(invitation)
 
     redirect_to project_path(invitation.project)
+  end
+
+  def render_invitation(project, invitation)
+    ApplicationController.render(partial: 'invitations/form', locals: { invitation: invitation, project: project })
   end
 end

@@ -15,11 +15,12 @@ class TasksController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    executor = User.find_by(id: task_params[:executor])
-    default_value = { author: current_user, executor: executor, status: Task.statuses[:selected] }
     @task = @project.tasks.build(task_params.merge(default_value))
 
     authorize! @task
+
+    executor = User.find_by(id: task_params[:executor])
+    default_value = { author: current_user, executor: executor, status: Task.statuses[:selected] }
 
     if @task.save
       redirect_to project_path @project
@@ -29,17 +30,20 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
+
     authorize! @task
+
+    @project = Project.find(params[:project_id])
   end
 
   def update
-    @project = Project.find(params[:project_id])
-    executor = User.find_by(id: task_params[:executor])
     @task = Task.find(params[:id])
 
     authorize! @task
+
+    @project = Project.find(params[:project_id])
+    executor = User.find_by(id: task_params[:executor])
 
     if @task.update task_params.merge(executor: executor)
       redirect_to project_path @project
@@ -49,9 +53,12 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
+
     authorize! @task
+
+    @project = Project.find(params[:project_id])
+
     if @task.disabled
       flash[:success] = "ok"
     else
@@ -61,9 +68,11 @@ class TasksController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
+
     authorize! @task
+
+    @project = Project.find(params[:project_id])
 
     respond_to do |format|
       format.js { render json: { data: render_task(@task) }, status: :ok }
