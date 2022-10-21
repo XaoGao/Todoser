@@ -60,7 +60,10 @@ en:
       error: "Can`t destroy user, user wasn`t found"
 
   project:
+    more_info: "More info"
     members: "Project members: %{number}"
+    invitations: "Invitations"
+    add_task: "Add task"
 
   tasks:
     index:

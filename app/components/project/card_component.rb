@@ -20,12 +20,12 @@ class Project::CardComponent < ViewComponent::Base
 
   def button_to_archive
     unless project.archive?
-      link_to(I18n.t("button.archive"), archive_project_path(project), class: "btn btn-danger ml-3", method: :put)
+      link_to(I18n.t("button.archive"), archive_project_path(project), class: "dropdown-item", method: :put)
     end
   end
 
   def button_to_leave
-    link_to(I18n.t("button.leave"), project_leave_path(project), class: "btn btn-danger ml-3", method: :delete)
+    link_to(I18n.t("button.leave"), project_leave_path(project), class: "dropdown-item", method: :delete)
   end
 
   def status
