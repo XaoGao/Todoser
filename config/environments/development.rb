@@ -10,7 +10,8 @@ Rails.application.configure do
     Bullet.add_footer    = true
   end
 
-  # config.session_store :cache_store
+  config.cache_store = :redis_cache_store, { url: ENV.fetch('REDIS_URL') }
+  config.session_store :cache_store
 
   # Configure 'rails notes' to inspect Cucumber files
   config.annotations.register_directories('features')
