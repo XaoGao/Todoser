@@ -2,6 +2,7 @@ class InvitationsController < ApplicationController
   include AutoInject["invitation_create_service", "invitation_confirm_service"]
 
   before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def new
     @project = Project.find(params[:project_id])

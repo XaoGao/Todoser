@@ -3,7 +3,7 @@ version: '3.5'
 services:
   postgres:
     container_name: postgres_container
-    image: postgres:13.5
+    image: postgres:14
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -11,7 +11,7 @@ services:
     volumes:
        - postgres:/data/postgres
     ports:
-      - "${DATABASE_PORT}:5432"
+      - "54320:5432"
     networks:
       - postgres
     restart: unless-stopped
@@ -33,6 +33,15 @@ services:
       - postgres
     restart: unless-stopped
 
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - "63790:6379"
+    command: redis-server --save 20 1 --loglevel warning
+    volumes: 
+      - cache:/data
+
 networks:
   postgres:
     driver: bridge
@@ -40,3 +49,5 @@ networks:
 volumes:
     postgres:
     pgadmin:
+    cache:
+      driver: local
