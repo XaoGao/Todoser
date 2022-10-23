@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
 
     result = create_project_service.call(@project, current_user)
     if result.success?
-      render :show, notice: result.data
+      redirect_to project_path(@project), notice: result.data
     else
       render :new, alert: result.error_messages
     end

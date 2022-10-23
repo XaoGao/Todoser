@@ -59,8 +59,8 @@ RSpec.describe "Projects", type: :request do
         post projects_path, params: { project: project.attributes }
       end
 
-      it "http status success" do
-        expect(response).to have_http_status(:success)
+      it "http status redirect" do
+        expect(response).to have_http_status(:redirect)
       end
 
       it "create a new project" do
@@ -142,8 +142,8 @@ RSpec.describe "Projects", type: :request do
         post projects_path, params: { project: project.attributes }
       end
 
-      it "http status success" do
-        expect(response).to have_http_status(:success)
+      it "http status redirect" do
+        expect(response).to have_http_status(:redirect)
       end
 
       it "update the project" do
