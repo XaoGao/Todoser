@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  include AutoInject["create_project_service"]
+  include AutoInject["create_project_service", "task_favorite_repository"]
 
   before_action :authenticate_user!
 
@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
 
     authorize! @project
 
-    @tasks = TaskFavoriteQuery.new.call(@project, current_user)
+    @tasks = task_favorite_repository.call(@project, current_user)
 
     @task = @project.tasks.build
   end

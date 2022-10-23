@@ -11,5 +11,5 @@ hr
           = project.title
     hr
     / TODO: change giving tasks
-    = render Task::TaskListComponent.new(project: project, tasks: TaskFavoriteQuery.new.call(project, current_user))
+    = render Task::TaskListComponent.new(project: project, tasks: Tasks::TaskFavoriteRepository.new.call(project, current_user))
   hr
