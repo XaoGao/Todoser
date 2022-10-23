@@ -1,14 +1,14 @@
 require 'simplecov'
 SimpleCov.start
 
-require 'spec_helper'
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
+require "spec_helper"
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'rspec/rails'
+require "rspec/rails"
 require "view_component/test_helpers"
 require "capybara/rspec"
-require 'database_cleaner'
+require "database_cleaner"
 require_relative "./support/factory_bot"
 require_relative "./support/desvise"
 require_relative "./support/view_component_helper"
