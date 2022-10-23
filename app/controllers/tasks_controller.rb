@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  include AutoInject["task_move_service"]
+
   before_action :authenticate_user!
 
   def index
@@ -15,17 +17,16 @@ class TasksController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
+    executor = User.find_by(id: task_params[:executor])
+    default_value = { author: current_user, executor: executor, status: Task.statuses[:selected] }
     @task = @project.tasks.build(task_params.merge(default_value))
 
     authorize! @task
 
-    executor = User.find_by(id: task_params[:executor])
-    default_value = { author: current_user, executor: executor, status: Task.statuses[:selected] }
-
     if @task.save
       redirect_to project_path @project
     else
-      redirect_to projects_path, alert: "error"
+      redirect_to projects_path, alert: t(".error")
     end
   end
 
@@ -48,7 +49,7 @@ class TasksController < ApplicationController
     if @task.update task_params.merge(executor: executor)
       redirect_to project_path @project
     else
-      redirect_to projects_path, alert: "error"
+      redirect_to projects_path, alert: t(".error")
     end
   end
 
@@ -82,8 +83,10 @@ class TasksController < ApplicationController
 
   def move
     @task = Task.find(params[:id])
+
     authorize! @task
-    result = Tasks::MoveService.new.call(@task, params[:status], params[:position], task_move_params)
+
+    result = task_move_service.call(@task, params[:status], params[:position], task_move_params)
     if result.success?
       head :ok
     else
