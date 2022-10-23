@@ -18,6 +18,10 @@ FactoryBot.define do
   factory :task do
     title { Faker::App.name }
     description { Faker::Lorem.paragraph }
+    sequence :position do |n|
+      n
+    end
+    priority { Task.priorities.keys.sample }
     status { 0 }
     association :author, factory: :user
     association :project

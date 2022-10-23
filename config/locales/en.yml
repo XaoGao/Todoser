@@ -77,6 +77,10 @@ en:
       empty_executor: "Executor not selected"
     show:
       marks: "Marks"
+    create:
+      error: "Error when created a new task"
+    update:
+      error: "Error when updated the task"
   users:
     dashboard:
       title: "Dashboard"
