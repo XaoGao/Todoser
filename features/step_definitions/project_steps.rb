@@ -2,10 +2,10 @@ Given('I am sign in for show project') do
   user = new_session(email: "test@test.com", password: "password")
   @project = FactoryBot.create(:project, author: user)
   FactoryBot.create(:project_member, user: user, project: @project)
-  visit new_user_session_path
 end
 
 When('I visit the project show page') do
+  visit projects_path
   page.find("#project_#{@project.id}").find('a', text: @project.title).click
 end
 
