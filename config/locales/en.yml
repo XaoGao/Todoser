@@ -30,6 +30,7 @@ en:
       about_us: "About us"
       contacts: "Contacts"
       profile: "Profile"
+      notifications: "Notifications"
   welcome:
     index:
       title: "Welcome"
@@ -117,6 +118,8 @@ en:
       task_project_mark_not_exist: "Current task have not a this mark"
 
   notifications:
+    index:
+      title: "Notifications"
     errors:
       empty_message: "Message is empty"
       deleted_user: "User is deleted"

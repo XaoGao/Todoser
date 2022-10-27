@@ -1,0 +1,9 @@
+= title t(".title")
+
+h3.text-center.mb-4 =t(".title")
+hr
+
+= render @notifications
+
+.mt-3
+  = paginate @notifications

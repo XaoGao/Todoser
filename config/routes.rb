@@ -41,6 +41,10 @@ Rails.application.routes.draw do
   get "dashboard", to: "users#dashboard"
   put "change_locale", to: "users#change_locale"
 
+  resources :notifications, only: [:index] do
+    get "last", to: "notifications#last", on: :collection, as: "last"
+  end
+
   namespace :api do
     namespace :v1 do
       post "login", to: "sessions#create"

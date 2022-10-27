@@ -17,6 +17,13 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
           = link_to t("layouts.navbar.favorites"), favorites_path, class: "nav-link"
 
     - if user_signed_in?
+
+      ul.navbar-nav.mr-3
+        li.nav-item
+          = link_to notifications_path do  
+            .[class= "nav-link notification-icon" title=t("layouts.navbar.notifications")]
+              i[class="fa-regular fa-bell"]
+
       .dropdown.mr-2
         button.btn.btn-outline-primary.dropdown-toggle[href="#" id="LanguageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
           = I18n.t("locales.#{current_user.locale}")

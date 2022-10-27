@@ -16,6 +16,8 @@ class Notification < ApplicationRecord
 
   validates :body, presence: true, length: { in: 1..200 }
 
+  paginates_per 10
+
   def read
     self.update(read_at: DateTime.now)
   end
