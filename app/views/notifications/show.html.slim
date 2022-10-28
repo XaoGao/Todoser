@@ -1,0 +1,11 @@
+= title t(".title")
+
+h3.text-center.mb-4 =t(".title")
+hr
+
+.card.mb-3
+  .card-body
+    = @notification.body
+
+.text-right.mb-2
+  = render back_button(class: "mr-3")

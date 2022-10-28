@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get "dashboard", to: "users#dashboard"
   put "change_locale", to: "users#change_locale"
 
-  resources :notifications, only: [:index] do
+  resources :notifications, only: [:index, :show] do
     get "last", to: "notifications#last", on: :collection, as: "last"
   end
 
