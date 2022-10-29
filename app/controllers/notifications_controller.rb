@@ -14,9 +14,8 @@ class NotificationsController < ApplicationController
   def last
     result = notification_last_service.call(current_user)
 
-    json_string = NotificationSerializer.new(result.data).serializable_hash.to_json
     respond_to do |format|
-      format.json { render json: { data: json_string }, status: :ok }
+      format.json { render json: { data: result.data }, status: :ok }
     end
   end
 end
