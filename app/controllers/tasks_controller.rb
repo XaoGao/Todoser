@@ -76,7 +76,7 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
 
     respond_to do |format|
-      format.js { render json: { data: render_task(@task) }, status: :ok }
+      format.json { render json: { data: render_task(@task) }, status: :ok }
       format.html { render :show }
     end
   end

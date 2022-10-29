@@ -12,7 +12,7 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new
 
     respond_to do |format|
-      format.js { render json: { data: render_invitation(@project, @invitation) }, status: :ok }
+      format.json { render json: { data: render_invitation(@project, @invitation) }, status: :ok }
       format.html { render :new }
     end
   end

@@ -11,8 +11,7 @@ export default class extends Controller {
       url: this.urlValue,
       type: "GET",
       success: (response) => {
-        const payload = JSON.parse(response)
-        this.dispatch("showInvitation", {detail: { payload: payload.data }})
+        this.dispatch("showInvitation", {detail: { payload: response.data }})
       },
       error: (response) => {
         toastr.error(response)
