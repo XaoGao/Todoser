@@ -11,7 +11,7 @@ end
 MyContainer.register "task_move_repository", -> { Tasks::MoveRepository.new }
 MyContainer.register "task_favorite_repository", -> { Tasks::TaskFavoriteRepository.new }
 
-MyContainer.register "notifications_repository", -> { Notifications::NotificationsRepository.new }
+MyContainer.register "notifications_repository", -> { Notifications::CachedNotificationsRepository.new(Notifications::NotificationsRepository.new) }
 
 MyContainer.register "task_move_service", -> { Tasks::MoveService.new }
 
