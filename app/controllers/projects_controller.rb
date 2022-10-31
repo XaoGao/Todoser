@@ -12,7 +12,13 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
-  # TODO: create a service object
+  def members
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      format.json { render json: { data: MembersSerializer.new(@project.members).serializable_hash.to_json }, status: :ok }
+    end
+  end
+
   def create
     @project = current_user.projects.build project_params
 

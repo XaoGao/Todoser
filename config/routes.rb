@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :projects do
     member do
       put :archive
+      get :members
     end
 
     resources :tasks do

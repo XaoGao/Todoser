@@ -17,8 +17,10 @@
       = status
       hr
       = h project_description_placeholder
-    .text-left
-      = t("project.members", number: project.project_members_count)
+    .text-left.project_member.dropdown[data-controller="dependent-select" data-dependent-select-url-value=members_project_path(project)]
+      .[href="#" id="MembersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-action="click->dependent-select#click"]
+        = t("project.members", number: project.project_members_count)
+      .dropdown-menu[aria-labelledby="MembersDropdown" data-dependent-select-target="dropdown"]
     hr
     .text-right
       = render base_button(path: projects_path)
