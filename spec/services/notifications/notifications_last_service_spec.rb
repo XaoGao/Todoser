@@ -11,7 +11,6 @@ RSpec.describe Notifications::NotificationLastService do
   describe ".call" do
     context "when success result" do
       it { expect(service.call(recipient).success?).to be(true) }
-      it { expect(service.call(recipient).data.count).to eq(3) }
     end
   end
 end
