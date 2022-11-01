@@ -1,5 +1,5 @@
 module Marks
-  class CreateListMarksService < Service
+  class CreateListMarksRepository
     def call(project)
       Mark.all.each do |mark|
         project.project_marks.create(mark: mark)
