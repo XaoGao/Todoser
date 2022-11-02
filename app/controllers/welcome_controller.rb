@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   before_action :redirect_signed_user
+
   def index; end
 
   private

@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
-  include AutoInject["task_move_service"]
+  include AutoInject["task_move_service", "tasks_repository"]
 
   before_action :authenticate_user!
 
   def index
     @project = Project.find(params[:project_id])
-    @tasks = Task.where(project_id: params[:project_id])
+    @tasks = tasks_repository.where(project_id: params[:project_id])
   end
 
   def new
@@ -31,7 +31,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
+    @task = tasks_repository.find(params[:id])
 
     authorize! @task
 
@@ -39,7 +39,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(params[:id])
+    @task = tasks_repository.find(params[:id])
 
     authorize! @task
 
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
+    @task = tasks_repository.find(params[:id])
 
     authorize! @task
 
@@ -69,7 +69,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task = tasks_repository.find(params[:id])
 
     authorize! @task
 
@@ -82,7 +82,7 @@ class TasksController < ApplicationController
   end
 
   def move
-    @task = Task.find(params[:id])
+    @task = tasks_repository.find(params[:id])
 
     authorize! @task
 

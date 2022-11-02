@@ -1,9 +1,11 @@
 class TaskProjectMarksController < ApplicationController
+  include AutoInject["tasks_repository"]
+
   before_action :authenticate_user!
 
   # TODO: create a service object create
   def create
-    task = Task.find(params[:id])
+    task = tasks_repository.find(params[:id])
 
     # TODO: enable when will create a task_policy
     # authorize! task
@@ -28,7 +30,7 @@ class TaskProjectMarksController < ApplicationController
 
   # TODO: create a service object destroy
   def destroy
-    task = Task.find(params[:id])
+    task = tasks_repository.find(params[:id])
 
     # TODO: enable when will create a task_policy
     # authorize! task

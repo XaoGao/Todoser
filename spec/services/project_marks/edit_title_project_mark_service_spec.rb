@@ -27,8 +27,7 @@ RSpec.describe ProjectMarks::EditTitleProjectMarkService do
       it "same text" do
         create(:project_mark, mark: mark, project: project, title: "some text")
         result = service.call(project, mark, "some text")
-        expect(result.success?).to be false
-        expect(result.error_messages).to eq("same text?")
+        expect(result.success?).to be true
       end
     end
   end

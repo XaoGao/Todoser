@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  include AutoInject["tasks_repository"]
+
   before_action :authenticate_user!
   before_action :load_commentable!
 
@@ -39,7 +41,7 @@ class CommentsController < ApplicationController
   private
 
   def load_commentable!
-    @commentable = Task.find(comment_params[:commentable_id])
+    @commentable = tasks_repository.find(comment_params[:commentable_id])
   end
 
   def comment_params

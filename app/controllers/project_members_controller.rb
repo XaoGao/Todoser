@@ -3,6 +3,7 @@ class ProjectMembersController < ApplicationController
 
   def leave
     project = Project.find(params[:project_id])
+
     authorize! project
 
     project.members.delete(current_user)
