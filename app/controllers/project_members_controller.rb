@@ -1,8 +1,10 @@
 class ProjectMembersController < ApplicationController
+  include AutoInject["projects_repository"]
+
   before_action :authenticate_user!
 
   def leave
-    project = Project.find(params[:project_id])
+    project = projects_repository.find(params[:project_id])
 
     authorize! project
 

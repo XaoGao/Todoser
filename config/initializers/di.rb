@@ -12,6 +12,10 @@ MyContainer.register "task_move_repository", -> { Tasks::MoveRepository.new }
 MyContainer.register "task_favorite_repository", -> { Tasks::TaskFavoriteRepository.new }
 MyContainer.register "tasks_repository", -> { Tasks::TasksRepository.new }
 
+MyContainer.register "projects_repository", -> { Projects::ProjectsRepository.new }
+
+MyContainer.register "users_repository", -> { Users::UsersRepository.new }
+
 MyContainer.register "notifications_repository", -> { Notifications::CachedNotificationsRepository.new(Notifications::NotificationsRepository.new) }
 
 MyContainer.register "project_marks_repository", -> { ProjectMarks::ProjectMarksRepository.new }

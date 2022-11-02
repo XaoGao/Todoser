@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  include AutoInject["create_project_service", "task_favorite_repository"]
+  include AutoInject["create_project_service", "task_favorite_repository", "projects_repository"]
 
   before_action :authenticate_user!
 
@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   end
 
   def members
-    @project = Project.find(params[:id])
+    @project = projects_repository.find(params[:id])
     respond_to do |format|
       format.json { render json: { data: MembersSerializer.new(@project.members).serializable_hash.to_json }, status: :ok }
     end
@@ -31,11 +31,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
+    @project = projects_repository.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
+    @project = projects_repository.find(params[:id])
     if @project.update project_params
       redirect_to project_path(@project), notice: t("projects.update.successful", project_name: @project.title)
     else
@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
   end
 
   def archive
-    @project = Project.find(params[:id])
+    @project = projects_repository.find(params[:id])
     unless @project.archive?
       @project.update(status: :archive)
     end
@@ -64,7 +64,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
+    @project = projects_repository.find(params[:id])
     if @project.disabled
       flash[:success] = "ok"
     else

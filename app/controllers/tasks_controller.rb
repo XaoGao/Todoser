@@ -1,23 +1,23 @@
 class TasksController < ApplicationController
-  include AutoInject["task_move_service", "tasks_repository"]
+  include AutoInject["task_move_service", "tasks_repository", "projects_repository", "users_repository"]
 
   before_action :authenticate_user!
 
   def index
-    @project = Project.find(params[:project_id])
+    @project = projects_repository.find(params[:project_id])
     @tasks = tasks_repository.where(project_id: params[:project_id])
   end
 
   def new
-    @project = Project.find(params[:project_id])
+    @project = projects_repository.find(params[:project_id])
     @task = @project.tasks.build(priority: Task.priorities[:medium])
 
     authorize! @task
   end
 
   def create
-    @project = Project.find(params[:project_id])
-    executor = User.find_by(id: task_params[:executor])
+    @project = projects_repository.find(params[:project_id])
+    executor = users_repository.find_by(id: task_params[:executor])
     default_value = { author: current_user, executor: executor, status: Task.statuses[:selected] }
     @task = @project.tasks.build(task_params.merge(default_value))
 
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
 
     authorize! @task
 
-    @project = Project.find(params[:project_id])
+    @project = projects_repository.find(params[:project_id])
   end
 
   def update
@@ -43,8 +43,8 @@ class TasksController < ApplicationController
 
     authorize! @task
 
-    @project = Project.find(params[:project_id])
-    executor = User.find_by(id: task_params[:executor])
+    @project = projects_repository.find(params[:project_id])
+    executor = users_repository.find_by(id: task_params[:executor])
 
     if @task.update task_params.merge(executor: executor)
       redirect_to project_path @project
@@ -58,7 +58,7 @@ class TasksController < ApplicationController
 
     authorize! @task
 
-    @project = Project.find(params[:project_id])
+    @project = projects_repository.find(params[:project_id])
 
     if @task.disabled
       flash[:success] = "ok"
@@ -73,7 +73,7 @@ class TasksController < ApplicationController
 
     authorize! @task
 
-    @project = Project.find(params[:project_id])
+    @project = projects_repository.find(params[:project_id])
 
     respond_to do |format|
       format.json { render json: { data: render_task(@task) }, status: :ok }

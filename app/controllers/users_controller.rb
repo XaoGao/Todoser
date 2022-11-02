@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+  include AutoInject["users_repository"]
+
   before_action :authenticate_user!
 
   def show
-    @user = User.find(params[:id])
+    @user = users_repository.find(params[:id])
   end
 
   def dashboard

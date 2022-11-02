@@ -1,10 +1,10 @@
 class ProjectMarksController < ApplicationController
-  include AutoInject["edit_title_project_mark_service"]
+  include AutoInject["edit_title_project_mark_service", "projects_repository"]
 
   before_action :authenticate_user!
 
   def edit
-    @project = Project.find(params[:project_id])
+    @project = projects_repository.find(params[:project_id])
 
     authorize! @project
 

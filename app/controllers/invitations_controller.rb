@@ -1,11 +1,11 @@
 class InvitationsController < ApplicationController
-  include AutoInject["invitation_create_service", "invitation_confirm_service"]
+  include AutoInject["invitation_create_service", "invitation_confirm_service", "projects_repository"]
 
   before_action :authenticate_user!
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def new
-    @project = Project.find(params[:project_id])
+    @project = projects_repository.find(params[:project_id])
 
     authorize! @project, with: InvitationPolicy
 
@@ -18,7 +18,7 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    project = Project.find(params[:project_id])
+    project = projects_repository.find(params[:project_id])
 
     authorize! project, with: InvitationPolicy
 

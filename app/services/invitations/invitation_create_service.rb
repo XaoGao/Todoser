@@ -1,7 +1,9 @@
 module Invitations
   class InvitationCreateService < Service
+    include AutoInject["users_repository"]
+
     def call(recipient_email, sender, project)
-      user = User.find_by(email: recipient_email)
+      user = users_repository.find_by(email: recipient_email)
       if user.nil?
         return failure(I18n.t("invitations.create.user_not_found"))
       end

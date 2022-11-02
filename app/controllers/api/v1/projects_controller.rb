@@ -1,6 +1,8 @@
 module Api
   module V1
     class ProjectsController < Api::ApiController
+      include AutoInject["projects_repository"]
+
       before_action :token_authenticate_user
 
       def index
@@ -10,8 +12,10 @@ module Api
       end
 
       def show
-        project = Project.find(params[:id])
+        project = projects_repository.find(params[:id])
+
         authorize! project
+
         serialized_project = ProjectSerializer.new(project).serializable_hash.to_json
         ok(project: serialized_project)
       end

@@ -1,7 +1,8 @@
 class DeleteJob
+  include AutoInject["tasks_repository"]
   include Sidekiq::Job
 
   def perform
-    Task.where.not(delete_at: nil).destroy_all
+    tasks_repository.destroy_deleted
   end
 end
