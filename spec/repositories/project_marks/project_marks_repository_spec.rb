@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Marks::CreateListMarksRepository do
+RSpec.describe ProjectMarks::ProjectMarksRepository, type: :repository do
   subject(:repository) { described_class.new }
 
-  describe ".call" do
+  describe ".create_for" do
     let(:project) { create(:project) }
 
     before do
@@ -13,7 +13,7 @@ RSpec.describe Marks::CreateListMarksRepository do
     end
 
     it "create marks for the project" do
-      repository.call project
+      repository.create_for project
       expect(project.project_marks.count).to eq(6)
     end
   end

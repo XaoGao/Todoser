@@ -4,15 +4,15 @@ RSpec.describe Projects::CreateProjectService do
   describe ".call" do
     subject(:service) { described_class.new(
       create_project_member_service: create_project_member_service,
-      create_list_marks_repository: create_list_marks_repository)
+      project_marks_repository: project_marks_repository)
     }
 
     let(:project) { build(:project) }
     let(:user) { create(:user) }
 
-    let(:create_list_marks_repository) { double("create_list_marks_repository", call: nil) }
+    let(:project_marks_repository) { double("project_marks_repository", create_for: nil) }
 
-    context "when s success result" do
+    context "when a success result" do
       let(:project_member) { create(:project_member, user: user, project: project) }
       let(:create_project_member_service) { double("create_project_member_service",
         failure?: false,

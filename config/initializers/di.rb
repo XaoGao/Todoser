@@ -13,13 +13,13 @@ MyContainer.register "task_favorite_repository", -> { Tasks::TaskFavoriteReposit
 
 MyContainer.register "notifications_repository", -> { Notifications::CachedNotificationsRepository.new(Notifications::NotificationsRepository.new) }
 
+MyContainer.register "project_marks_repository", -> { ProjectMarks::ProjectMarksRepository.new }
+
 MyContainer.register "task_move_service", -> { Tasks::MoveService.new }
 
 MyContainer.register "create_project_service", -> { Projects::CreateProjectService.new }
 
 MyContainer.register "create_project_member_service", -> { ProjectMembers::CreateProjectMemberService.new }
-
-MyContainer.register "create_list_marks_repository", -> { Marks::CreateListMarksRepository.new }
 
 MyContainer.register "notification_last_service", -> { Notifications::NotificationLastService.new }
 
