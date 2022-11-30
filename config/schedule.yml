@@ -1,3 +1,11 @@
 delete_job:
-  cron: "*/30 * * * *" 
+  cron: "5 4 * 12 *" 
   class: "DeleteJob"
+
+user_delivery_job:
+  cron: "5 4 * 12 *" 
+  class: "UserDeliveryJob"
+
+admin_delivery_job:
+  cron: "5 4 * 12 *" 
+  class: "AdminDeliveryJob"

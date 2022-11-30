@@ -1,0 +1,17 @@
+.card
+  .card-body
+    h5.card-title
+      .d-flex.justify-content-between
+        .
+          = job[:klass]
+        span[class="badge badge-#{job[:status] == "enabled" ? "primary" : "danger"}"]
+          = job[:status]
+    p.card-text
+      .d-flex.justify-content-between
+        .
+          = "cron: #{job[:cron]}, "
+        .
+    .
+      | Last enqueue time: 
+        = "#{job[:last_enqueue_time]}"
+          

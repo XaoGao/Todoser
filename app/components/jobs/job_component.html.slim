@@ -1,0 +1,20 @@
+.[data-controller="job" id=job.name]
+  .card
+    .card-body
+      h5.card-title
+        .d-flex.justify-content-between
+          .
+            = job.klass
+          span[class=status_class]
+            = job.status
+      p.card-text
+        .d-flex.justify-content-between
+          .
+            = "Cron: #{job.cron}"
+          .[data-controller="job" data-job-name-value=job.name data-job-status-value=status]
+            button.btn.btn-primary.mr-3[data-controller="job" data-job-url-value=launch_admin_background_job_path(name: job.name) data-action="click->job#launch"] Launch
+            button.btn.btn-danger[data-controller="job" data-job-url-value=toggle_admin_background_job_path(name: job.name) data-action="click->job#toggle"]
+              = toggle_status
+      .
+        span[class="badge badge-pill badge-light" title="Last enqueue time"] 
+          = last_enqueue_time

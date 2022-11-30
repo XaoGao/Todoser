@@ -1,0 +1,6 @@
+h1.text-center.mb-2 Backgrount Job
+hr
+.mt-2
+  - if @jobs
+    = render Jobs::JobsComponent.new(jobs: @jobs)
+    

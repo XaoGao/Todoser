@@ -31,6 +31,7 @@ en:
       contacts: "Contacts"
       profile: "Profile"
       notifications: "Notifications"
+      background_job: "Background job"
   welcome:
     index:
       title: "Welcome"

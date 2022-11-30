@@ -15,6 +15,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
           = link_to t("layouts.navbar.dashboard"), dashboard_path, class: "nav-link"
         li.nav-item
           = link_to t("layouts.navbar.favorites"), favorites_path, class: "nav-link"
+        li.nav-item
+          = link_to t("layouts.navbar.background_job"), admin_background_jobs_path, class: "nav-link"
 
     - if user_signed_in?
 

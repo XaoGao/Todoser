@@ -20,6 +20,12 @@ MyContainer.register "notifications_repository", -> { Notifications::CachedNotif
 
 MyContainer.register "project_marks_repository", -> { ProjectMarks::ProjectMarksRepository.new }
 
+MyContainer.register "jobs_repository", -> { Jobs::JobsRepository.new }
+
+MyContainer.register "jobs_all_service", -> { Jobs::JobsAllService.new }
+MyContainer.register "jobs_toggle_service", -> { Jobs::JobsToggleService.new }
+MyContainer.register "jobs_launch_service", -> { Jobs::JobsLaunchService.new }
+
 MyContainer.register "task_move_service", -> { Tasks::MoveService.new }
 
 MyContainer.register "create_project_service", -> { Projects::CreateProjectService.new }

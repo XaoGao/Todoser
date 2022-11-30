@@ -59,6 +59,12 @@ Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
 
   namespace :admin do
+    resources :background_jobs, only: [:index], param: :name do
+      member do
+        put :launch, to: "background_jobs#launch"
+        put :toggle, to: "background_jobs#toggle"
+      end
+    end
   end
 
   # TODO: check user is admin
