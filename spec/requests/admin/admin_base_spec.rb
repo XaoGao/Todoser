@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Admin::AdminBaseController, type: :controller do
   controller do
     def fake_action
+      authenticate_admin!
       head :ok
     end
   end
@@ -18,7 +19,7 @@ RSpec.describe Admin::AdminBaseController, type: :controller do
       it "success" do
         sign_in user
         get :fake_action
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:success)
       end
     end
 

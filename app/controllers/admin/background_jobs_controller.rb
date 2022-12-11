@@ -1,7 +1,7 @@
-class Admin::BackgroundJobsController < ApplicationController
+class Admin::BackgroundJobsController < Admin::AdminBaseController
   include AutoInject["jobs_all_service", "jobs_launch_service", "jobs_toggle_service"]
 
-  before_action :authenticate_user!
+  before_action :authenticate_admin!
 
   def index
     result = jobs_all_service.call
@@ -13,7 +13,7 @@ class Admin::BackgroundJobsController < ApplicationController
     job = result.data
 
     respond_to do |format|
-      format.json { render json: { message: "", html: render_job(job), name: job.name }, status: :ok }
+      format.json { render json: toggle_json_message(job), status: :ok }
     end
   end
 
@@ -22,7 +22,7 @@ class Admin::BackgroundJobsController < ApplicationController
     job = result.data
 
     respond_to do |format|
-      format.json { render json: json_message(job), status: :ok }
+      format.json { render json: launch_json_message(job), status: :ok }
     end
   end
 
