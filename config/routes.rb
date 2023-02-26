@@ -65,6 +65,7 @@ Rails.application.routes.draw do
         put :toggle, to: "background_jobs#toggle"
       end
     end
+    resources :users, only: [:index]
   end
 
   # TODO: check user is admin
