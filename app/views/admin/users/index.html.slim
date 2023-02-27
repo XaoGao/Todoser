@@ -1,0 +1,21 @@
+h1.text-center.mb-2 Users list
+hr
+  table.table
+    thead
+    tr
+      th id
+      th email
+      th first name
+      th last name
+      th user name
+      th role
+    tbody
+      - @users.each do |user|
+        tr
+          td = user.id
+          td = user.email
+          td = user.first_name
+          td = user.last_name
+          td = user.username
+          td = user.role
+
