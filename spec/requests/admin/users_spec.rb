@@ -6,7 +6,6 @@ RSpec.describe "Admin::Users", type: :request do
   end
 
   describe "GET /admin/users" do
-
     it "http status success" do
       get admin_users_path
       expect(response).to have_http_status(:success)

@@ -1,27 +1,11 @@
-h1.text-center.mb-2 = t(".title")
-hr
-  table.table
-    thead
-    tr
-      th = t(".order")
-      th = t(".id")
-      th = t(".full_name")
-      th = t(".username")
-      th = t(".email")
-      th = t(".role")
-      th = t(".status")
-    tbody
       - @users.each_with_index do |user,index|
         tr
           td = index + 1
           td = user.id
-          td = "#{user.first_name} #{user.last_name}"
+          td = user.full_name
           td = user.username
           td = user.email
           td = user.role
           - if user.delete_at.present?
             td.text-center
-              i.fa.fa-times.red-color
-
-  .d-flex.justify-content-center
-    = paginate @users
+              i.fa.fa-times.text-danger

@@ -137,8 +137,9 @@ en:
 
   admin:
     users:
-      user:
+      index:
         title: "Users list"
+      user:
         order: "Ordinal number"
         id: "ID"
         full_name: "Full name"
