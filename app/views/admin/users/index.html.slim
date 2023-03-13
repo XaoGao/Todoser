@@ -1,7 +1,4 @@
-/ = title t(".title")
-
 h3.text-center.mb-4 =t(".title")
-/ hr
 table.table
   thead
     th = t(".order")
@@ -11,8 +8,9 @@ table.table
     th = t(".email")
     th = t(".role")
     th = t(".status")
-  - @users.each_with_index do |user,index|
-    = render partial: "user", locals: { user: user, index: index }
+  tbody
+    - @users.each_with_index do |user,index|
+      = render partial: "user", locals: { user: user, index: index }
 
 .d-flex.justify-content-center
   = paginate @users
