@@ -4,7 +4,6 @@ h3.text-center.mb-4 =t(".title")
 / hr
 table.table
   thead
-  tr
     th = t(".order")
     th = t(".id")
     th = t(".full_name")
@@ -12,7 +11,6 @@ table.table
     th = t(".email")
     th = t(".role")
     th = t(".status")
-  tbody
   - @users.each_with_index do |user,index|
     = render partial: "user", locals: { user: user, index: index }
 
