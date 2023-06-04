@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.order(:id).page params[:page]
+    @search = User.ransack(params[:q])
+    @users = @search.result(distinct: true).page(params[:page])
   end
 end

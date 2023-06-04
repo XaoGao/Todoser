@@ -1,0 +1,8 @@
+= search_form_for @search, url: admin_users_path, data: { controller: "search" } do |f|
+  .input-group
+    .input-group-prepend
+      span.input-group-text = t("users.index.search_title")
+    = f.search_field :first_name_or_last_name_cont, class: "form-control", data: { "search-target": "name" }, placeholder: t("users.index.search_field")
+    .input-group-append
+      = f.submit t("button.search"), class: "btn btn-primary"
+      button[class="btn btn-outline-secondary" data-action="click->search#clear"] = t("button.clear")
