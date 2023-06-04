@@ -13,13 +13,13 @@ RSpec.describe "Admin::Users", type: :request do
 
     it "displays 25 users on the first page" do
       visit admin_users_path
-      expect(page).to have_selector('tbody tr', count: 25)
+      expect(page).to have_selector("tbody tr", count: 25)
     end
 
     it "displays 1 user on the second page" do
       visit admin_users_path
-      click_link '2'
-      expect(page).to have_selector('tbody tr', count: 1)
+      click_link "2"
+      expect(page).to have_selector("tbody tr", count: 1)
     end
   end
 end
