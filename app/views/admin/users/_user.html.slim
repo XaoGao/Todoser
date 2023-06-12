@@ -1,0 +1,10 @@
+tr
+  td = index + 1
+  td = user.id
+  td = user.full_name
+  td = user.username
+  td = user.email
+  td = user.role
+  - if user.delete_at.present?
+    td.text-center
+      i.fa.fa-times.text-danger

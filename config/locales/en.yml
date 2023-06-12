@@ -135,6 +135,18 @@ en:
     confirm:
       not_found: "Invitation is not found"
 
+  admin:
+    users:
+      index:
+        title: "Users list"
+      user:
+        order: "Ordinal number"
+        id: "ID"
+        full_name: "Full name"
+        username: "Username"
+        email: "E-mail"
+        role: "Role"
+        status: "Enable"
 
   api:
     v1:
