@@ -98,7 +98,7 @@ en:
       your_project: "Your projects"
       common_projects: "Common projects"
     index: 
-      search_field: "Full name, role, status" 
+      search_field: "Full name" 
       search_title: "Search" 
   favorites:
     index:
