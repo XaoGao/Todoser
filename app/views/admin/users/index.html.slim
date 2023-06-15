@@ -11,7 +11,7 @@ table.table
     th = t(".full_name")
     th = t(".username")
     th = t(".email")
-    th = t(".role")
+    th = sort_link(@search, :role, t(".role"))
     th = t(".status")
   tbody
     - @users.each_with_index do |user,index|
